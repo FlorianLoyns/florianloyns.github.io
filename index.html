@@ -263,6 +263,22 @@
       letter-spacing: 1px;
     }
 
+    /* App-icon top-right on featured cards */
+    .card-logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, .12);
+    }
+    .card.has-logo .tag,
+    .card.has-logo h3,
+    .card.has-logo > p {
+      padding-right: 72px;
+    }
+
     .card h3 {
       margin: 0 0 12px;
       font-size: 22px;
@@ -352,7 +368,7 @@
   <section class="about">
     <div class="container">
       <p><strong>Warum gibt es das hier?</strong> Ich unterrichte in der generalistischen Pflegeausbildung. Diese Werkzeuge sind aus dem Unterrichtsalltag entstanden und bleiben offen – weil gute Didaktik niemandem gehören muss.</p>
-      <p>Die Tests sind Reflexionsimpulse, keine Diagnostik. Die Trainings sind Übungen, keine Handlungsanleitungen für die Pflegepraxis. Die Werkzeuge ersetzen keine Pädagogik, sie beschleunigen sie. Feedback, Fehlerhinweise und Vorschläge sind willkommen – gern per Mail oder als Issue auf GitHub.</p>
+      <p>Die Tests sind Reflexionsimpulse, keine Diagnostik. Die Werkzeuge ersetzen keine Pädagogik, sie beschleunigen sie. Feedback, Fehlerhinweise und Vorschläge sind willkommen – gern per Mail oder als Issue auf GitHub.</p>
     </div>
   </section>
 
@@ -365,7 +381,15 @@
 
         <div class="grid">
 
-          <a class="card teal" href="https://florianloyns.github.io/klinisches-urteilen/">
+          <a class="card teal has-logo" href="https://florianloyns.github.io/clinical-reasoning-trainer/">
+            <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <rect width="64" height="64" rx="12" fill="#0d7377"/>
+              <g transform="translate(8 5) scale(0.75)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M38.2 14.4 A20 20 0 1 0 36.2 50.7 V35 H42 C46 35 48 38 48 42 S46 49 42 49" stroke-width="3.7"/>
+                <path d="M36.9 21.9 A12.6 12.6 0 1 0 36.9 41.3" stroke-width="2.4" opacity="0.32"/>
+                <path d="M41.5 49.1 L54.2 60" stroke-width="3.7"/>
+              </g>
+            </svg>
             <span class="tag">
               Training · Klinisches Reasoning
               <span class="app-badge">PWA</span>
@@ -495,10 +519,10 @@
   <footer>
     <div class="container">
       <div class="row">
-        <a href="https://florianloyns.github.io/Impressum/">Impressum &amp; Datenschutz</a>
-        <a href="https://github.com/FlorianLoyns">Quellcode auf GitHub</a>
+        <a href="https://florianloyns.github.io/Impressum/">Impressum</a>
+        <a href="https://github.com/FlorianLoyns">GitHub</a>
         <a href="https://www.linkedin.com/in/florianloyns/">LinkedIn</a>
-        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">Lizenz: CC BY-NC-SA 4.0</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">CC BY-NC-SA 4.0</a>
       </div>
       <p class="small" style="margin-top:16px;">
         Alle Werkzeuge und Tests laufen vollständig im Browser. Es werden keine personenbezogenen Daten verarbeitet,
