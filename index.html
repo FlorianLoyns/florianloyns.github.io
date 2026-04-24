@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florian Loyns – Werkzeuge für die Pflegepädagogik</title>
+
+  <meta name="description" content="Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung – kostenfrei, offline nutzbar, open source.">
+  <link rel="canonical" href="https://florianloyns.github.io/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#127878">
+
+  <!-- Inline SVG favicon, 'fl' monogram in teal -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23127878%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%2C-apple-system%2CSegoe%20UI%2CRoboto%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23127878%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://florianloyns.github.io/">
+  <meta property="og:title" content="Florian Loyns – Werkzeuge für die Pflegepädagogik">
+  <meta property="og:description" content="Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung – kostenfrei, offline nutzbar, open source.">
+  <meta property="og:image" content="https://florianloyns.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Werkzeuge und Selbsttests für die Pflegepädagogik">
+  <meta property="og:locale" content="de_DE">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Florian Loyns – Werkzeuge für die Pflegepädagogik">
+  <meta name="twitter:description" content="Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende.">
+  <meta name="twitter:image" content="https://florianloyns.github.io/og-image.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://florianloyns.github.io/#person",
+        "name": "Florian Loyns",
+        "jobTitle": "Lehrer für Pflegeberufe",
+        "description": "Pflegepädagoge, entwickelt kostenfreie Werkzeuge und Selbsttests für die generalistische Pflegeausbildung.",
+        "url": "https://florianloyns.github.io/",
+        "sameAs": ["https://github.com/FlorianLoyns"]
+      },
+      {
+        "@type": "CollectionPage",
+        "name": "Werkzeuge für die Pflegepädagogik",
+        "description": "Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung.",
+        "url": "https://florianloyns.github.io/",
+        "author": { "@id": "https://florianloyns.github.io/#person" },
+        "inLanguage": "de-DE",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --teal: #127878;
+      --teal-dark: #0e5f5f;
+      --teal-soft: #e6f3f3;
+      --marine: #2c4a6e;
+      --marine-dark: #1e3452;
+      --marine-soft: #eef2f7;
+      --ink: #111827;
+      --body: #374151;
+      --muted: #6b7280;
+      --bg: #fbfbfc;
+      --border: #e5e7eb;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--body);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      background: var(--ink);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      z-index: 100;
+      transition: top .15s ease;
+    }
+    .skip-link:focus { top: 12px; outline: 2px solid var(--teal); }
+
+    :focus-visible {
+      outline: 3px solid var(--teal);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .card:focus-visible { outline-offset: 4px; }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== Hero ========== */
+    .hero {
+      padding: 80px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero .eyebrow {
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin: 0 0 24px;
+    }
+    .hero h1 {
+      margin: 0 0 20px;
+      color: var(--ink);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .hero .lead {
+      max-width: 720px;
+      margin: 0 0 32px;
+      font-size: clamp(18px, 2vw, 20px);
+      color: var(--body);
+    }
+    .hero .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: transform .15s ease, background .15s ease, gap .15s ease;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: var(--teal-dark); gap: 12px; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--marine);
+      border-color: var(--marine);
+    }
+    .btn-secondary:hover { background: var(--marine); color: #fff; gap: 12px; }
+
+    /* ========== About ========== */
+    .about { padding: 48px 0 16px; }
+    .about p {
+      max-width: 720px;
+      font-size: 18px;
+      color: var(--body);
+      margin: 0 0 14px;
+    }
+    .about p strong { color: var(--ink); }
+
+    /* ========== Sections ========== */
+    section.block { padding: 56px 0 40px; }
+    section.block h2 {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 3vw, 32px);
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    section.block .section-lead {
+      margin: 0 0 32px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    section.block h2::before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      margin-right: 14px;
+      vertical-align: 3px;
+    }
+    section.block.teal h2::before   { background: var(--teal); }
+    section.block.marine h2::before { background: var(--marine); }
+
+    /* ========== Card Grid ========== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 680px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 28px 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+    }
+    .card.teal::before   { background: var(--teal); }
+    .card.marine::before { background: var(--marine); }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -20px rgba(15, 23, 42, .25);
+    }
+    .card.teal:hover   { border-color: var(--teal); }
+    .card.marine:hover { border-color: var(--marine); }
+
+    .card .tag {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 4px 0 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card.teal .tag   { color: var(--teal); }
+    .card.marine .tag { color: var(--marine); }
+    .card .tag .app-badge {
+      background: var(--teal);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .card p {
+      margin: 0 0 20px;
+      color: var(--body);
+      font-size: 15.5px;
+      line-height: 1.55;
+    }
+    .card .features {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .card .features li {
+      padding: 3px 0 3px 22px;
+      position: relative;
+    }
+    .card .features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 3px;
+      font-weight: 700;
+    }
+    .card.teal   .features li::before { color: var(--teal); }
+    .card.marine .features li::before { color: var(--marine); }
+
+    .card .cta {
+      margin-top: auto;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card.teal .cta   { color: var(--teal-dark); }
+    .card.marine .cta { color: var(--marine-dark); }
+    .card:hover .cta  { gap: 10px; }
+
+    /* ========== Footer ========== */
+    footer {
+      margin-top: 32px;
+      padding: 40px 0 56px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+    footer .row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    footer a { color: var(--body); text-decoration: none; border-bottom: 1px solid var(--border); }
+    footer a:hover { border-color: var(--ink); color: var(--ink); }
+    footer p { margin: 6px 0; }
+    footer .small { font-size: 13px; opacity: .8; }
+  </style>
+</head>
+<body>
+
+  <a href="#trainings" class="skip-link">Zum Hauptinhalt springen</a>
+
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Werkzeuge für die Pflegepädagogik</p>
+      <h1>Lernen in der Pflege –<br>klar, strukturiert, offen.</h1>
+      <p class="lead">
+        Ein Hub von kostenfreien Trainings, Selbsttests und Werkzeugen für die Pflegeausbildung.
+        Alles unter CC BY-NC-SA frei nutzbar, läuft vollständig im Browser.
+      </p>
+      <div class="actions">
+        <a href="#trainings" class="btn btn-primary">Zu den Trainings →</a>
+        <a href="#werkzeuge" class="btn btn-secondary">Werkzeuge für Lehrende</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="container">
+      <p><strong>Warum gibt es das hier?</strong> Ich unterrichte in der generalistischen Pflegeausbildung. Diese Werkzeuge sind aus dem Unterrichtsalltag entstanden und bleiben offen – weil gute Didaktik niemandem gehören muss.</p>
+      <p>Die Tests sind Reflexionsimpulse, keine Diagnostik. Die Werkzeuge ersetzen keine Pädagogik, sie beschleunigen sie. Feedback, Fehlerhinweise und Vorschläge sind willkommen – gern per Mail oder als Issue auf GitHub.</p>
+    </div>
+  </section>
+
+  <main>
+
+    <section class="block teal" id="trainings" aria-labelledby="trainings-heading">
+      <div class="container">
+        <h2 id="trainings-heading">Trainings</h2>
+        <p class="section-lead">Fallbasierte Szenarien mit Sofort-Feedback – für die Patient:innen-Kommunikation und das klinische Denken.</p>
+
+        <div class="grid">
+
+          <a class="card teal" href="https://florianloyns.github.io/klinisches-urteilen/">
+            <span class="tag">
+              Training · Klinisches Reasoning
+              <span class="app-badge">PWA</span>
+            </span>
+            <h3>Klinisches Urteilen trainieren</h3>
+            <p>Fallbasiertes Üben vom Situationsverständnis bis zur Pflegeplanung – strukturiert statt auswendig pauken. Als App auf dem Handy installierbar.</p>
+            <ul class="features">
+              <li>Fallbasiert statt Lehrbuch</li>
+              <li>Von Einschätzung bis zur Pflegeplanung</li>
+              <li>Als App installierbar (PWA)</li>
+            </ul>
+            <span class="cta">Jetzt ausprobieren →</span>
+          </a>
+
+          <a class="card teal" href="https://florianloyns.github.io/isbar-trainer/">
+            <span class="tag">Training · Kommunikation</span>
+            <h3>Die Übergabe strukturiert üben</h3>
+            <p>SBAR, ISBAR oder ISOBAR – wähle dein Schema und übe an drei Alltagsszenarien. Mit Musterübergabe am Ende.</p>
+            <ul class="features">
+              <li>SBAR, ISBAR oder ISOBAR zur Wahl</li>
+              <li>Drei praxisnahe Szenarien</li>
+              <li>Musterübergabe nach jedem Szenario</li>
+            </ul>
+            <span class="cta">Jetzt ausprobieren →</span>
+          </a>
+
+          <a class="card teal" href="https://florianloyns.github.io/validation-training/">
+            <span class="tag">Training · Pflegeausbildung</span>
+            <h3>Validation im Alltag trainieren</h3>
+            <p>12 Szenarien aus dem Umgang mit Menschen mit Demenz – sagbare Sätze plus passende Handlung.</p>
+            <ul class="features">
+              <li>12 praxisnahe Szenarien</li>
+              <li>Sprache und Handlung parallel</li>
+              <li>Merksatz pro Situation</li>
+            </ul>
+            <span class="cta">Jetzt ausprobieren →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block teal" id="selbsttests" aria-labelledby="selbsttests-heading">
+      <div class="container">
+        <h2 id="selbsttests-heading">Selbsttests</h2>
+        <p class="section-lead">Kurze Reflexionsimpulse zum eigenen Lernen und Wahrnehmen – jeweils 2–3 Minuten.</p>
+
+        <div class="grid">
+
+          <a class="card teal" href="https://florianloyns.github.io/vier-ohren-selbsttest/">
+            <span class="tag">Selbsttest · Kommunikation</span>
+            <h3>Das eigene Hören reflektieren</h3>
+            <p>Das 4-Ohren-Modell nach Schulz von Thun in 12 Alltagssituationen – zeigt dein lautestes und dein leisestes Ohr.</p>
+            <ul class="features">
+              <li>12 Szenen aus Schule und Praxis</li>
+              <li>Dominantes und leisestes Ohr</li>
+              <li>Praxisimpuls für jedes Ohr</li>
+            </ul>
+            <span class="cta">Jetzt ausprobieren →</span>
+          </a>
+
+          <a class="card teal" href="https://florianloyns.github.io/lerntypentest/">
+            <span class="tag">Selbsttest · Lernstil</span>
+            <h3>Den eigenen Lerntyp finden</h3>
+            <p>12 Fragen zu auditiv, visuell, kommunikativ und kinästhetisch – mit wissenschaftlicher Auflösung am Ende.</p>
+            <ul class="features">
+              <li>12 Fragen in ca. 2 Minuten</li>
+              <li>Vier Lernkanäle im Überblick</li>
+              <li>Kritische Einordnung am Ende</li>
+            </ul>
+            <span class="cta">Jetzt ausprobieren →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block marine" id="werkzeuge" aria-labelledby="werkzeuge-heading">
+      <div class="container">
+        <h2 id="werkzeuge-heading">Werkzeuge</h2>
+        <p class="section-lead">Browser-Werkzeuge für typische Aufgaben im Pflegeunterricht – ohne Installation, offline nutzbar.</p>
+
+        <div class="grid">
+
+          <a class="card marine" href="https://florianloyns.github.io/gruppeneinteilung/">
+            <span class="tag">Werkzeug · Unterricht</span>
+            <h3>Lerngruppen klug einteilen</h3>
+            <p>Vier Einteilungsmethoden mit Drag-and-Drop-Nachbearbeitung – inklusive Word- und PDF-Export.</p>
+            <ul class="features">
+              <li>Vier Einteilungsmethoden</li>
+              <li>Drag-and-Drop-Nachbearbeitung</li>
+              <li>Word- und PDF-Export</li>
+            </ul>
+            <span class="cta">Jetzt nutzen →</span>
+          </a>
+
+          <a class="card marine" href="https://florianloyns.github.io/klare-auftraege/">
+            <span class="tag">Werkzeug · Didaktik</span>
+            <h3>Arbeitsaufträge strukturieren</h3>
+            <p>Evidenzbasierte Vorlagen nach Hattie und Bloom – mit Operatoren-Bibliothek und Word-Export.</p>
+            <ul class="features">
+              <li>Struktur nach Hattie und Bloom</li>
+              <li>Operatoren-Bibliothek</li>
+              <li>Word-Export, offline nutzbar</li>
+            </ul>
+            <span class="cta">Jetzt nutzen →</span>
+          </a>
+
+          <a class="card marine" href="https://florianloyns.github.io/osce-planer/">
+            <span class="tag">Werkzeug · Prüfungsplanung</span>
+            <h3>OSCE-Prüfungen planen</h3>
+            <p>Rotationspläne mit automatischer Logik, editierbaren Pausenzeiten und drei fertigen Word-Exporten.</p>
+            <ul class="features">
+              <li>Automatische Rotationslogik</li>
+              <li>Editierbare Pausenzeiten</li>
+              <li>Drei Word-Exporte</li>
+            </ul>
+            <span class="cta">Jetzt nutzen →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <a href="https://florianloyns.github.io/Impressum/">Impressum &amp; Datenschutz</a>
+        <a href="https://github.com/FlorianLoyns">Quellcode auf GitHub</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de">Lizenz: CC BY-NC-SA 4.0</a>
+      </div>
+      <p class="small" style="margin-top:16px;">
+        Alle Werkzeuge und Tests laufen vollständig im Browser. Es werden keine personenbezogenen Daten verarbeitet,
+        keine Cookies gesetzt, kein Tracking eingesetzt.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
