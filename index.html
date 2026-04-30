@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Florian Loyns – Werkzeuge für die Pflegepädagogik</title>
 
   <meta name="description" content="Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung – kostenfrei, offline nutzbar, open source.">
@@ -82,6 +82,8 @@
       line-height: 1.6;
       font-size: 17px;
       -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     a { color: inherit; }
 
@@ -112,11 +114,14 @@
       max-width: 1120px;
       margin: 0 auto;
       padding: 0 24px;
+      padding-left: max(24px, env(safe-area-inset-left));
+      padding-right: max(24px, env(safe-area-inset-right));
     }
 
     /* ========== Hero ========== */
     .hero {
       padding: 80px 0 56px;
+      padding-top: max(80px, env(safe-area-inset-top) + 64px);
       border-bottom: 1px solid var(--border);
     }
     .hero .eyebrow {
@@ -344,6 +349,23 @@
     footer a:hover { border-color: var(--ink); color: var(--ink); }
     footer p { margin: 6px 0; }
     footer .small { font-size: 13px; opacity: .8; }
+
+    /* ========== Mobile-Optimierungen ========== */
+    @media (max-width: 600px) {
+      .container {
+        padding-left: max(18px, env(safe-area-inset-left));
+        padding-right: max(18px, env(safe-area-inset-right));
+      }
+      .hero {
+        padding: 48px 0 32px;
+        padding-top: max(48px, env(safe-area-inset-top) + 32px);
+      }
+      .hero h1 { font-size: clamp(28px, 8vw, 42px); }
+      .about { padding: 32px 0 8px; }
+      section.block { padding: 36px 0 28px; }
+      .card { padding: 22px 20px 20px; }
+      footer { padding: 28px 0 calc(28px + env(safe-area-inset-bottom)); }
+    }
   </style>
 </head>
 <body>
@@ -439,7 +461,7 @@
               <rect x="11" y="42" width="10" height="8"  rx="1.5" fill="#b5dbdb"/>
             </svg>
             <span class="tag">
-              Training · Bettenzuweisung
+              Training · Betten&shy;zuweisung
               <span class="app-badge">PWA</span>
             </span>
             <h3>Habt ihr noch ein Bett?</h3>
@@ -450,6 +472,36 @@
               <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt spielen →</span>
+          </a>
+
+          <a class="card teal has-logo" href="https://florianloyns.github.io/pflegelatein/">
+            <svg class="card-logo" viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="pflegelatein-bg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0d7377"/>
+                  <stop offset="100%" stop-color="#0a5c5f"/>
+                </linearGradient>
+              </defs>
+              <rect width="512" height="512" rx="96" fill="url(#pflegelatein-bg)"/>
+              <g transform="translate(256 296.5) scale(0.18 -0.18)">
+                <path d="M468 104C468 109 460 120 452 120C448 120 447 119 439 109C365 15 276 11 259 11C205 11 180 56 180 114C180 167 207 272 233 320C269 385 319 420 364 420C375 420 420 418 435 377C385 371 385 328 385 328C385 312 396 296 419 296C446 296 470 318 470 356C470 405 427 442 363 442C239 442 110 300 110 154C110 55 169 -11 257 -11C385 -11 468 89 468 104Z" transform="translate(-696.5 0)" fill="#fbf9f3"/>
+                <path d="M509 278C509 373 450 442 363 442C239 442 110 300 110 154C110 51 173 -11 256 -11C380 -11 509 131 509 278ZM439 317C439 274 417 171 385 111C356 56 305 11 256 11C217 11 180 42 180 114C180 164 206 275 238 329C275 390 323 420 362 420C411 420 439 376 439 317Z" transform="translate(-236.5 0)" fill="#fbf9f3"/>
+                <path d="M489 379C489 431 424 442 391 442C322 442 286 392 270 370C259 423 220 442 187 442C151 442 131 419 115 389C96 349 83 288 83 288C83 278 93 278 98 278C111 278 112 279 117 301C135 371 154 420 185 420C211 420 211 391 211 380C211 364 208 345 204 329L129 29C127 23 126 18 126 15C126 4 134 -11 154 -11C184 -11 191 18 193 26L258 288C259 291 304 420 390 420C395 420 423 420 443 406C408 395 405 363 405 358C405 345 414 326 440 326C458 326 489 340 489 379Z" transform="translate(274.5 0)" fill="#fbf9f3"/>
+              </g>
+              <line x1="186" y1="320.5" x2="326" y2="320.5" stroke="#fbf9f3" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+            <span class="tag">
+              Training · Pflege&shy;ausbildung
+              <span class="app-badge">PWA</span>
+            </span>
+            <h3>Pflegelatein</h3>
+            <p>Karteibox mit über 600 Begriffen aus Anatomie, Pathologie und Pflegepraxis. Was du weißt, kommt seltener wieder; was wackelt, ist morgen wieder dran.</p>
+            <ul class="features">
+              <li>Leitner-System mit 5 Lernfächern</li>
+              <li>Latein → Deutsch und umgekehrt</li>
+              <li>Als App installierbar (PWA)</li>
+            </ul>
+            <span class="cta">Jetzt lernen →</span>
           </a>
 
         </div>
