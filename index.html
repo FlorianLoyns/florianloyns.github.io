@@ -319,6 +319,16 @@
     .card.teal   .features li::before { color: var(--teal); }
     .card.marine .features li::before { color: var(--marine); }
 
+    .card .steps {
+      margin: 0 0 4px;
+      padding-left: 24px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--body);
+    }
+    .card .steps li { padding: 2px 0; }
+    .card .steps li::marker { color: var(--teal); font-weight: 700; }
+
     .card .cta {
       margin-top: auto;
       font-size: 15px;
@@ -389,7 +399,8 @@
 
   <section class="about">
     <div class="container">
-      <p><strong>Warum gibt es das hier?</strong> Ich unterrichte in der generalistischen Pflegeausbildung. Diese Werkzeuge sind aus dem Unterrichtsalltag entstanden und bleiben offen – weil gute Didaktik niemandem gehören muss.</p>
+      <p><strong>Warum gibt es das hier?</strong> Ich unterrichte als <strong>Lehrer für Pflegeberufe</strong> in der generalistischen Pflegeausbildung. Diese Werkzeuge sind aus dem Unterrichtsalltag entstanden und bleiben offen – weil gute Didaktik niemandem gehören muss.</p>
+      <p>Was hier landet, hat mindestens eine Klasse oder eine Kollegen-Diskussion hinter sich. Ich bin kein Programmierer, sondern Pädagoge: didaktisch gedacht, technisch pragmatisch. Alles läuft direkt im Browser ohne Anmeldung, ohne Tracking, ohne externe Server — auch offline auf jedem Schulrechner und Smartphone.</p>
       <p>Die Tests sind Reflexionsimpulse, keine Diagnostik. Die Werkzeuge ersetzen keine Pädagogik, sie beschleunigen sie. Feedback, Fehlerhinweise und Vorschläge sind willkommen – gern per Mail oder als Issue auf GitHub.</p>
     </div>
   </section>
@@ -599,6 +610,39 @@
             </ul>
             <span class="cta">Jetzt rechnen →</span>
           </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block teal" id="installieren" aria-labelledby="installieren-heading">
+      <div class="container">
+        <h2 id="installieren-heading">So installierst du die Apps auf dem Handy</h2>
+        <p class="section-lead">Tools mit dem PWA-Badge lassen sich auf jedem Smartphone wie eine App installieren — direkt aus dem Browser, ohne App Store, ohne Anmeldung. Einmal eingerichtet, läuft die App auch offline.</p>
+
+        <div class="grid">
+
+          <div class="card teal" style="cursor:default;">
+            <span class="tag">iPhone &amp; iPad · Safari</span>
+            <h3>Auf iOS installieren</h3>
+            <ol class="steps">
+              <li>Tool im Safari-Browser öffnen</li>
+              <li>Auf das Teilen-Symbol unten tippen (Quadrat mit Pfeil nach oben)</li>
+              <li>Nach unten scrollen, „Zum Home-Bildschirm" wählen</li>
+              <li>Namen bestätigen — fertig</li>
+            </ol>
+          </div>
+
+          <div class="card teal" style="cursor:default;">
+            <span class="tag">Android · Chrome</span>
+            <h3>Auf Android installieren</h3>
+            <ol class="steps">
+              <li>Tool im Chrome-Browser öffnen</li>
+              <li>Auf das Drei-Punkte-Menü oben rechts tippen</li>
+              <li>„App installieren" oder „Zum Startbildschirm hinzufügen" wählen</li>
+              <li>Bestätigen — fertig</li>
+            </ol>
+          </div>
 
         </div>
       </div>
