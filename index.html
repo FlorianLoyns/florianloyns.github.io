@@ -70,7 +70,28 @@
       --body: #374151;
       --muted: #6b7280;
       --bg: #fbfbfc;
+      --surface: #ffffff;
       --border: #e5e7eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --teal: #2dd4bf; --teal-dark: #14b8a6; --teal-soft: rgba(45,212,191,.12);
+        --marine: #7dd3fc; --marine-dark: #38bdf8; --marine-soft: rgba(125,211,252,.1);
+        --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8;
+        --bg: #0f172a; --surface: #1e293b; --border: #334155;
+      }
+    }
+    [data-theme="dark"] {
+      --teal: #2dd4bf; --teal-dark: #14b8a6; --teal-soft: rgba(45,212,191,.12);
+      --marine: #7dd3fc; --marine-dark: #38bdf8; --marine-soft: rgba(125,211,252,.1);
+      --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8;
+      --bg: #0f172a; --surface: #1e293b; --border: #334155;
+    }
+    [data-theme="light"] {
+      --teal: #127878; --teal-dark: #0e5f5f; --teal-soft: #e6f3f3;
+      --marine: #2c4a6e; --marine-dark: #1e3452; --marine-soft: #eef2f7;
+      --ink: #111827; --body: #374151; --muted: #6b7280;
+      --bg: #fbfbfc; --surface: #ffffff; --border: #e5e7eb;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -219,7 +240,7 @@
     }
 
     .card {
-      background: #fff;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 28px 28px 24px;
@@ -418,6 +439,22 @@
         scroll-snap-align: start;
       }
     }
+    /* ========== Theme Toggle ========== */
+    #btn-theme {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      display: grid; place-items: center;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background .15s;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    #btn-theme:hover { background: var(--border); }
+
+
     /* ========== Mobile-Optimierungen ========== */
     @media (max-width: 600px) {
       .container {
@@ -439,6 +476,7 @@
 <body>
 
   <a href="#trainings" class="skip-link">Zum Hauptinhalt springen</a>
+
 
   <header class="hero">
     <div class="container">
@@ -971,6 +1009,10 @@
         <a href="https://github.com/FlorianLoyns" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/florianloyns/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>
+        <button id="btn-theme" aria-label="Farbschema umschalten">
+          <svg id="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg id="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </div>
       <p class="small" style="margin-top:16px;">
         Alle Werkzeuge und Tests laufen vollständig im Browser. Es werden keine personenbezogenen Daten verarbeitet,
@@ -979,5 +1021,30 @@
     </div>
   </footer>
 
+
+<script>
+(function() {
+  var html = document.documentElement;
+  var stored = localStorage.getItem('fl-theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isDark = stored ? stored === 'dark' : prefersDark;
+
+  function applyTheme(dark) {
+    isDark = dark;
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    localStorage.setItem('fl-theme', dark ? 'dark' : 'light');
+    var sun  = document.getElementById('theme-icon-sun');
+    var moon = document.getElementById('theme-icon-moon');
+    if (sun)  sun.style.display  = dark ? 'block' : 'none';
+    if (moon) moon.style.display = dark ? 'none'  : 'block';
+  }
+
+  applyTheme(isDark);
+
+  document.getElementById('btn-theme').addEventListener('click', function() {
+    applyTheme(!isDark);
+  });
+})();
+</script>
 </body>
 </html>
