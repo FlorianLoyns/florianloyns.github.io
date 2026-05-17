@@ -366,7 +366,6 @@
     footer {
       margin-top: 32px;
       padding: 40px 0 56px;
-      border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 14.5px;
     }
@@ -376,8 +375,8 @@
       flex-wrap: wrap;
       align-items: center;
     }
-    footer a { color: var(--body); text-decoration: none; border-bottom: 1px solid var(--border); }
-    footer a:hover { border-color: var(--ink); color: var(--ink); }
+    footer a { color: var(--muted); text-decoration: none; transition: opacity .15s; }
+    footer a:hover { opacity: .65; }
     footer p { margin: 6px 0; }
     footer .small { font-size: 13px; opacity: .8; }
 
@@ -692,14 +691,23 @@
                   <stop offset="0%" stop-color="#0d7377"/>
                   <stop offset="100%" stop-color="#0a5c5f"/>
                 </linearGradient>
+                <radialGradient id="pflegelatein-glow" cx="50%" cy="40%" r="65%">
+                  <stop offset="0%" stop-color="#fbf9f3" stop-opacity="0.10"/>
+                  <stop offset="100%" stop-color="#fbf9f3" stop-opacity="0"/>
+                </radialGradient>
               </defs>
               <rect width="512" height="512" rx="96" fill="url(#pflegelatein-bg)"/>
-              <g transform="translate(256 296.5) scale(0.18 -0.18)">
-                <path d="M468 104C468 109 460 120 452 120C448 120 447 119 439 109C365 15 276 11 259 11C205 11 180 56 180 114C180 167 207 272 233 320C269 385 319 420 364 420C375 420 420 418 435 377C385 371 385 328 385 328C385 312 396 296 419 296C446 296 470 318 470 356C470 405 427 442 363 442C239 442 110 300 110 154C110 55 169 -11 257 -11C385 -11 468 89 468 104Z" transform="translate(-696.5 0)" fill="#fbf9f3"/>
-                <path d="M509 278C509 373 450 442 363 442C239 442 110 300 110 154C110 51 173 -11 256 -11C380 -11 509 131 509 278ZM439 317C439 274 417 171 385 111C356 56 305 11 256 11C217 11 180 42 180 114C180 164 206 275 238 329C275 390 323 420 362 420C411 420 439 376 439 317Z" transform="translate(-236.5 0)" fill="#fbf9f3"/>
-                <path d="M489 379C489 431 424 442 391 442C322 442 286 392 270 370C259 423 220 442 187 442C151 442 131 419 115 389C96 349 83 288 83 288C83 278 93 278 98 278C111 278 112 279 117 301C135 371 154 420 185 420C211 420 211 391 211 380C211 364 208 345 204 329L129 29C127 23 126 18 126 15C126 4 134 -11 154 -11C184 -11 191 18 193 26L258 288C259 291 304 420 390 420C395 420 423 420 443 406C408 395 405 363 405 358C405 345 414 326 440 326C458 326 489 340 489 379Z" transform="translate(274.5 0)" fill="#fbf9f3"/>
-              </g>
-              <line x1="186" y1="320.5" x2="326" y2="320.5" stroke="#fbf9f3" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+              <rect width="512" height="512" rx="96" fill="url(#pflegelatein-glow)"/>
+              <path d="M 256 178
+                       C 238 152, 205 124, 170 124
+                       C 122 124, 108 180, 123 230
+                       C 138 280, 196 335, 256 385
+                       C 316 335, 374 280, 389 230
+                       C 404 182, 388 128, 342 128
+                       C 307 128, 274 152, 256 178 Z"
+                    fill="rgba(251,249,243,0.08)"
+                    stroke="#fbf9f3" stroke-width="22"
+                    stroke-linejoin="round" stroke-linecap="round"/>
             </svg>
             <span class="tag">
               Wissen · Pflege&shy;ausbildung
