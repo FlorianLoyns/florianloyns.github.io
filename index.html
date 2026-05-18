@@ -399,11 +399,25 @@
       width: 100%;
       height: auto;
       display: block;
+      border: none;
+      border-radius: 0;
+      outline: none;
       transition: transform .2s ease;
     }
     .pwa-gallery-item:hover img {
       transform: translateY(-4px);
     }
+    /* Dark/light screenshot switching */
+    .pwa-img-dark { display: none; }
+    .pwa-img-light { display: block; }
+    @media (prefers-color-scheme: dark) {
+      .pwa-img-dark  { display: block; }
+      .pwa-img-light { display: none; }
+    }
+    [data-theme="dark"]  .pwa-img-dark  { display: block !important; }
+    [data-theme="dark"]  .pwa-img-light { display: none  !important; }
+    [data-theme="light"] .pwa-img-dark  { display: none  !important; }
+    [data-theme="light"] .pwa-img-light { display: block !important; }
     .pwa-step-label {
       font-size: 13.5px;
       font-weight: 600;
@@ -937,22 +951,26 @@
 
         <div class="pwa-gallery">
           <div class="pwa-gallery-item">
-            <img src="pwa-step-1.png" alt="Tool im Safari-Browser öffnen" loading="lazy">
+            <img class="pwa-img-light" src="pwa-step-1-light.png" alt="Tool im Safari-Browser öffnen" loading="lazy">
+            <img class="pwa-img-dark"  src="pwa-step-1-dark.png"  alt="Tool im Safari-Browser öffnen" loading="lazy">
             <span class="pwa-step-num">Schritt 1</span>
             <span class="pwa-step-label">Safari-Browser öffnen</span>
           </div>
           <div class="pwa-gallery-item">
-            <img src="pwa-step-2.png" alt="Drei-Punkte-Menü unten rechts antippen" loading="lazy">
+            <img class="pwa-img-light" src="pwa-step-2-light.png" alt="Drei-Punkte-Menü unten rechts antippen" loading="lazy">
+            <img class="pwa-img-dark"  src="pwa-step-2-dark.png"  alt="Drei-Punkte-Menü unten rechts antippen" loading="lazy">
             <span class="pwa-step-num">Schritt 2</span>
             <span class="pwa-step-label">Drei-Punkte-Menü tippen</span>
           </div>
           <div class="pwa-gallery-item">
-            <img src="pwa-step-3.png" alt="Zum Home-Bildschirm wählen" loading="lazy">
+            <img class="pwa-img-light" src="pwa-step-3-light.png" alt="Zum Home-Bildschirm wählen" loading="lazy">
+            <img class="pwa-img-dark"  src="pwa-step-3-dark.png"  alt="Zum Home-Bildschirm wählen" loading="lazy">
             <span class="pwa-step-num">Schritt 3</span>
             <span class="pwa-step-label">Zum Home-Bildschirm</span>
           </div>
           <div class="pwa-gallery-item">
-            <img src="pwa-step-4.png" alt="Namen bestätigen und Hinzufügen tippen" loading="lazy">
+            <img class="pwa-img-light" src="pwa-step-4-light.png" alt="Namen bestätigen und Hinzufügen tippen" loading="lazy">
+            <img class="pwa-img-dark"  src="pwa-step-4-dark.png"  alt="Namen bestätigen und Hinzufügen tippen" loading="lazy">
             <span class="pwa-step-num">Schritt 4</span>
             <span class="pwa-step-label">Namen bestätigen — fertig</span>
           </div>
