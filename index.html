@@ -361,6 +361,9 @@
     .card.teal .cta   { color: var(--teal-dark); }
     .card.marine .cta { color: var(--marine-dark); }
     .card:hover .cta  { gap: 10px; }
+    .card-actions { margin-top: auto; display: flex; gap: 20px; flex-wrap: wrap; }
+    .card-actions a { font-size: 15px; font-weight: 600; color: var(--marine-dark); text-decoration: none; }
+    .card-actions a:hover { text-decoration: underline; }
 
     /* ========== Footer ========== */
     footer {
@@ -1021,6 +1024,47 @@
             </ul>
             <span class="cta">Jetzt nutzen →</span>
           </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block marine" id="plugins" aria-labelledby="plugins-heading">
+      <div class="container">
+        <h2 id="plugins-heading">Reveal-Plugins</h2>
+        <p class="section-lead"><a href="https://revealjs.com" target="_blank" rel="noopener noreferrer" style="color:var(--marine-dark);text-decoration:underline">reveal.js</a> ist ein freies, browserbasiertes Präsentations-Framework – Folien laufen auf jedem Rechner, Beamer oder Smartboard, ohne Installation und offline. Meine Plugins erweitern es gezielt für den Unterricht: mit dem Finger am Touch-Display bedienbar und auf interaktives Lehren ausgelegt.</p>
+
+        <div class="grid">
+
+          <div class="card marine">
+            <span class="tag">Plugin · reveal.js</span>
+            <h3>Präsentationen am Smartboard bedienen</h3>
+            <p>Bildschirm-Bedienleiste für reveal.js: mit dem Stift markieren, in eine Stelle zoomen, Pause, Übersicht und Vollbild – ganz ohne Tastatur oder Maus.</p>
+            <ul class="features">
+              <li>Stift, Lupe, Pause, Übersicht, Vollbild</li>
+              <li>Für Touch-Display und Smartboard gebaut</li>
+              <li>Frei und quelloffen (MIT)</li>
+            </ul>
+            <div class="card-actions">
+              <a href="https://github.com/florianloyns/reveal.js-touchcontrols" target="_blank" rel="noopener noreferrer">reveal.js-touchcontrols ↗</a>
+              <a href="https://florianloyns.github.io/reveal.js-touchcontrols/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+            </div>
+          </div>
+
+          <div class="card marine">
+            <span class="tag">Plugin · reveal.js</span>
+            <h3>Fachbegriffe auf Folien erklären</h3>
+            <p>Fachbegriffe auf den Folien markieren – bei Hover oder Tipp erscheint eine kurze Erklärung direkt am Wort. Auch Lernende können zuhause darauf klicken.</p>
+            <ul class="features">
+              <li>Erklärung direkt am Begriff</li>
+              <li>Hover am Laptop, Tipp am Board</li>
+              <li>Frei und quelloffen (MIT)</li>
+            </ul>
+            <div class="card-actions">
+              <a href="https://github.com/florianloyns/reveal.js-glossary" target="_blank" rel="noopener noreferrer">reveal.js-glossary ↗</a>
+              <a href="https://florianloyns.github.io/reveal.js-glossary/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+            </div>
+          </div>
 
         </div>
       </div>
