@@ -387,7 +387,19 @@
       font-weight: 600;
     }
     .stars-inline svg { width: 13px; height: 13px; color: var(--star); }
+    .card.marine .stars-inline svg { color: var(--marine); }
     .card-actions .stars-inline { margin-left: auto; }
+    .version-pill {
+      text-transform: none;
+      background: var(--marine-soft);
+      color: var(--marine-dark);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    [data-theme="dark"] .version-pill { color: var(--marine); }
 
     /* ========== Footer ========== */
     footer {
@@ -1277,6 +1289,16 @@
           if (gh) repo = repoFromHref(gh.getAttribute('href'));
         }
         if (!repo) return;
+        // Versions-Pill in der Tag-Zeile (falls fuer dieses Repo vorhanden)
+        if (data.versions && data.versions[repo]) {
+          var tag = card.querySelector('.tag');
+          if (tag && !tag.querySelector('.version-pill')) {
+            var pill = document.createElement('span');
+            pill.className = 'version-pill';
+            pill.textContent = 'v' + data.versions[repo];
+            tag.appendChild(pill);
+          }
+        }
         var stars = data.repos[repo];
         if (!stars || stars < MIN_STARS) return;
         var actions = card.querySelector('.card-actions');

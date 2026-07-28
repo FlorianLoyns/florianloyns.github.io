@@ -44,6 +44,7 @@ async function fetchAllRepos() {
   const repos = await fetchAllRepos();
 
   const map = {};
+  const versions = {};
   let total = 0;
   for (const repo of repos) {
     if (repo.fork || repo.private) continue; // nur eigene, öffentliche Repos
@@ -51,9 +52,29 @@ async function fetchAllRepos() {
     total += repo.stargazers_count;
   }
 
+  // Versionen der reveal.js-Plugins aus deren package.json lesen
+  for (const repo of repos) {
+    if (repo.fork || repo.private) continue;
+    if (!repo.name.toLowerCase().startsWith('reveal.js-')) continue;
+    const branch = repo.default_branch || 'main';
+    const url = `https://raw.githubusercontent.com/${USER}/${repo.name}/${branch}/package.json`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) continue; // kein package.json -> einfach keine Version anzeigen
+      const pkg = await res.json();
+      if (pkg.version) versions[repo.name.toLowerCase()] = pkg.version;
+    } catch (e) {
+      console.warn(`Version für ${repo.name} nicht lesbar: ${e.message}`);
+    }
+  }
+
   // alphabetisch sortiert, damit die Datei stabile, gut lesbare Diffs erzeugt
   const sorted = Object.fromEntries(
     Object.entries(map).sort((a, b) => a[0].localeCompare(b[0]))
+  );
+
+  const sortedVersions = Object.fromEntries(
+    Object.entries(versions).sort((a, b) => a[0].localeCompare(b[0]))
   );
 
   const out = {
@@ -61,10 +82,11 @@ async function fetchAllRepos() {
     user: USER,
     total,
     repos: sorted,
+    versions: sortedVersions,
   };
 
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2) + '\n');
-  console.log(`OK: ${Object.keys(sorted).length} Repos, ${total} Sterne insgesamt → ${OUT}`);
+  console.log(`OK: ${Object.keys(sorted).length} Repos, ${total} Sterne, ${Object.keys(sortedVersions).length} Plugin-Versionen → ${OUT}`);
 })().catch((err) => {
   console.error('Fehler beim Abrufen der Sterne:', err.message);
   process.exit(1);
