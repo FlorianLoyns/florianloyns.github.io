@@ -1,0 +1,37 @@
+name: Update GitHub Stars
+
+on:
+  schedule:
+    # Läuft jeden Tag um 03:00 Uhr (UTC)
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    # Erlaubt dir, das Skript jederzeit manuell über den Reiter "Actions" zu starten
+
+jobs:
+  update-stars:
+    runs-on: ubuntu-latest
+
+    # Notwendig, damit der GitHub-Bot die Änderungen ins Repo pushen darf
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🌟 Sterne-Daten über API abrufen
+        run: node scripts/fetch-stars.js
+        env:
+          # Automatisch von GitHub bereitgestellt – vermeidet das API-Rate-Limit
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 💾 Änderungen committen und pushen
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: GitHub-Sterne aktualisiert"
+          file_pattern: "stars.json"
