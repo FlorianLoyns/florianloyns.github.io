@@ -72,6 +72,7 @@
       --bg: #fbfbfc;
       --surface: #ffffff;
       --border: #e5e7eb;
+      --star: #b45309;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -79,6 +80,7 @@
         --marine: #7dd3fc; --marine-dark: #38bdf8; --marine-soft: rgba(125,211,252,.1);
         --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8;
         --bg: #0f172a; --surface: #1e293b; --border: #334155;
+        --star: #fbbf24;
       }
     }
     [data-theme="dark"] {
@@ -86,12 +88,14 @@
       --marine: #7dd3fc; --marine-dark: #38bdf8; --marine-soft: rgba(125,211,252,.1);
       --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8;
       --bg: #0f172a; --surface: #1e293b; --border: #334155;
+        --star: #fbbf24;
     }
     [data-theme="light"] {
       --teal: #127878; --teal-dark: #0e5f5f; --teal-soft: #e6f3f3;
       --marine: #2c4a6e; --marine-dark: #1e3452; --marine-soft: #eef2f7;
       --ink: #111827; --body: #374151; --muted: #6b7280;
       --bg: #fbfbfc; --surface: #ffffff; --border: #e5e7eb;
+      --star: #b45309;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -364,6 +368,26 @@
     .card-actions { margin-top: auto; display: flex; gap: 20px; flex-wrap: wrap; }
     .card-actions a { font-size: 15px; font-weight: 600; color: var(--marine-dark); text-decoration: none; }
     .card-actions a:hover { text-decoration: underline; }
+
+    /* ===== GitHub-Sterne (statisch aus stars.json, kein externer Abruf) ===== */
+    .cta-row {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .cta-row .cta { margin-top: 0; }
+    .stars-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+    .stars-inline svg { width: 13px; height: 13px; color: var(--star); }
+    .card-actions .stars-inline { margin-left: auto; }
 
     /* ========== Footer ========== */
     footer {
@@ -1204,6 +1228,71 @@
   document.getElementById('btn-theme').addEventListener('click', function() {
     applyTheme(!isDark);
   });
+})();
+</script>
+
+<script>
+/* GitHub-Sterne: liest die statische stars.json (täglich per GitHub Action
+   aktualisiert) vom eigenen Server – Besucher kontaktieren keine externe API. */
+(function() {
+  var MIN_STARS = 1; // Badge erst ab so vielen Sternen zeigen (z. B. auf 5 erhöhen)
+  var STAR_PATH = 'M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z';
+
+  function repoFromHref(href) {
+    if (!href) return null;
+    var m = href.match(/^https?:\/\/florianloyns\.github\.io\/([^\/]+)\/?/i);
+    if (m) return m[1].toLowerCase();
+    m = href.match(/^https?:\/\/github\.com\/[^\/]+\/([^\/#?]+)/i);
+    if (m) return m[1].toLowerCase();
+    return null;
+  }
+
+  function makeBadge(stars) {
+    var span = document.createElement('span');
+    span.className = 'stars-inline';
+    span.title = stars + ' Stern' + (stars === 1 ? '' : 'e') + ' auf GitHub';
+    span.setAttribute('role', 'img');
+    span.setAttribute('aria-label', span.title);
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 16 16');
+    svg.setAttribute('fill', 'currentColor');
+    svg.setAttribute('aria-hidden', 'true');
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', STAR_PATH);
+    svg.appendChild(path);
+    span.appendChild(svg);
+    span.appendChild(document.createTextNode(stars));
+    return span;
+  }
+
+  fetch('stars.json')
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(data) {
+      if (!data || !data.repos) return;
+      document.querySelectorAll('.card').forEach(function(card) {
+        var repo = null;
+        if (card.tagName === 'A') repo = repoFromHref(card.getAttribute('href'));
+        if (!repo) {
+          var gh = card.querySelector('.card-actions a[href*="github.com"]');
+          if (gh) repo = repoFromHref(gh.getAttribute('href'));
+        }
+        if (!repo) return;
+        var stars = data.repos[repo];
+        if (!stars || stars < MIN_STARS) return;
+        var actions = card.querySelector('.card-actions');
+        var cta = card.querySelector('.cta');
+        if (actions) {
+          actions.appendChild(makeBadge(stars));
+        } else if (cta) {
+          var row = document.createElement('span');
+          row.className = 'cta-row';
+          cta.parentNode.insertBefore(row, cta);
+          row.appendChild(cta);
+          row.appendChild(makeBadge(stars));
+        }
+      });
+    })
+    .catch(function() {});
 })();
 </script>
 </body>
