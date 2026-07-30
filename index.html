@@ -389,6 +389,16 @@
     .stars-inline svg { width: 13px; height: 13px; color: var(--star); }
     .card.marine .stars-inline svg { color: var(--marine); }
     .card-actions .stars-inline { margin-left: auto; }
+    /* Blauer Stern (marine) nach oben rechts: dort ist Platz (kein Logo), und
+       die Aktionszeile unten bricht am Handy nicht mehr um. Grüne (teal)
+       Karten bleiben unverändert – ihr Stern sitzt weiter unten. */
+    .card.marine .stars-inline {
+      position: absolute;
+      top: 26px;
+      right: 24px;
+      margin: 0;
+    }
+    .card.marine .tag { padding-right: 52px; }
     .version-pill {
       text-transform: none;
       background: var(--marine-soft);
@@ -1068,7 +1078,7 @@
     <section class="block marine" id="plugins" aria-labelledby="plugins-heading">
       <div class="container">
         <h2 id="plugins-heading">Reveal-Plugins</h2>
-        <p class="section-lead"><a href="https://revealjs.com" target="_blank" rel="noopener noreferrer" style="color:var(--marine-dark);text-decoration:underline">reveal.js</a> ist ein freies, browserbasiertes Präsentations-Framework – Folien laufen auf jedem Rechner, Beamer oder Smartboard, ohne Installation und offline. Meine Plugins erweitern es gezielt für den Unterricht: mit dem Finger am Touch-Display bedienbar und auf interaktives Lehren ausgelegt. Hier in der Reihenfolge einer Unterrichtsstunde: Bedienung und Zeit, Einstieg, Fachbegriffe, Textarbeit, Abl&auml;ufe, &Uuml;bung und Abschluss.</p>
+        <p class="section-lead"><a href="https://revealjs.com" target="_blank" rel="noopener noreferrer" style="color:var(--marine-dark);text-decoration:underline">reveal.js</a> ist ein freies, browserbasiertes Präsentations-Framework – Folien laufen auf jedem Rechner, Beamer oder Smartboard, ohne Installation und offline. Meine Plugins erweitern es gezielt für den Unterricht: mit dem Finger am Touch-Display bedienbar und auf interaktives Lehren ausgelegt. Hier in der Reihenfolge einer Unterrichtsstunde: Bedienung und Zeit, Einstieg, Fachbegriffe, Bildbeschriftung, Textarbeit, Abl&auml;ufe, &Uuml;bung und Abschluss.</p>
 
         <div class="grid">
 
@@ -1129,6 +1139,21 @@
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-glossary" target="_blank" rel="noopener noreferrer">reveal.js-glossary ↗</a>
               <a href="https://florianloyns.github.io/reveal.js-glossary/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+            </div>
+          </div>
+
+          <div class="card marine">
+            <span class="tag">Plugin · reveal.js</span>
+            <h3>Bilder direkt auf der Folie beschriften</h3>
+            <p>Kleine Marker sitzen auf dem Bild; ein Tipp öffnet Name und Erklärung daneben, der nächste schließt sie wieder. Für Anatomie, Wunden oder Geräte – am Smartboard antippen statt danebenschreiben. Im Ausdruck wird eine nummerierte Lehrbuchseite daraus.</p>
+            <ul class="features">
+              <li>Marker per Prozent gesetzt – nichts verrutscht</li>
+              <li>Vollbild und Druck mit nummerierter Legende</li>
+              <li>Frei und quelloffen (MIT)</li>
+            </ul>
+            <div class="card-actions">
+              <a href="https://github.com/florianloyns/reveal.js-hotspot" target="_blank" rel="noopener noreferrer">reveal.js-hotspot ↗</a>
+              <a href="https://florianloyns.github.io/reveal.js-hotspot/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
             </div>
           </div>
 
