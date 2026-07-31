@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Florian Loyns – Werkzeuge für die Pflegepädagogik</title>
 
-  <meta name="description" content="Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung – kostenfrei, offline nutzbar, open source.">
-  <link rel="canonical" href="https://florianloyns.github.io/">
+  <meta name="description" content="Kostenlose Lern-Apps, Selbsttests und Rechner für die generalistische Pflegeausbildung – dazu Unterrichtswerkzeuge für Lehrende. Offline nutzbar, open source. Von Florian Loyns, Lehrer für Pflegeberufe.">
+  <link rel="canonical" href="https://florianloyns.com/">
   <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#127878">
+  <meta name="theme-color" content="#127878" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
+  <!-- Schrift lokal ausgeliefert: kein Abruf bei Google, keine IP-Übertragung an Dritte -->
+  <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Inline SVG favicon, 'fl' monogram in teal -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23127878%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%2C-apple-system%2CSegoe%20UI%2CRoboto%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23127878%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://florianloyns.github.io/">
+  <meta property="og:url" content="https://florianloyns.com/">
   <meta property="og:title" content="Florian Loyns – Werkzeuge für die Pflegepädagogik">
-  <meta property="og:description" content="Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung – kostenfrei, offline nutzbar, open source.">
-  <meta property="og:image" content="https://florianloyns.github.io/og-image.png">
+  <meta property="og:description" content="Kostenlose Lern-Apps, Selbsttests und Rechner für die generalistische Pflegeausbildung – dazu Unterrichtswerkzeuge für Lehrende. Offline nutzbar, open source. Von Florian Loyns, Lehrer für Pflegeberufe.">
+  <meta property="og:image" content="https://florianloyns.com/og-image.png?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Werkzeuge und Selbsttests für die Pflegepädagogik">
@@ -28,37 +32,579 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Florian Loyns – Werkzeuge für die Pflegepädagogik">
-  <meta name="twitter:description" content="Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende.">
-  <meta name="twitter:image" content="https://florianloyns.github.io/og-image.png">
+  <meta name="twitter:description" content="Kostenlose Lern-Apps, Selbsttests und Rechner für die generalistische Pflegeausbildung – dazu Unterrichtswerkzeuge für Lehrende. Offline nutzbar, open source. Von Florian Loyns, Lehrer für Pflegeberufe.">
+  <meta name="twitter:image" content="https://florianloyns.com/og-image.png?v=2">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://florianloyns.github.io/#person",
-        "name": "Florian Loyns",
-        "jobTitle": "Lehrer für Pflegeberufe",
-        "description": "Lehrer für Pflegeberufe und Pflegepädagoge. Entwickelt eine frei nutzbare Sammlung von Trainings, Selbsttests und Rechnern für die generalistische Pflegeausbildung – didaktisch konzipiert und technisch selbst umgesetzt.",
-        "url": "https://florianloyns.github.io/",
-        "sameAs": ["https://github.com/FlorianLoyns"]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://florianloyns.com/#person",
+      "name": "Florian Loyns",
+      "jobTitle": "Lehrer für Pflegeberufe",
+      "description": "Lehrer für Pflegeberufe und Pflegepädagoge. Entwickelt eine frei nutzbare Sammlung von Trainings, Selbsttests und Rechnern für die generalistische Pflegeausbildung – didaktisch konzipiert und technisch selbst umgesetzt.",
+      "url": "https://florianloyns.com/",
+      "email": "mailto:c-8347@posteo.de",
+      "knowsAbout": [
+        "Pflegepädagogik",
+        "Generalistische Pflegeausbildung",
+        "Mediendidaktik",
+        "OSCE-Prüfungen",
+        "Digitale Lehr- und Lernmittel",
+        "Pflegewissenschaft"
+      ],
+      "sameAs": [
+        "https://github.com/FlorianLoyns",
+        "https://www.linkedin.com/in/florianloyns/"
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://florianloyns.com/#page",
+      "name": "Werkzeuge für die Pflegepädagogik",
+      "description": "Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung.",
+      "url": "https://florianloyns.com/",
+      "author": {
+        "@id": "https://florianloyns.com/#person"
       },
-      {
-        "@type": "CollectionPage",
-        "name": "Werkzeuge für die Pflegepädagogik",
-        "description": "Trainings und Selbsttests für Auszubildende und Werkzeuge für Lehrende in der Pflegeausbildung.",
-        "url": "https://florianloyns.github.io/",
-        "author": { "@id": "https://florianloyns.github.io/#person" },
-        "inLanguage": "de-DE",
-        "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+      "inLanguage": "de-DE",
+      "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "mainEntity": {
+        "@id": "https://florianloyns.com/#tools"
       }
-    ]
-  }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://florianloyns.com/#tools",
+      "name": "Werkzeuge und Lern-Apps für die Pflegeausbildung",
+      "numberOfItems": 24,
+      "itemListOrder": "https://schema.org/ItemListUnordered",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Klinisches Urteilen trainieren",
+            "url": "https://florianloyns.com/clinical-reasoning-trainer/",
+            "description": "Fallbasiertes Üben vom Situationsverständnis bis zur Pflegeplanung – strukturiert statt auswendig pauken.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Die Übergabe strukturiert üben",
+            "url": "https://florianloyns.com/isbar-trainer/",
+            "description": "SBAR, ISBAR oder ISOBAR – wähle dein Schema und übe an drei Alltagsszenarien. Mit Musterübergabe am Ende.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Validation im Alltag trainieren",
+            "url": "https://florianloyns.com/validation-training/",
+            "description": "12 Szenarien aus dem Umgang mit Menschen mit Demenz – sagbare Sätze plus passende Handlung.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Habt ihr noch ein Bett?",
+            "url": "https://florianloyns.com/noch-ein-bett/",
+            "description": "Endlos-Quiz zur Bettenzuweisung – Iso-Regeln, Kohorten, Geschlechtertrennung. Schicht starten, unter Zeitdruck richtig entscheiden, Highscore knacken.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Schmerz-Trainer",
+            "url": "https://florianloyns.com/schmerz-trainer/",
+            "description": "Drei Module in einer App: Schmerzskalen (NRS, VAS, BESD, KUSS …), OPQRST-Anamnese und WHO-Stufenschema. Mit Lern-, Test- und Probieren-Modus – die Skalen am Patientenbett direkt anwenden.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Blutdruck messen üben",
+            "url": "https://florianloyns.com/blutdruck-trainer/",
+            "description": "Animiertes Manometer mit Korotkoff-Tönen – Nadel von der Skala ablesen statt digital anzeigen. Sofortige Auswertung mit Toleranzbereich ±8 mmHg.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Pflegelatein",
+            "url": "https://florianloyns.com/pflegelatein/",
+            "description": "Karteibox mit über 600 Begriffen aus Anatomie, Pathologie und Pflegepraxis. Was du weißt, kommt seltener wieder; was wackelt, ist morgen wieder dran.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Sozialversicherungs-Trainer",
+            "url": "https://florianloyns.com/sozialversicherungs-trainer/",
+            "description": "Die fünf Säulen der Sozialversicherung als interaktive Tempel-Architektur erkunden – plus Übungs-Modus mit 15 Stolperfallen-Szenarien für die Examensvorbereitung.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Das eigene Hören reflektieren",
+            "url": "https://florianloyns.com/vier-ohren-selbsttest/",
+            "description": "Das 4-Ohren-Modell nach Schulz von Thun in 12 Alltagssituationen – zeigt dein lautestes und dein leisestes Ohr.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Den eigenen Lerntyp finden",
+            "url": "https://florianloyns.com/lerntypentest/",
+            "description": "12 Fragen zu auditiv, visuell, kommunikativ und kinästhetisch – mit wissenschaftlicher Auflösung am Ende.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Pflegegrad-Rechner",
+            "url": "https://florianloyns.com/pflegegrad-rechner/",
+            "description": "Sechs NBA-Module bewerten, Pflegegrad und Pflegegeld live mitsehen. Mit offiziellem SGB-XI-Wortlaut und den Sondergewichtungen in Modul 4.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Infusionsrechner",
+            "url": "https://florianloyns.com/infusionsrechner/",
+            "description": "Tropfenrate, Laufzeit oder Volumen einer Schwerkraft-Infusion. Werte einstellen, Ergebnis und Rechenweg live mitsehen.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "BMI & Tagesbedarf",
+            "url": "https://florianloyns.com/bmi-tagesbedarf/",
+            "description": "Body-Mass-Index, Grundumsatz und Tagesbedarf nach Mifflin-St Jeor und DGE-PAL. Werte einstellen, Rechenweg live.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            },
+            "applicationSubCategory": "Progressive Web App"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Lerngruppen klug einteilen",
+            "url": "https://florianloyns.com/gruppeneinteilung/",
+            "description": "Vier Einteilungsmethoden mit Drag-and-Drop-Nachbearbeitung – inklusive Word- und PDF-Export.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Arbeitsaufträge strukturieren",
+            "url": "https://florianloyns.com/klare-auftraege/",
+            "description": "Evidenzbasierte Vorlagen nach Hattie und Bloom – mit Operatoren-Bibliothek und Word-Export.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "OSCE-Prüfungen planen",
+            "url": "https://florianloyns.com/osce-planer/",
+            "description": "Rotationspläne mit automatischer Logik, editierbaren Pausenzeiten und drei fertigen Word-Exporten.",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Web-Browser",
+            "inLanguage": "de-DE",
+            "isAccessibleForFree": true,
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR"
+            }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Präsentationen am Smartboard bedienen",
+            "description": "Bildschirm-Bedienleiste für reveal.js: mit dem Stift markieren, ein Whiteboard öffnen, in eine Stelle zoomen, einen Timer für die Gruppenarbeit starten, Pause, Übersicht und Vollbild – ganz ohne Tastatur oder Maus.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-touchcontrols",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-touchcontrols/demo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Wortwolke als Advance Organizer",
+            "description": "Zeigt die Schlüsselbegriffe eines Themas auf einen Blick – ideal zum Einstieg, um Vorwissen zu aktivieren. Ein Wort antippen holt es in den Fokus. Begriffe als einfache Liste, die Zahl bestimmt die Größe.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-termcluster",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-termcluster/demo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Fachbegriffe auf Folien erklären",
+            "description": "Fachbegriffe auf den Folien markieren – bei Hover oder Tipp erscheint eine kurze Erklärung direkt am Wort. Auch Lernende können zuhause darauf klicken.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-glossary",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-glossary/demo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Bilder direkt auf der Folie beschriften",
+            "description": "Kleine Marker sitzen auf dem Bild; ein Tipp öffnet Name und Erklärung daneben, der nächste schließt sie wieder. Für Anatomie, Wunden oder Geräte – am Smartboard antippen statt danebenschreiben. Im Ausdruck wird eine nummerierte Lehrbuchseite daraus.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-hotspot",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-hotspot/demo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Zitate Satz für Satz erschließen",
+            "description": "Lange Zitate und Quellentexte nicht auf einmal hinstellen, sondern schrittweise entwickeln – so liest die Klasse die Zeile, über die gerade gesprochen wird. Den Text schreibst du normal, das Plugin zerlegt ihn selbst in Sätze.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-stepped",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-stepped/demo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Abläufe Schritt für Schritt zeigen",
+            "description": "Eine Pflegemaßnahme nicht als Aufzählung hinstellen, sondern Schritt für Schritt gehen – der ganze Weg bleibt als Leiste sichtbar, gezeigt wird nur der Schritt, über den gerade gesprochen wird. Die Begründung eines Schritts bleibt bis zum Antippen verdeckt, damit die Klasse sie erst selbst nennen kann.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-sequence",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-sequence/demo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Interaktive Aufgaben auf Folien",
+            "description": "Vier Aufgabentypen für reveal.js: Single-Choice, Mehrfachauswahl, Wahr/Falsch und Reihenfolge. Rückmeldung über Farbe, mit dem Finger lösbar – Lernende können die Aufgaben auch zuhause wiederholen.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-quiz",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-quiz/demo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "item": {
+            "@type": "SoftwareSourceCode",
+            "name": "Punktetafel-Quiz zum Abschluss",
+            "description": "Ein Spielbrett aus Kategorien und Punktwerten: Feld antippen, die Frage füllt die Folie, Antwort aufdecken – die große Gesamtwiederholung zum Reihum-Fragen am Smartboard. Beim Drucken oder als PDF wird daraus automatisch ein Frage-Antwort-Arbeitsblatt.",
+            "codeRepository": "https://github.com/FlorianLoyns/reveal.js-quizgrid",
+            "programmingLanguage": "JavaScript",
+            "license": "https://opensource.org/licenses/MIT",
+            "author": {
+              "@id": "https://florianloyns.com/#person"
+            },
+            "url": "https://florianloyns.com/reveal.js-quizgrid/demo.html"
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <!-- Läuft vor dem ersten Rendern: kein kurzes Aufblitzen des falschen Farbschemas -->
+  <script>
+  (function() {
+    try {
+      var stored = localStorage.getItem('fl-theme');
+      if (stored === 'dark' || stored === 'light') {
+        document.documentElement.setAttribute('data-theme', stored);
+      }
+    } catch (e) {}
+  })();
   </script>
 
   <style>
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url("fonts/inter-latin-wght-normal.woff2") format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                     U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
     :root {
       --teal: #127878;
       --teal-dark: #0e5f5f;
@@ -73,14 +619,20 @@
       --surface: #ffffff;
       --border: #e5e7eb;
       --star: var(--teal);
+      --on-accent: #ffffff;
+      color-scheme: light;
     }
+    /* Dunkle Palette an genau einer Stelle gepflegt: einmal für die
+       Systemeinstellung, einmal für die manuelle Wahl über den Schalter. */
     @media (prefers-color-scheme: dark) {
-      :root {
-        --teal: #2dd4bf; --teal-dark: #14b8a6; --teal-soft: rgba(45,212,191,.12);
-        --marine: #7dd3fc; --marine-dark: #38bdf8; --marine-soft: rgba(125,211,252,.1);
-        --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8;
-        --bg: #0f172a; --surface: #1e293b; --border: #334155;
-        --star: var(--teal);
+      :root:not([data-theme="light"]) {
+      --teal: #2dd4bf; --teal-dark: #14b8a6; --teal-soft: rgba(45,212,191,.12);
+      --marine: #7dd3fc; --marine-dark: #38bdf8; --marine-soft: rgba(125,211,252,.1);
+      --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8;
+      --bg: #0f172a; --surface: #1e293b; --border: #334155;
+      --star: var(--teal);
+      --on-accent: #0f172a;
+      color-scheme: dark;
       }
     }
     [data-theme="dark"] {
@@ -88,17 +640,16 @@
       --marine: #7dd3fc; --marine-dark: #38bdf8; --marine-soft: rgba(125,211,252,.1);
       --ink: #f1f5f9; --body: #cbd5e1; --muted: #94a3b8;
       --bg: #0f172a; --surface: #1e293b; --border: #334155;
-        --star: var(--teal);
-    }
-    [data-theme="light"] {
-      --teal: #127878; --teal-dark: #0e5f5f; --teal-soft: #e6f3f3;
-      --marine: #2c4a6e; --marine-dark: #1e3452; --marine-soft: #eef2f7;
-      --ink: #111827; --body: #374151; --muted: #6b7280;
-      --bg: #fbfbfc; --surface: #ffffff; --border: #e5e7eb;
       --star: var(--teal);
+      --on-accent: #0f172a;
+      color-scheme: dark;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
     body {
       margin: 0;
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -117,7 +668,7 @@
       left: 12px;
       top: -60px;
       background: var(--ink);
-      color: #fff;
+      color: var(--bg);
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 600;
@@ -188,14 +739,37 @@
       transition: transform .15s ease, background .15s ease, gap .15s ease;
       border: 1px solid transparent;
     }
-    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary { background: var(--teal); color: var(--on-accent); }
     .btn-primary:hover { background: var(--teal-dark); gap: 12px; }
     .btn-secondary {
       background: transparent;
       color: var(--marine);
       border-color: var(--marine);
     }
-    .btn-secondary:hover { background: var(--marine); color: #fff; gap: 12px; }
+    .btn-secondary:hover { background: var(--marine); color: var(--on-accent); gap: 12px; }
+
+    .hero .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 40px;
+      margin: 40px 0 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+    }
+    .hero .stats > div { margin: 0; }
+    .hero .stats dt {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .hero .stats dd {
+      margin: 0;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--muted);
+    }
 
     /* ========== About ========== */
     .about { padding: 48px 0 16px; }
@@ -206,6 +780,15 @@
       margin: 0 0 14px;
     }
     .about p strong { color: var(--ink); }
+    .about p a { color: var(--teal-dark); font-weight: 600; }
+    [data-theme="dark"] .about p a { color: var(--teal); }
+    .about-sig {
+      margin-top: 22px;
+      font-weight: 800;
+      color: var(--ink);
+      font-size: 17px;
+    }
+    .about-sig span { font-weight: 500; color: var(--muted); font-size: 15px; }
 
     /* ========== Sections ========== */
     section.block { padding: 56px 0 40px; }
@@ -269,6 +852,9 @@
       transform: translateY(-2px);
       box-shadow: 0 14px 32px -20px rgba(15, 23, 42, .25);
     }
+    /* Info-Karten sind keine Links – kein Hover-Versprechen, kein Zeigefinger */
+    .card[data-info] { cursor: default; }
+    .card[data-info]:hover { transform: none; box-shadow: none; border-color: var(--border); }
     .card.teal:hover   { border-color: var(--teal); }
     .card.marine:hover { border-color: var(--marine); }
 
@@ -284,14 +870,6 @@
     }
     .card.teal .tag   { color: var(--teal); }
     .card.marine .tag { color: var(--marine); }
-    .card .tag .app-badge {
-      background: var(--teal);
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 10px;
-      letter-spacing: 1px;
-    }
 
     /* App-icon top-right on featured cards */
     .card-logo {
@@ -341,6 +919,11 @@
       top: 3px;
       font-weight: 700;
     }
+    /* Alternativtext leert den Haken fuer Screenreader; Browser ohne
+       Unterstuetzung ignorieren nur die zweite Regel. */
+    @supports (content: "a" / "") {
+      .card .features li::before { content: "✓" / ""; }
+    }
     .card.teal   .features li::before { color: var(--teal); }
     .card.marine .features li::before { color: var(--marine); }
 
@@ -365,7 +948,7 @@
     .card.teal .cta   { color: var(--teal-dark); }
     .card.marine .cta { color: var(--marine-dark); }
     .card:hover .cta  { gap: 10px; }
-    .card-actions { margin-top: auto; display: flex; gap: 20px; flex-wrap: wrap; }
+    .card-actions { margin-top: auto; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
     .card-actions a { font-size: 15px; font-weight: 600; color: var(--marine-dark); text-decoration: none; }
     .card-actions a:hover { text-decoration: underline; }
 
@@ -413,21 +996,27 @@
 
     /* ========== Footer ========== */
     footer {
-      margin-top: 32px;
-      padding: 40px 0 56px;
+      margin-top: 16px;
+      padding: 22px 0 28px;
+      border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 14.5px;
     }
     footer .row {
       display: flex;
-      gap: 24px;
+      gap: 12px 26px;
       flex-wrap: wrap;
       align-items: center;
     }
+    /* Claim links, Links rechts – auf schmalen Schirmen bricht die Zeile um */
+    footer .claim {
+      margin: 0 auto 0 0;
+      color: var(--muted);
+    }
+    footer .claim strong { color: var(--ink); font-weight: 800; }
     footer a { color: var(--muted); text-decoration: none; transition: opacity .15s; }
     footer a:hover { opacity: .65; }
     footer p { margin: 6px 0; }
-    footer .small { font-size: 13px; opacity: .8; }
 
 
 /* ========== PWA Install Gallery ========== */
@@ -512,7 +1101,6 @@
       cursor: pointer;
       transition: background .15s;
       flex-shrink: 0;
-      margin-left: auto;
     }
     #btn-theme:hover { background: var(--border); }
 
@@ -531,13 +1119,13 @@
       .about { padding: 32px 0 8px; }
       section.block { padding: 36px 0 28px; }
       .card { padding: 22px 20px 20px; }
-      footer { padding: 28px 0 calc(28px + env(safe-area-inset-bottom)); }
+      footer { padding: 20px 0 calc(24px + env(safe-area-inset-bottom)); }
     }
   </style>
 </head>
 <body>
 
-  <a href="#trainings" class="skip-link">Zum Hauptinhalt springen</a>
+  <a href="#inhalt" class="skip-link">Zum Hauptinhalt springen</a>
 
 
   <header class="hero">
@@ -552,27 +1140,36 @@
         <a href="#trainings" class="btn btn-primary">Zu den Trainings →</a>
         <a href="#werkzeuge" class="btn btn-secondary">Werkzeuge für Lehrende</a>
       </div>
+
+      <dl class="stats">
+        <div><dt data-count="apps">24</dt><dd>Anwendungen</dd></div>
+        <div><dt data-count="pwa">13</dt><dd>als App installierbar</dd></div>
+        <div><dt>100 %</dt><dd>offline nutzbar</dd></div>
+        <div><dt>0</dt><dd>Cookies &amp; Tracker</dd></div>
+      </dl>
     </div>
   </header>
 
-  <section class="about">
+  <main id="inhalt" tabindex="-1">
+
+    <section class="about">
     <div class="container">
       <p><strong>Warum gibt es das hier?</strong> Ich unterrichte als <strong>Lehrer für Pflegeberufe</strong> in der generalistischen Pflegeausbildung und baue die Werkzeuge, die mir im Unterricht selbst gefehlt haben. Jedes entsteht aus einer konkreten Situation im Klassenzimmer. Alle bleiben kostenfrei und offen – weil gute Didaktik möglichst viele Lernende erreichen sollte.</p>
-      <p>Was hier landet, kommt aus der Praxis: Jede Anwendung verbindet eine didaktische Idee mit ihrer technischen Umsetzung – beides aus einer Hand. Alles läuft direkt im Browser ohne Anmeldung, ohne Tracking, ohne externe Server — auch offline auf jedem Schulrechner und Smartphone.</p>
-      <p>Die Tests sind Reflexionsimpulse, keine Diagnostik. Die Werkzeuge ersetzen keine Pädagogik, sie beschleunigen sie. Feedback, Fehlerhinweise und Vorschläge sind willkommen – gern per Mail oder als Issue auf GitHub.</p>
+      <p>Was hier landet, kommt aus der Praxis: Jede Anwendung verbindet eine didaktische Idee mit ihrer technischen Umsetzung – beides aus einer Hand. Alles läuft direkt im Browser ohne Anmeldung, ohne Tracking, ohne externe Server – auch offline auf jedem Schulrechner und Smartphone.</p>
+      <p>Die Tests sind Reflexionsimpulse, keine Diagnostik. Die Werkzeuge ersetzen keine Pädagogik, sie beschleunigen sie. Feedback, Fehlerhinweise und Vorschläge sind willkommen – gern <a href="mailto:c-8347@posteo.de">per Mail</a> oder als Issue auf GitHub.</p>
+      <p class="about-sig">Florian Loyns<span> · Lehrer für Pflegeberufe</span></p>
     </div>
-  </section>
+    </section>
 
-  <main>
 
     <section class="block teal" id="trainings" aria-labelledby="trainings-heading">
       <div class="container">
         <h2 id="trainings-heading">Klinische Situationen üben</h2>
-        <p class="section-lead">Fallbasierte Szenarien mit Sofort-Feedback – für klinisches Denken, Kommunikation und Stationsalltag.</p>
+        <p class="section-lead">Fallbasierte Szenarien mit Sofort-Feedback – für klinisches Denken, Kommunikation und Stationsalltag. Alle als App auf dem Handy installierbar.</p>
 
         <div class="grid">
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/clinical-reasoning-trainer/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/clinical-reasoning-trainer/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <g transform="translate(8 5) scale(0.75)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
@@ -583,19 +1180,17 @@
             </svg>
             <span class="tag">
               Training · Klinisches Reasoning
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Klinisches Urteilen trainieren</h3>
             <p>Fallbasiertes Üben vom Situationsverständnis bis zur Pflegeplanung – strukturiert statt auswendig pauken. Als App auf dem Handy installierbar.</p>
             <ul class="features">
               <li>Fallbasiert statt Lehrbuch</li>
               <li>Von Einschätzung bis zur Pflegeplanung</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/isbar-trainer/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/isbar-trainer/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <g fill="#ffffff">
@@ -616,19 +1211,17 @@
             </svg>
             <span class="tag">
               Training · Kommunikation
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Die Übergabe strukturiert üben</h3>
             <p>SBAR, ISBAR oder ISOBAR – wähle dein Schema und übe an drei Alltagsszenarien. Mit Musterübergabe am Ende.</p>
             <ul class="features">
               <li>SBAR, ISBAR oder ISOBAR zur Wahl</li>
               <li>Drei praxisnahe Szenarien</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/validation-training/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/validation-training/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <rect x="11" y="14" width="42" height="30" rx="5" fill="#ffffff"/>
@@ -640,19 +1233,17 @@
             </svg>
             <span class="tag">
               Training · Demenz
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Validation im Alltag trainieren</h3>
             <p>12 Szenarien aus dem Umgang mit Menschen mit Demenz – sagbare Sätze plus passende Handlung.</p>
             <ul class="features">
               <li>12 praxisnahe Szenarien</li>
               <li>Sprache und Handlung parallel</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/noch-ein-bett/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/noch-ein-bett/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <rect x="8"  y="12" width="32" height="12" rx="2" fill="#ffffff"/>
@@ -664,19 +1255,17 @@
             </svg>
             <span class="tag">
               Training · Betten&shy;zuweisung
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Habt ihr noch ein Bett?</h3>
             <p>Endlos-Quiz zur Bettenzuweisung – Iso-Regeln, Kohorten, Geschlechtertrennung. Schicht starten, unter Zeitdruck richtig entscheiden, Highscore knacken.</p>
             <ul class="features">
               <li>Endlos-Modus mit XP-Stufen</li>
               <li>Iso, 3MRGN/4MRGN, psychosozial</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt spielen →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/schmerz-trainer/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/schmerz-trainer/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <circle cx="32" cy="32" r="21" fill="#ffffff"/>
@@ -688,19 +1277,17 @@
             </svg>
             <span class="tag">
               Training · Schmerz
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Schmerz-Trainer</h3>
-            <p>Drei Module in einer App: Schmerzskalen (NRS, VAS, BESD, KUSS …), OPQRST-Anamnese und WHO-Stufenschema. Mit Lern-, Test- und Probieren-Modus — die Skalen am Patientenbett direkt anwenden.</p>
+            <p>Drei Module in einer App: Schmerzskalen (NRS, VAS, BESD, KUSS …), OPQRST-Anamnese und WHO-Stufenschema. Mit Lern-, Test- und Probieren-Modus – die Skalen am Patientenbett direkt anwenden.</p>
             <ul class="features">
               <li>6 Skalen, 6 Buchstaben, 4 Stufen</li>
               <li>34 Fallbeispiele aus der Pflegepraxis</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt lernen →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/blutdruck-trainer/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/blutdruck-trainer/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <!-- Gehäuse -->
@@ -724,14 +1311,12 @@
             </svg>
             <span class="tag">
               Training · Vitalzeichen
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Blutdruck messen üben</h3>
             <p>Animiertes Manometer mit Korotkoff-Tönen – Nadel von der Skala ablesen statt digital anzeigen. Sofortige Auswertung mit Toleranzbereich ±8 mmHg.</p>
             <ul class="features">
               <li>Korotkoff-Methode realitätsnah simuliert</li>
               <li>26 rotierende Blutdruckwerte</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt üben →</span>
           </a>
@@ -747,7 +1332,7 @@
 
         <div class="grid">
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/pflegelatein/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/pflegelatein/">
             <svg class="card-logo" viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="pflegelatein-bg" x1="0" y1="0" x2="0" y2="1">
@@ -773,20 +1358,18 @@
                     stroke-linejoin="round" stroke-linecap="round"/>
             </svg>
             <span class="tag">
-              Wissen · Pflege&shy;ausbildung
-              <span class="app-badge">PWA</span>
+              Wissen · Fachsprache
             </span>
             <h3>Pflegelatein</h3>
             <p>Karteibox mit über 600 Begriffen aus Anatomie, Pathologie und Pflegepraxis. Was du weißt, kommt seltener wieder; was wackelt, ist morgen wieder dran.</p>
             <ul class="features">
               <li>Leitner-System mit 5 Lernfächern</li>
               <li>Latein → Deutsch und umgekehrt</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt lernen →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/sozialversicherungs-trainer/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/sozialversicherungs-trainer/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <path d="M 12 19 L 32 13 L 52 19 Z" fill="#ffffff"/>
@@ -802,20 +1385,18 @@
               <rect x="9" y="49" width="46" height="2" rx="0.5" fill="#ffffff"/>
             </svg>
             <span class="tag">
-              Wissen · Sozialvers.
-              <span class="app-badge">PWA</span>
+              Wissen · Sozialversicherung
             </span>
             <h3>Sozialversicherungs-Trainer</h3>
-            <p>Die fünf Säulen der Sozialversicherung als interaktive Tempel-Architektur erkunden — plus Übungs-Modus mit 15 Stolperfallen-Szenarien für die Examensvorbereitung.</p>
+            <p>Die fünf Säulen der Sozialversicherung als interaktive Tempel-Architektur erkunden – plus Übungs-Modus mit 15 Stolperfallen-Szenarien für die Examensvorbereitung.</p>
             <ul class="features">
               <li>Lern- und Übungs-Modus mit drei Schwierigkeitsstufen</li>
               <li>15 prüfungsrelevante Praxis-Szenarien</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt lernen →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/vier-ohren-selbsttest/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/vier-ohren-selbsttest/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <rect x="10" y="10" width="44" height="44" rx="4" fill="#ffffff"/>
@@ -836,19 +1417,17 @@
             </svg>
             <span class="tag">
               Reflexion · Kommunikation
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Das eigene Hören reflektieren</h3>
             <p>Das 4-Ohren-Modell nach Schulz von Thun in 12 Alltagssituationen – zeigt dein lautestes und dein leisestes Ohr.</p>
             <ul class="features">
               <li>12 Szenen aus Schule und Praxis</li>
               <li>Dominantes und leisestes Ohr</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/lerntypentest/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/lerntypentest/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <circle cx="32" cy="32" r="19" fill="none" stroke="#ffffff" stroke-width="2"/>
@@ -865,14 +1444,12 @@
             </svg>
             <span class="tag">
               Reflexion · Lernstil
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Den eigenen Lerntyp finden</h3>
             <p>12 Fragen zu auditiv, visuell, kommunikativ und kinästhetisch – mit wissenschaftlicher Auflösung am Ende.</p>
             <ul class="features">
               <li>12 Fragen in ca. 2 Minuten</li>
               <li>Vier Lernkanäle im Überblick</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
@@ -888,7 +1465,7 @@
 
         <div class="grid">
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/pflegegrad-rechner/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/pflegegrad-rechner/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <g fill="#ffffff">
@@ -901,38 +1478,34 @@
             </svg>
             <span class="tag">
               Rechner · Pflegegrad
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Pflegegrad-Rechner</h3>
             <p>Sechs NBA-Module bewerten, Pflegegrad und Pflegegeld live mitsehen. Mit offiziellem SGB-XI-Wortlaut und den Sondergewichtungen in Modul 4.</p>
             <ul class="features">
               <li>Sechs Module nach Anlage 1 zu § 15 SGB XI</li>
               <li>Live-Pflegegrad mit Pflegegeld-Betrag</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt rechnen →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/infusionsrechner/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/infusionsrechner/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <path d="M 32 14 C 32 14, 45 32, 45 41 A 13 13 0 1 1 19 41 C 19 32, 32 14, 32 14 Z" fill="#ffffff"/>
             </svg>
             <span class="tag">
               Rechner · Infusion
-              <span class="app-badge">PWA</span>
             </span>
             <h3>Infusionsrechner</h3>
             <p>Tropfenrate, Laufzeit oder Volumen einer Schwerkraft-Infusion. Werte einstellen, Ergebnis und Rechenweg live mitsehen.</p>
             <ul class="features">
               <li>Drei Modi nach derselben Formel</li>
               <li>Makro- und Mikrotropfsystem mit Live-Visualisierung</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt rechnen →</span>
           </a>
 
-          <a class="card teal has-logo" href="https://florianloyns.github.io/bmi-tagesbedarf/">
+          <a class="card teal has-logo" data-pwa href="https://florianloyns.com/bmi-tagesbedarf/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <clipPath id="bmi-card-strip-clip">
@@ -951,14 +1524,12 @@
             </svg>
             <span class="tag">
               Rechner · Energiebedarf
-              <span class="app-badge">PWA</span>
             </span>
             <h3>BMI &amp; Tagesbedarf</h3>
             <p>Body-Mass-Index, Grundumsatz und Tagesbedarf nach Mifflin-St Jeor und DGE-PAL. Werte einstellen, Rechenweg live.</p>
             <ul class="features">
               <li>WHO-BMI-Skala mit beweglichem Marker</li>
               <li>Grundumsatz nach Mifflin-St Jeor (1990)</li>
-              <li>Als App installierbar (PWA)</li>
             </ul>
             <span class="cta">Jetzt rechnen →</span>
           </a>
@@ -970,29 +1541,29 @@
     <section class="block teal" id="installieren" aria-labelledby="installieren-heading">
       <div class="container">
         <h2 id="installieren-heading">So installierst du die Apps auf dem Handy</h2>
-        <p class="section-lead">Tools mit dem PWA-Badge lassen sich auf jedem Smartphone wie eine App installieren — direkt aus dem Browser, ohne App Store, ohne Anmeldung. Einmal eingerichtet, läuft die App auch offline.</p>
+        <p class="section-lead">Alle Trainings, Selbsttests und Rechner lassen sich auf jedem Smartphone wie eine App installieren – direkt aus dem Browser, ohne App Store, ohne Anmeldung. Einmal eingerichtet, läuft die App auch offline.</p>
 
         <div class="grid">
 
-          <div class="card teal" style="cursor:default;">
+          <div class="card teal" data-info>
             <span class="tag">iPhone &amp; iPad · Safari</span>
             <h3>Auf iOS installieren</h3>
             <ol class="steps">
               <li>Tool im Safari-Browser öffnen</li>
               <li>Auf das Drei-Punkte-Menü unten rechts tippen</li>
-              <li>Nach unten scrollen, „Zum Home-Bildschirm" wählen</li>
-              <li>Namen bestätigen — fertig</li>
+              <li>Nach unten scrollen, „Zum Home-Bildschirm“ wählen</li>
+              <li>Namen bestätigen – fertig</li>
             </ol>
           </div>
 
-          <div class="card teal" style="cursor:default;">
+          <div class="card teal" data-info>
             <span class="tag">Android · Chrome</span>
             <h3>Auf Android installieren</h3>
             <ol class="steps">
               <li>Tool im Chrome-Browser öffnen</li>
               <li>Auf das Drei-Punkte-Menü oben rechts tippen</li>
-              <li>„App installieren" oder „Zum Startbildschirm hinzufügen" wählen</li>
-              <li>Bestätigen — fertig</li>
+              <li>„App installieren“ oder „Zum Startbildschirm hinzufügen“ wählen</li>
+              <li>Bestätigen – fertig</li>
             </ol>
           </div>
 
@@ -1000,28 +1571,28 @@
 
         <div class="pwa-gallery">
           <div class="pwa-gallery-item">
-            <img class="pwa-img-light" src="pwa-step-1-light.png" alt="Tool im Safari-Browser öffnen" width="1419" height="2796" loading="lazy">
-            <img class="pwa-img-dark"  src="pwa-step-1-dark.png"  alt="Tool im Safari-Browser öffnen" width="1419" height="2796" loading="lazy">
+            <img class="pwa-img-light" src="img/pwa-step-1-light.webp" alt="Tool im Safari-Browser öffnen" width="700" height="1379" loading="lazy" decoding="async">
+            <img class="pwa-img-dark"  src="img/pwa-step-1-dark.webp"  alt="Tool im Safari-Browser öffnen" width="700" height="1379" loading="lazy" decoding="async">
             <span class="pwa-step-num">Schritt 1</span>
             <span class="pwa-step-label">Safari-Browser öffnen</span>
           </div>
           <div class="pwa-gallery-item">
-            <img class="pwa-img-light" src="pwa-step-2-light.png" alt="Drei-Punkte-Menü unten rechts antippen" width="1419" height="2796" loading="lazy">
-            <img class="pwa-img-dark"  src="pwa-step-2-dark.png"  alt="Drei-Punkte-Menü unten rechts antippen" width="1419" height="2796" loading="lazy">
+            <img class="pwa-img-light" src="img/pwa-step-2-light.webp" alt="Drei-Punkte-Menü unten rechts antippen" width="700" height="1379" loading="lazy" decoding="async">
+            <img class="pwa-img-dark"  src="img/pwa-step-2-dark.webp"  alt="Drei-Punkte-Menü unten rechts antippen" width="700" height="1379" loading="lazy" decoding="async">
             <span class="pwa-step-num">Schritt 2</span>
             <span class="pwa-step-label">Drei-Punkte-Menü tippen</span>
           </div>
           <div class="pwa-gallery-item">
-            <img class="pwa-img-light" src="pwa-step-3-light.png" alt="Zum Home-Bildschirm wählen" width="1419" height="2796" loading="lazy">
-            <img class="pwa-img-dark"  src="pwa-step-3-dark.png"  alt="Zum Home-Bildschirm wählen" width="1419" height="2796" loading="lazy">
+            <img class="pwa-img-light" src="img/pwa-step-3-light.webp" alt="Zum Home-Bildschirm wählen" width="700" height="1379" loading="lazy" decoding="async">
+            <img class="pwa-img-dark"  src="img/pwa-step-3-dark.webp"  alt="Zum Home-Bildschirm wählen" width="700" height="1379" loading="lazy" decoding="async">
             <span class="pwa-step-num">Schritt 3</span>
             <span class="pwa-step-label">Zum Home-Bildschirm</span>
           </div>
           <div class="pwa-gallery-item">
-            <img class="pwa-img-light" src="pwa-step-4-light.png" alt="Namen bestätigen und Hinzufügen tippen" width="1419" height="2796" loading="lazy">
-            <img class="pwa-img-dark"  src="pwa-step-4-dark.png"  alt="Namen bestätigen und Hinzufügen tippen" width="1419" height="2796" loading="lazy">
+            <img class="pwa-img-light" src="img/pwa-step-4-light.webp" alt="Namen bestätigen und Hinzufügen tippen" width="700" height="1379" loading="lazy" decoding="async">
+            <img class="pwa-img-dark"  src="img/pwa-step-4-dark.webp"  alt="Namen bestätigen und Hinzufügen tippen" width="700" height="1379" loading="lazy" decoding="async">
             <span class="pwa-step-num">Schritt 4</span>
-            <span class="pwa-step-label">Namen bestätigen — fertig</span>
+            <span class="pwa-step-label">Namen bestätigen – fertig</span>
           </div>
         </div>
 
@@ -1035,7 +1606,7 @@
 
         <div class="grid">
 
-          <a class="card marine" href="https://florianloyns.github.io/gruppeneinteilung/">
+          <a class="card marine" href="https://florianloyns.com/gruppeneinteilung/">
             <span class="tag">Werkzeug · Unterricht</span>
             <h3>Lerngruppen klug einteilen</h3>
             <p>Vier Einteilungsmethoden mit Drag-and-Drop-Nachbearbeitung – inklusive Word- und PDF-Export.</p>
@@ -1047,7 +1618,7 @@
             <span class="cta">Jetzt nutzen →</span>
           </a>
 
-          <a class="card marine" href="https://florianloyns.github.io/klare-auftraege/">
+          <a class="card marine" href="https://florianloyns.com/klare-auftraege/">
             <span class="tag">Werkzeug · Didaktik</span>
             <h3>Arbeitsaufträge strukturieren</h3>
             <p>Evidenzbasierte Vorlagen nach Hattie und Bloom – mit Operatoren-Bibliothek und Word-Export.</p>
@@ -1059,7 +1630,7 @@
             <span class="cta">Jetzt nutzen →</span>
           </a>
 
-          <a class="card marine" href="https://florianloyns.github.io/osce-planer/">
+          <a class="card marine" href="https://florianloyns.com/osce-planer/">
             <span class="tag">Werkzeug · Prüfungsplanung</span>
             <h3>OSCE-Prüfungen planen</h3>
             <p>Rotationspläne mit automatischer Logik, editierbaren Pausenzeiten und drei fertigen Word-Exporten.</p>
@@ -1089,29 +1660,12 @@
             <ul class="features">
               <li>Stift, Whiteboard, Lupe, Timer, Pause, Übersicht, Vollbild</li>
               <li>Für Touch-Display und Smartboard gebaut</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-touchcontrols" target="_blank" rel="noopener noreferrer">reveal.js-touchcontrols ↗</a>
-              <a href="https://florianloyns.github.io/reveal.js-touchcontrols/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-touchcontrols" target="_blank" rel="noopener noreferrer">reveal.js-touchcontrols ↗</a>
+              <a href="https://florianloyns.com/reveal.js-touchcontrols/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
             </div>
           </div>
-
-<!--        <div class="card marine">
-            <span class="tag">Plugin · reveal.js</span>
-            <h3>Im Zeitplan bleiben</h3>
-            <p>Ein Timer sagt nur, wie viel Zeit weg ist. Dieser Balken sagt, ob du im Plan liegst: Folie 12 von 30 bei 7 von 15 Minuten heißt 90 Sekunden Rückstand. Die Länge des Vortrags stellst du mit einem Tipp ein – auch mitten drin, wenn es heißt „noch fünf Minuten“.</p>
-            <ul class="features">
-              <li>Vergleicht Folienfortschritt mit der Sollzeit</li>
-              <li>Abschnittsmarken folgen der eigenen Gliederung</li>
-              <li>Frei und quelloffen (MIT)</li>
-            </ul>
-            <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-pacer" target="_blank" rel="noopener noreferrer">reveal.js-pacer ↗</a>
-              <a href="https://florianloyns.github.io/reveal.js-pacer/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
-            </div>
-          </div> 
--->
 
           <div class="card marine">
             <span class="tag">Plugin · reveal.js</span>
@@ -1120,11 +1674,10 @@
             <ul class="features">
               <li>Dichte Wortwolke, in deinem Stil einfärbbar</li>
               <li>Mit dem Finger am Smartboard bedienbar</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-termcluster" target="_blank" rel="noopener noreferrer">reveal.js-termcluster ↗</a>
-              <a href="https://florianloyns.github.io/reveal.js-termcluster/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-termcluster" target="_blank" rel="noopener noreferrer">reveal.js-termcluster ↗</a>
+              <a href="https://florianloyns.com/reveal.js-termcluster/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
             </div>
           </div>
           <div class="card marine">
@@ -1134,11 +1687,10 @@
             <ul class="features">
               <li>Erklärung direkt am Begriff</li>
               <li>Hover am Laptop, Tipp am Board</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-glossary" target="_blank" rel="noopener noreferrer">reveal.js-glossary ↗</a>
-              <a href="https://florianloyns.github.io/reveal.js-glossary/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-glossary" target="_blank" rel="noopener noreferrer">reveal.js-glossary ↗</a>
+              <a href="https://florianloyns.com/reveal.js-glossary/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
             </div>
           </div>
 
@@ -1149,14 +1701,11 @@
             <ul class="features">
               <li>Marker per Prozent gesetzt – nichts verrutscht</li>
               <li>Vollbild und Druck mit nummerierter Legende</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-hotspot" target="_blank" rel="noopener noreferrer">reveal.js-hotspot ↗</a>
-              <a href="https://florianloyns.github.io/reveal.js-hotspot/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
-            </div>
-            <div class="card-actions" style="margin-top:10px">
-              <a href="https://florianloyns.github.io/reveal.js-hotspot/editor/" target="_blank" rel="noopener noreferrer">Editor: Marker setzen →</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-hotspot" target="_blank" rel="noopener noreferrer">reveal.js-hotspot ↗</a>
+              <a href="https://florianloyns.com/reveal.js-hotspot/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <a href="https://florianloyns.com/reveal.js-hotspot/editor/" target="_blank" rel="noopener noreferrer" title="Marker auf einem eigenen Bild setzen">Editor →</a>
             </div>
           </div>
 
@@ -1167,11 +1716,10 @@
             <ul class="features">
               <li>Aufbauen – oder nur den aktuellen Satz hervorheben</li>
               <li>Kennt z. B., d. h., Dr. und Ordnungszahlen</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-stepped" target="_blank" rel="noopener noreferrer">reveal.js-stepped ↗</a>
-              <a href="https://florianloyns.github.io/reveal.js-stepped/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-stepped" target="_blank" rel="noopener noreferrer">reveal.js-stepped ↗</a>
+              <a href="https://florianloyns.com/reveal.js-stepped/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
             </div>
           </div>
 
@@ -1181,12 +1729,11 @@
             <p>Eine Pflegemaßnahme nicht als Aufzählung hinstellen, sondern Schritt für Schritt gehen – der ganze Weg bleibt als Leiste sichtbar, gezeigt wird nur der Schritt, über den gerade gesprochen wird. Die Begründung eines Schritts bleibt bis zum Antippen verdeckt, damit die Klasse sie erst selbst nennen kann.</p>
             <ul class="features">
               <li>Mit Zeitangaben wird aus der Leiste ein maßstabsgetreuer Zeitstrahl</li>
-              <li>Speist direkt eine Reihenfolge-Aufgabe: einmal schreiben, lehren und prüfen</li>
-              <li>Frei und quelloffen (MIT)</li>
+              <li>Einmal schreiben, als Reihenfolge-Aufgabe prüfen</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-sequence" target="_blank" rel="noopener noreferrer">reveal.js-sequence &#8599;</a>
-              <a href="https://florianloyns.github.io/reveal.js-sequence/demo.html" target="_blank" rel="noopener noreferrer">Demo &rarr;</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-sequence" target="_blank" rel="noopener noreferrer">reveal.js-sequence &#8599;</a>
+              <a href="https://florianloyns.com/reveal.js-sequence/demo.html" target="_blank" rel="noopener noreferrer">Demo &rarr;</a>
             </div>
           </div>
 
@@ -1197,11 +1744,10 @@
             <ul class="features">
               <li>Single-Choice, Mehrfachauswahl, Wahr/Falsch, Reihenfolge</li>
               <li>Am Touch-Display und Smartboard bedienbar</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-quiz" target="_blank" rel="noopener noreferrer">reveal.js-quiz ↗</a>
-              <a href="https://florianloyns.github.io/reveal.js-quiz/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-quiz" target="_blank" rel="noopener noreferrer">reveal.js-quiz ↗</a>
+              <a href="https://florianloyns.com/reveal.js-quiz/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
             </div>
           </div>
 
@@ -1212,11 +1758,10 @@
             <ul class="features">
               <li>Kategorien &times; Punkte, Feld antippen f&uuml;r die Frage</li>
               <li>Am Touch-Display und Smartboard bedienbar</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
-              <a href="https://github.com/florianloyns/reveal.js-quizgrid" target="_blank" rel="noopener noreferrer">reveal.js-quizgrid &#8599;</a>
-              <a href="https://florianloyns.github.io/reveal.js-quizgrid/demo.html" target="_blank" rel="noopener noreferrer">Demo &rarr;</a>
+              <a href="https://github.com/FlorianLoyns/reveal.js-quizgrid" target="_blank" rel="noopener noreferrer">reveal.js-quizgrid &#8599;</a>
+              <a href="https://florianloyns.com/reveal.js-quizgrid/demo.html" target="_blank" rel="noopener noreferrer">Demo &rarr;</a>
             </div>
           </div>
 
@@ -1229,45 +1774,64 @@
   <footer>
     <div class="container">
       <div class="row">
-        <a href="https://florianloyns.com/Impressum/">Impressum</a>
+        <p class="claim"><strong>Code for Care.</strong> Handgemacht für die Pflegepädagogik.</p>
+        <a href="mailto:c-8347@posteo.de">Kontakt</a>
         <a href="https://github.com/FlorianLoyns" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/florianloyns/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://florianloyns.com/Impressum/">Impressum &amp; Datenschutz</a>
         <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>
-        <button id="btn-theme" aria-label="Farbschema umschalten">
+        <button id="btn-theme" type="button" aria-pressed="false" aria-label="Dunkles Farbschema einschalten">
           <svg id="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg id="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
       </div>
-      <p class="small" style="margin-top:16px;">
-        Alle Werkzeuge und Tests laufen vollständig im Browser. Es werden keine personenbezogenen Daten verarbeitet,
-        keine Cookies gesetzt, kein Tracking eingesetzt.
-      </p>
     </div>
   </footer>
 
 
+
 <script>
+/* Farbschema-Schalter. Die Vorauswahl setzt bereits das Skript im <head>. */
 (function() {
   var html = document.documentElement;
-  var stored = localStorage.getItem('fl-theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var isDark = stored ? stored === 'dark' : prefersDark;
+  var btn  = document.getElementById('btn-theme');
+  var sun  = document.getElementById('theme-icon-sun');
+  var moon = document.getElementById('theme-icon-moon');
+  var stored = null;
+  try { stored = localStorage.getItem('fl-theme'); } catch (e) {}
+  var isDark = stored ? stored === 'dark'
+                      : window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   function applyTheme(dark) {
     isDark = dark;
     html.setAttribute('data-theme', dark ? 'dark' : 'light');
-    localStorage.setItem('fl-theme', dark ? 'dark' : 'light');
-    var sun  = document.getElementById('theme-icon-sun');
-    var moon = document.getElementById('theme-icon-moon');
+    try { localStorage.setItem('fl-theme', dark ? 'dark' : 'light'); } catch (e) {}
     if (sun)  sun.style.display  = dark ? 'block' : 'none';
     if (moon) moon.style.display = dark ? 'none'  : 'block';
+    if (btn) {
+      btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+      btn.setAttribute('aria-label', dark ? 'Helles Farbschema einschalten'
+                                          : 'Dunkles Farbschema einschalten');
+    }
   }
 
   applyTheme(isDark);
+  if (btn) btn.addEventListener('click', function() { applyTheme(!isDark); });
+})();
+</script>
 
-  document.getElementById('btn-theme').addEventListener('click', function() {
-    applyTheme(!isDark);
-  });
+<script>
+/* Die Kennzahlen im Hero zählen sich selbst aus den Karten – beim nächsten
+   Werkzeug stimmt die Leiste ohne Nacharbeit. */
+(function() {
+  var main = document.querySelector('main');
+  if (!main) return;
+  function put(key, value) {
+    var el = document.querySelector('[data-count="' + key + '"]');
+    if (el) el.textContent = value;
+  }
+  put('apps', main.querySelectorAll('.card:not([data-info])').length);
+  put('pwa',  main.querySelectorAll('.card[data-pwa]').length);
 })();
 </script>
 
@@ -1280,7 +1844,7 @@
 
   function repoFromHref(href) {
     if (!href) return null;
-    var m = href.match(/^https?:\/\/florianloyns\.github\.io\/([^\/]+)\/?/i);
+    var m = href.match(/^https?:\/\/(?:florianloyns\.com|florianloyns\.github\.io)\/([^\/]+)\/?/i);
     if (m) return m[1].toLowerCase();
     m = href.match(/^https?:\/\/github\.com\/[^\/]+\/([^\/#?]+)/i);
     if (m) return m[1].toLowerCase();
