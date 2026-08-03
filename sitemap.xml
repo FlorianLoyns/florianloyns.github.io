@@ -85,10 +85,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://florianloyns.com/reveal.js-hotspot/demo.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://florianloyns.com/reveal.js-stepped/demo.html</loc>
     <priority>0.8</priority>
   </url>
@@ -102,6 +98,10 @@
   </url>
   <url>
     <loc>https://florianloyns.com/reveal.js-quizgrid/demo.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://florianloyns.com/reveal.js-cycle/demo.html</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
