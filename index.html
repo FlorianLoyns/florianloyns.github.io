@@ -403,7 +403,7 @@
     }
     .card.teal .star-badge { top: 12px; left: 20px; color: #16a34a; }
     .card.marine .star-badge { bottom: 18px; right: 20px; color: var(--marine-dark); }
-    .card-actions .plugin-version { color: var(--muted); font-weight: 500; font-size: 13px; }
+    .card .tag .plugin-version { text-transform: none; }
     @media (prefers-color-scheme: dark) {
       .card.teal .star-badge { color: #4ade80; }
     }
@@ -1276,12 +1276,12 @@
           card.appendChild(s);
         }
         if (d.versions && d.versions[repo]) {
-          var link = card.querySelector('.card-actions a');
-          if (link && !link.querySelector('.plugin-version')) {
+          var tag = card.querySelector('.tag');
+          if (tag && !tag.querySelector('.plugin-version')) {
             var v = document.createElement('span');
             v.className = 'plugin-version';
-            v.textContent = ' \u00b7 v' + d.versions[repo];
-            link.appendChild(v);
+            v.textContent = '\u00b7 v' + d.versions[repo];
+            tag.appendChild(v);
           }
         }
       });
