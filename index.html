@@ -393,22 +393,18 @@
 
     /* GitHub-Sterne (aus stars.json, nur wenn > 0) */
     .star-badge {
-      position: absolute;
+      margin-left: auto;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 700;
       pointer-events: none;
     }
-    .card.teal .star-badge { top: 12px; left: 20px; color: #16a34a; }
-    .card.marine .star-badge { bottom: 18px; right: 20px; color: var(--marine-dark); }
+    .card.teal .star-badge { color: var(--teal-dark); }
+    .card.marine .star-badge { color: var(--marine-dark); }
+    .card .cta { display: flex; }
     .card .tag .plugin-version { text-transform: none; }
-    @media (prefers-color-scheme: dark) {
-      .card.teal .star-badge { color: #4ade80; }
-    }
-    [data-theme="dark"] .card.teal .star-badge { color: #4ade80; }
-    [data-theme="light"] .card.teal .star-badge { color: #16a34a; }
 
     /* ========== Footer ========== */
     footer {
@@ -1273,7 +1269,8 @@
           s.textContent = '\u2605 ' + n;
           s.title = n + (n === 1 ? ' Stern' : ' Sterne') + ' auf GitHub';
           s.setAttribute('aria-label', s.title);
-          card.appendChild(s);
+          var line = card.querySelector('.card-actions') || card.querySelector('.cta');
+          (line || card).appendChild(s);
         }
         if (d.versions && d.versions[repo]) {
           var tag = card.querySelector('.tag');
