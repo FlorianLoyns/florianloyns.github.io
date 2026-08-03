@@ -489,6 +489,8 @@
       }
     }
     /* ========== Theme Toggle ========== */
+    .topbar { border-bottom: 1px solid var(--border); }
+    .topbar .row { display: flex; align-items: center; height: 56px; }
     #btn-theme {
       width: 36px; height: 36px;
       border-radius: 8px;
@@ -498,9 +500,7 @@
       color: var(--muted);
       cursor: pointer;
       transition: background .15s;
-      position: absolute;
-      top: max(20px, env(safe-area-inset-top));
-      right: max(24px, env(safe-area-inset-right));
+      margin-left: auto;
     }
     #btn-theme:hover { background: var(--border); }
 
@@ -528,11 +528,18 @@
   <a href="#trainings" class="skip-link">Zum Hauptinhalt springen</a>
 
 
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <button id="btn-theme" aria-label="Farbschema umschalten">
+          <svg id="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg id="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <header class="hero">
-    <button id="btn-theme" aria-label="Farbschema umschalten">
-    <svg id="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-    <svg id="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
     <div class="container">
       <p class="eyebrow">Werkzeuge für die Pflegepädagogik</p>
       <h1>Lernen in der Pflege –<br>klar, strukturiert, offen.</h1>
@@ -1064,7 +1071,7 @@
     <section class="block marine" id="plugins" aria-labelledby="plugins-heading">
       <div class="container">
         <h2 id="plugins-heading">Reveal-Plugins</h2>
-        <p class="section-lead"><a href="https://revealjs.com" target="_blank" rel="noopener noreferrer" style="color:var(--marine-dark);text-decoration:underline">reveal.js</a> ist ein freies, browserbasiertes Präsentations-Framework – Folien laufen auf jedem Rechner, Beamer oder Smartboard, ohne Installation und offline. Meine Plugins erweitern es gezielt für den Unterricht: mit dem Finger am Touch-Display bedienbar und auf interaktives Lehren ausgelegt.</p>
+        <p class="section-lead"><a href="https://revealjs.com" target="_blank" rel="noopener noreferrer" style="color:var(--marine-dark);text-decoration:underline">reveal.js</a> ist ein freies, browserbasiertes Präsentations-Framework – Folien laufen auf jedem Rechner, Beamer oder Smartboard, ohne Installation und offline. Meine Plugins erweitern es gezielt für den Unterricht: mit dem Finger am Touch-Display bedienbar und auf interaktives Lehren ausgelegt. Ein eigenes Deck f&uuml;hrt alle Kerntechniken einmal live vor &ndash; jeweils mit dem Markup darunter: <a href="https://florianloyns.com/reveal-showcase/" style="color:var(--marine-dark);text-decoration:underline">zum Showcase &rarr;</a></p>
 
         <div class="grid">
 

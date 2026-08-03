@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>reveal.js – Techniken im Überblick · Florian Loyns</title>
+<meta name="description" content="Ein Showcase und eine Nachschlaghilfe: die Kerntechniken von reveal.js, jede einmal live mit dem Markup darunter.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%232C4A6E%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="reveal/dist/reset.css">
+<link rel="stylesheet" href="reveal/dist/reveal.css">
+<link rel="stylesheet" href="reveal/theme/cards.css">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="reveal.js-Überblick">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section class="title">
+  <style>
+    .howto{margin-top:22px;background:#F3F6FA;border:1px solid #D7E0EC;border-radius:12px;padding:14px 18px;text-align:left}
+    .howto .hl{display:block;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#2C4A6E;margin-bottom:8px}
+    .howto code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;color:#1E3452;white-space:pre-wrap;line-height:1.6;display:block}
+    .demohint{margin-top:14px;font-size:15px;color:#6B7B7B}
+    .demohint kbd,.ltable kbd{font-family:ui-monospace,monospace;background:#EEF2F7;border:1px solid #C7D2E0;border-radius:5px;padding:1px 8px;font-size:14px;color:#1E3452}
+    .tech-list{list-style:none;margin:0;padding:0;columns:2;column-gap:44px}
+    .tech-list li{padding:8px 0 8px 24px;position:relative;font-size:19px;break-inside:avoid;color:#374151}
+    .tech-list li::before{content:"\203A";position:absolute;left:0;color:#2C4A6E;font-weight:800}
+    .tech-list li b{color:#1E3452}
+    .frags{list-style:none;margin:0;padding:0;font-size:22px;line-height:2}
+    .frags code{font-family:ui-monospace,monospace;background:#EEF2F7;border-radius:5px;padding:1px 8px;font-size:18px;color:#1E3452}
+    .downhint{margin-top:26px;font-size:15px;color:#6B7B7B}
+    .aa-box{background:#EEF2F7;border:1px solid #C7D2E0;border-radius:16px;color:#1E3452;font-weight:800;display:inline-block}
+    .reveal .fragment.highlight-current-blue.current-fragment{color:#2B6CB0}
+    .reveal section > .bgdemo{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px;padding:0 7%;text-align:left}
+    .bgdemo .k{font-size:14px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+    .bgdemo .t{margin:0;font-size:clamp(30px,4.4vw,52px);font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1.12;text-shadow:0 3px 18px rgba(0,0,0,.45)}
+    .bgdemo .c{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:16px;color:#fff;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.28);padding:7px 13px;border-radius:9px}
+    .reveal.on-dark .slide-number{color:#EAF1FB!important}
+    .reveal.on-dark .controls{color:#EAF1FB!important}
+    .reveal.on-dark .touchcontrols button{border-color:#fff!important;color:#fff!important}
+    .reveal.on-dark .touchcontrols button:hover{background:rgba(255,255,255,.15)!important}
+    .reveal.on-dark .touchcontrols button.active{background:#fff!important;color:#2C4A6E!important}
+  </style>
+  <div class="cardslide">
+    <div class="s-label">reveal.js &middot; Technik-&Uuml;berblick</div>
+    <h1 class="t-big">Was mit reveal.js geht</h1>
+    <p class="t-sub">Ein Showcase und eine Nachschlaghilfe.</p>
+    <div class="t-rule"></div>
+    <p class="t-author">Florian Loyns</p>
+    <p class="s-note" style="margin-top:16px"><a href="https://revealjs.com/" target="_blank" rel="noopener noreferrer" style="color:#2C4A6E;text-decoration:underline">reveal.js</a> ist ein freies Open-Source-Framework (MIT) von Hakim El Hattab und der Community.</p>
+  </div>
+</section>
+
+<section>
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">&Uuml;berblick</span></div>
+    <h2>Sieben Kerntechniken &ndash; jede auf einer Folie.</h2>
+    <div class="s-body">
+      <ul class="tech-list">
+        <li class="fragment"><b>Vertikale Folien</b> &ndash; Themen nach unten vertiefen</li>
+        <li class="fragment"><b>Fragments</b> &ndash; Schritt f&uuml;r Schritt einblenden</li>
+        <li class="fragment"><b>&Uuml;berg&auml;nge</b> &ndash; Folienwechsel animieren</li>
+        <li class="fragment"><b>Hintergr&uuml;nde</b> &ndash; Farbe, Verlauf, Bild, Video</li>
+        <li class="fragment"><b>Medien</b> &ndash; Video und Webseiten einbetten</li>
+        <li class="fragment"><b>Auto-Animate</b> &ndash; Elemente weich bewegen</li>
+        <li class="fragment"><b>Modi &amp; Tasten</b> &ndash; &Uuml;bersicht, Sprecheransicht, PDF</li>
+      </ul>
+    </div>
+    <p class="s-note">Alles im Folgenden sind eingebaute reveal.js-Funktionen &ndash; ganz ohne Plugin.</p>
+  </div>
+</section>
+
+<section>
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Struktur &middot; horizontal</span></div>
+      <h2>Folien laufen von links nach rechts &ndash; und k&ouml;nnen nach unten verzweigen.</h2>
+      <div class="s-body">
+        <p style="font-size:20px">Die Hauptlinie ist waagerecht. Wo ein Thema Tiefe hat, h&auml;ngst du <b>vertikale Unterfolien</b> darunter &ndash; ideal, um Details optional bereitzuhalten.</p>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section&gt;
+  &lt;section&gt;Oberfolie&lt;/section&gt;
+  &lt;section&gt;Unterfolie&lt;/section&gt;
+&lt;/section&gt;</code></div>
+        <p class="downhint">&darr; Dr&uuml;cke die Pfeiltaste nach unten &ndash; diese Folie hat eine Unterfolie.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Struktur &middot; vertikal</span></div>
+      <h2>Das hier ist die Unterfolie.</h2>
+      <div class="s-body">
+        <p style="font-size:20px">Du bist gerade nach unten gesprungen. Mit der Pfeiltaste nach oben geht es zur&uuml;ck, nach rechts weiter zum n&auml;chsten Hauptthema.</p>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Aufbau &middot; Fragments</span></div>
+    <h2>Inhalte Schritt f&uuml;r Schritt einblenden.</h2>
+    <div class="s-body">
+      <ul class="frags">
+        <li class="fragment"><code>fragment</code> &ndash; erscheint (Standard)</li>
+        <li class="fragment fade-up"><code>fade-up</code> &ndash; steigt herein</li>
+        <li class="fragment highlight-current-blue"><code>highlight-current-blue</code> &ndash; hebt in Blau hervor</li>
+        <li class="fragment strike"><code>strike</code> &ndash; streicht durch</li>
+        <li class="fragment fade-in-then-semi-out">erst da, dann gedimmt</li>
+      </ul>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;li class="fragment fade-up"&gt;&hellip;&lt;/li&gt;</code></div>
+      <p class="demohint">Probier's: <kbd>Leertaste</kbd> oder <kbd>&rarr;</kbd> blendet die Punkte nacheinander ein.</p>
+    </div>
+  </div>
+</section>
+
+<section data-transition="zoom">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">&Uuml;berg&auml;nge</span></div>
+    <h2>Diese Folie ist gerade hereingezoomt.</h2>
+    <div class="s-body">
+      <p style="font-size:20px">Jeder Folienwechsel kann eine eigene Animation haben. Verf&uuml;gbar sind: <b>none, fade, slide, convex, concave, zoom</b>.</p>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-transition="zoom"&gt;&hellip;&lt;/section&gt;</code></div>
+      <p class="demohint">Sparsam einsetzen &ndash; ein ruhiges <code>fade</code> wirkt in der Lehre meist am besten.</p>
+    </div>
+  </div>
+</section>
+
+<section data-force-dark data-background-color="#1E3452">
+  <div class="bgdemo">
+    <span class="k">Hintergrund &middot; Farbe</span>
+    <p class="t">Eine Vollfl&auml;chen-Farbe hinter der Folie.</p>
+    <span class="c">data-background-color</span>
+  </div>
+</section>
+
+<section data-force-dark data-background-gradient="linear-gradient(135deg,#1E3452,#0E7C7B)">
+  <div class="bgdemo">
+    <span class="k">Hintergrund &middot; Farbverlauf</span>
+    <p class="t">Ein Verlauf statt Vollton.</p>
+    <span class="c">data-background-gradient</span>
+  </div>
+</section>
+
+<section data-force-dark data-background-image="media/hintergrund.jpg" data-background-size="cover">
+  <div class="bgdemo">
+    <span class="k">Hintergrund &middot; Bild</span>
+    <p class="t">Ein Bild formatf&uuml;llend hinter der Folie.</p>
+    <span class="c">data-background-image</span>
+  </div>
+</section>
+
+<section data-force-dark data-background-color="#1E3452" data-background-video="media/beispiel.mp4" data-background-video-loop data-background-video-muted>
+  <div class="bgdemo">
+    <span class="k">Hintergrund &middot; Video</span>
+    <p class="t">Ein Film l&auml;uft hinter der Folie.</p>
+    <span class="c">data-background-video</span>
+  </div>
+</section>
+
+<section>
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Medien &middot; Video</span></div>
+    <h2>Ein Video l&auml;uft direkt in der Folie.</h2>
+    <div class="s-body" style="text-align:center">
+      <video data-autoplay muted loop playsinline poster="media/hintergrund.jpg" style="max-height:300px;border-radius:14px;box-shadow:0 12px 32px rgba(15,23,42,.22);display:block;margin:0 auto">
+        <source data-src="media/beispiel.mp4" type="video/mp4">
+      </video>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;video data-autoplay muted loop&gt;
+  &lt;source data-src="film.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></div>
+      <p class="demohint">reveal pausiert das Video automatisch beim Folienwechsel &ndash; und l&auml;dt es dank <code>data-src</code> erst bei Bedarf.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Medien &middot; iframe</span></div>
+    <h2>Eine ganze Webseite lebt in der Folie.</h2>
+    <div class="s-body" style="text-align:center">
+      <iframe data-src="https://www.openstreetmap.org/export/embed.html?bbox=7.55%2C52.05%2C7.68%2C52.13&amp;layer=mapnik" data-preload style="width:100%;max-width:900px;height:330px;border:1px solid #E7EBEF;border-radius:14px;background:#fff;display:block;margin:0 auto"></iframe>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;iframe data-src="https://www.openstreetmap.org/export/embed.html?&hellip;"&gt;&lt;/iframe&gt;</code></div>
+      <p class="demohint">Eine interaktive Karte, live in der Folie. Gro&szlig;e Seiten wie Google verbieten das Einbetten &ndash; einbettbare Seiten wie diese laufen (nur online).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <section data-auto-animate>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Auto-Animate</span></div>
+      <h2>Gleiche Elemente wandern weich von Folie zu Folie.</h2>
+      <div class="s-body" style="text-align:center">
+        <div class="aa-box" data-id="box" style="font-size:22px;padding:14px 22px;margin-top:30px">ein Kasten</div>
+        <p class="downhint">&darr; Weiter nach unten &ndash; beobachte den Kasten.</p>
+      </div>
+    </div>
+  </section>
+  <section data-auto-animate>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Auto-Animate</span></div>
+      <h2>reveal.js interpoliert Gr&ouml;&szlig;e, Position und Farbe von selbst.</h2>
+      <div class="s-body" style="text-align:center">
+        <div class="aa-box" data-id="box" style="font-size:40px;padding:34px 54px;margin-top:20px;background:#DCE6F1">derselbe Kasten &ndash; nur gr&ouml;&szlig;er</div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-auto-animate&gt; &hellip; data-id="box" &hellip; &lt;/section&gt;
+&lt;section data-auto-animate&gt; &hellip; data-id="box" &hellip; &lt;/section&gt;</code></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Nachschlag &middot; Modi &amp; Tasten</span></div>
+    <h2>Was reveal.js beim Vortragen kann.</h2>
+    <div class="s-body">
+      <div class="tablewrap"><table class="ltable prose compact"><thead><tr><th>Taste</th><th>Funktion</th><th>Wof&uuml;r</th></tr></thead><tbody>
+        <tr><td><kbd>Esc</kbd> / <kbd>O</kbd></td><td>&Uuml;bersichtsmodus</td><td>Alle Folien als Raster &ndash; schnell springen</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Sprecheransicht</td><td>Notizen, Timer und n&auml;chste Folie im zweiten Fenster</td></tr>
+        <tr><td><kbd>F</kbd></td><td>Vollbild</td><td>Ablenkungsfreie Pr&auml;sentation</td></tr>
+        <tr><td><kbd>Alt</kbd>+Klick</td><td>Zoom</td><td>In ein Detail hineinvergr&ouml;&szlig;ern</td></tr>
+        <tr><td><kbd>G</kbd></td><td>Jump-to-Slide</td><td>Direkt zu einer Foliennummer springen</td></tr>
+        <tr><td><kbd>B</kbd> / <kbd>.</kbd></td><td>Pause (Schwarzbild)</td><td>Aufmerksamkeit zur&uuml;ck in den Raum holen</td></tr>
+        <tr><td>Druck &rarr; PDF</td><td>PDF-Export</td><td>Handout aus denselben Folien</td></tr>
+      </tbody></table></div>
+    </div>
+    <p class="s-note">Alles eingebaute reveal.js-Funktionen &ndash; ohne jedes Plugin verf&uuml;gbar.</p>
+  </div>
+</section>
+
+<section class="title">
+  <div class="cardslide">
+    <div class="s-label">Credits &amp; Lizenz</div>
+    <h1 class="t-big" style="font-size:46px">Das Fundament ist nicht mein Werk.</h1>
+    <p class="t-sub"><a href="https://revealjs.com/" target="_blank" rel="noopener noreferrer" style="color:#2C4A6E;text-decoration:underline">reveal.js</a> ist ein freies Open-Source-Framework (MIT) von Hakim El Hattab und der Community.</p>
+    <div class="t-rule"></div>
+    <p class="t-author">revealjs.com</p>
+  </div>
+</section>
+</div>
+</div>
+<footer class="vortrag-impressum"><a href="https://florianloyns.com/Impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> · Datenschutz · Haftungsausschluss</footer>
+<script src="reveal/dist/reveal.js"></script>
+<script src="reveal/dist/plugin/notes.js"></script>
+<script src="reveal/dist/plugin/zoom.js"></script>
+<script src="reveal/plugin/smallcontrol/smallcontrol.js"></script>
+<script src="reveal/plugin/touchcontrols/plugin.js"></script>
+<script src="reveal/theme/cards-setup.js"></script>
+<script>CardsDeck.init();</script>
+<script>
+/* Verlauf/Bild/Video erkennt reveal nicht als dunkel -> Bedienelemente per eigener
+   Klasse on-dark auf Weiß (reveal verwaltet has-dark-background selbst, on-dark nicht). */
+(function(){
+  function upd(){
+    var r=document.querySelector('.reveal');
+    var s=(window.Reveal&&Reveal.getCurrentSlide)?Reveal.getCurrentSlide():null;
+    if(r) r.classList.toggle('on-dark', !!(s&&s.hasAttribute('data-force-dark')));
+  }
+  if(window.Reveal&&Reveal.on){ Reveal.on('ready',upd); Reveal.on('slidechanged',upd); }
+})();
+</script>
+</body>
+</html>
