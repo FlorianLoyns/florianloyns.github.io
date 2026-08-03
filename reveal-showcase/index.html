@@ -67,7 +67,7 @@
         <li class="fragment"><b>Fragments</b> &ndash; Schritt f&uuml;r Schritt einblenden</li>
         <li class="fragment"><b>&Uuml;berg&auml;nge</b> &ndash; Folienwechsel animieren</li>
         <li class="fragment"><b>Hintergr&uuml;nde</b> &ndash; Farbe, Verlauf, Bild, Video</li>
-        <li class="fragment"><b>Medien</b> &ndash; Video und Webseiten einbetten</li>
+        <li class="fragment"><b>Medien</b> &ndash; Video, Audio und Webseiten einbetten</li>
         <li class="fragment"><b>Auto-Animate</b> &ndash; Elemente weich bewegen</li>
         <li class="fragment"><b>Modi &amp; Tasten</b> &ndash; &Uuml;bersicht, Sprecheransicht, PDF</li>
       </ul>
@@ -182,12 +182,31 @@
 
 <section>
   <div class="cardslide">
+    <div class="s-top"><span class="s-label">Medien &middot; Audio</span></div>
+    <h2>Auch Ton spielt direkt in der Folie.</h2>
+    <div class="s-body" style="text-align:center">
+      <audio controls preload="none" style="width:100%;max-width:460px;margin:14px auto 0;display:block">
+        <source data-src="media/beispiel.mp3" type="audio/mpeg">
+      </audio>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;audio controls&gt;
+  &lt;source data-src="ton.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></div>
+      <p class="demohint">Wie beim Video: reveal pausiert den Ton beim Folienwechsel und l&auml;dt ihn per <code>data-src</code> erst bei Bedarf. <code>data-autoplay</code> w&uuml;rde ihn automatisch starten.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cardslide">
     <div class="s-top"><span class="s-label">Medien &middot; iframe</span></div>
     <h2>Eine ganze Webseite lebt in der Folie.</h2>
     <div class="s-body" style="text-align:center">
-      <iframe data-src="https://www.openstreetmap.org/export/embed.html?bbox=7.55%2C52.05%2C7.68%2C52.13&amp;layer=mapnik" data-preload style="width:100%;max-width:900px;height:330px;border:1px solid #E7EBEF;border-radius:14px;background:#fff;display:block;margin:0 auto"></iframe>
+      <div id="osm-holder" style="width:100%;max-width:900px;height:320px;margin:0 auto;border:1px solid #E7EBEF;border-radius:14px;background:#F3F6FA;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 26px;box-sizing:border-box">
+        <p style="margin:0;font-size:16px;color:#374151;max-width:560px;line-height:1.5">Aus Datenschutzgr&uuml;nden l&auml;dt die Karte erst auf Klick. Dabei wird eine Verbindung zu openstreetmap.org hergestellt und deine IP-Adresse an OpenStreetMap &uuml;bertragen.</p>
+        <button id="osm-load" type="button" style="background:#2C4A6E;color:#fff;border:none;border-radius:10px;padding:11px 22px;font-family:'Inter',system-ui,sans-serif;font-size:15px;font-weight:600;cursor:pointer">Karte von OpenStreetMap laden</button>
+      </div>
       <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;iframe data-src="https://www.openstreetmap.org/export/embed.html?&hellip;"&gt;&lt;/iframe&gt;</code></div>
-      <p class="demohint">Eine interaktive Karte, live in der Folie. Gro&szlig;e Seiten wie Google verbieten das Einbetten &ndash; einbettbare Seiten wie diese laufen (nur online).</p>
+      <p class="demohint">Datenschutzfreundlich: erst auf Klick geladen (Klick = Einwilligung). L&auml;uft nur online.</p>
     </div>
   </div>
 </section>
@@ -246,7 +265,7 @@
 </section>
 </div>
 </div>
-<footer class="vortrag-impressum"><a href="https://florianloyns.com/Impressum/" target="_blank" rel="noopener noreferrer">Impressum</a> · Datenschutz · Haftungsausschluss</footer>
+<footer class="vortrag-impressum"><a href="https://florianloyns.com/Impressum/" target="_blank" rel="noopener noreferrer">Impressum</a></footer>
 <script src="reveal/dist/reveal.js"></script>
 <script src="reveal/dist/plugin/notes.js"></script>
 <script src="reveal/dist/plugin/zoom.js"></script>
@@ -255,15 +274,24 @@
 <script src="reveal/theme/cards-setup.js"></script>
 <script>CardsDeck.init();</script>
 <script>
-/* Verlauf/Bild/Video erkennt reveal nicht als dunkel -> Bedienelemente per eigener
-   Klasse on-dark auf Weiß (reveal verwaltet has-dark-background selbst, on-dark nicht). */
 (function(){
+  /* Bedienelemente auf dunklen Verlauf/Bild/Video-Folien auf Weiß */
   function upd(){
     var r=document.querySelector('.reveal');
     var s=(window.Reveal&&Reveal.getCurrentSlide)?Reveal.getCurrentSlide():null;
     if(r) r.classList.toggle('on-dark', !!(s&&s.hasAttribute('data-force-dark')));
   }
   if(window.Reveal&&Reveal.on){ Reveal.on('ready',upd); Reveal.on('slidechanged',upd); }
+  /* OSM-Karte erst auf Klick laden (DSGVO: Klick = Einwilligung) */
+  var ob=document.getElementById('osm-load');
+  if(ob){ ob.addEventListener('click',function(){
+    var hd=document.getElementById('osm-holder');
+    var f=document.createElement('iframe');
+    f.src='https://www.openstreetmap.org/export/embed.html?bbox=7.55,52.05,7.68,52.13&layer=mapnik';
+    f.title='OpenStreetMap-Karte'; f.loading='lazy';
+    f.setAttribute('style','width:100%;height:100%;border:0;border-radius:14px;background:#fff');
+    hd.style.padding='0'; hd.innerHTML=''; hd.appendChild(f);
+  }); }
 })();
 </script>
 </body>
