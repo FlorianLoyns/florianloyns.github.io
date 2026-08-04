@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-30T08:44:46.654Z",
+  "updated": "2026-08-04T05:39:08.948Z",
   "user": "FlorianLoyns",
   "total": 2,
   "repos": {
@@ -20,6 +20,7 @@
     "pengt": 0,
     "pflegegrad-rechner": 0,
     "pflegelatein": 0,
+    "reveal.js-cycle": 0,
     "reveal.js-glossary": 0,
     "reveal.js-hotspot": 0,
     "reveal.js-quiz": 0,
@@ -35,12 +36,13 @@
     "wortgold": 0
   },
   "versions": {
+    "reveal.js-cycle": "1.0.0",
     "reveal.js-glossary": "1.2.0",
     "reveal.js-hotspot": "1.5.1",
-    "reveal.js-quiz": "1.3.0",
-    "reveal.js-quizgrid": "1.1.0",
+    "reveal.js-quiz": "1.3.1",
+    "reveal.js-quizgrid": "1.1.1",
     "reveal.js-sequence": "1.0.0",
-    "reveal.js-stepped": "1.0.0",
+    "reveal.js-stepped": "1.0.1",
     "reveal.js-termcluster": "1.1.0",
     "reveal.js-touchcontrols": "1.4.0"
   }
