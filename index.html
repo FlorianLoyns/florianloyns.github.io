@@ -397,6 +397,47 @@
     .card .cta { display: flex; }
     .card .tag .plugin-version { text-transform: none; }
 
+    /* "Habt ihr noch ein Bett?" ist bewusst kein Trainer wie die anderen — eigener
+       Spiel-Look statt Teal-Uniform, damit die Karte im Grid als Spiel auffällt. */
+    .card.game-special {
+      background:
+        radial-gradient(circle at 12% 15%, rgba(54,30,87,.55) 0%, transparent 45%),
+        radial-gradient(circle at 88% 85%, rgba(79,0,49,.45) 0%, transparent 50%),
+        #080512;
+      border: 2px solid #2a2140;
+      overflow: visible;
+    }
+    .card.game-special::before {
+      background: linear-gradient(90deg, #d4f501, #ee343b);
+      height: 5px;
+      border-radius: 12px 12px 0 0;
+    }
+    .card.game-special:hover {
+      border-color: #d4f501;
+      box-shadow: 0 16px 36px -18px rgba(212, 245, 1, .35);
+    }
+    .card.game-special .tag { color: #d4f501; }
+    .card.game-special h3 { color: #ffffff; }
+    .card.game-special p { color: #c9c3d6; }
+    .card.game-special .features { color: #a79fbd; }
+    .card.game-special .features li::before { color: #d4f501; }
+    .card.game-special .cta { color: #d4f501; }
+    .card.game-special .star-badge { color: #d4f501; }
+    .card.game-special .card-logo {
+      top: -14px;
+      right: -14px;
+      width: 84px;
+      height: 84px;
+      border-radius: 20px;
+      transform: rotate(7deg);
+      box-shadow: 4px 4px 0 #04020b, 0 10px 24px -10px rgba(0, 0, 0, .6);
+      transition: transform .18s ease;
+    }
+    .card.game-special:hover .card-logo { transform: rotate(3deg) scale(1.05); }
+    .card.game-special.has-logo .tag,
+    .card.game-special.has-logo h3,
+    .card.game-special.has-logo > p { padding-right: 86px; }
+
     /* ========== Footer ========== */
     footer {
       margin-top: 0;
@@ -659,18 +700,32 @@
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="noch-ein-bett" href="https://florianloyns.com/noch-ein-bett/">
+          <a class="card game-special has-logo" data-repo="noch-ein-bett" href="https://florianloyns.com/noch-ein-bett/">
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-              <rect width="64" height="64" rx="12" fill="#0d7377"/>
-              <rect x="8"  y="12" width="32" height="12" rx="2" fill="#ffffff"/>
-              <rect x="11" y="14" width="10" height="8"  rx="1.5" fill="#b5dbdb"/>
-              <rect x="24" y="26" width="32" height="12" rx="2" fill="#ffffff"/>
-              <rect x="27" y="28" width="10" height="8"  rx="1.5" fill="#b5dbdb"/>
-              <rect x="8"  y="40" width="32" height="12" rx="2" fill="#ffffff"/>
-              <rect x="11" y="42" width="10" height="8"  rx="1.5" fill="#b5dbdb"/>
+              <defs>
+                <linearGradient id="bjLime" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#d4f501"/>
+                  <stop offset="100%" stop-color="#88d600"/>
+                </linearGradient>
+                <linearGradient id="bjMag" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#ff614d"/>
+                  <stop offset="100%" stop-color="#ee343b"/>
+                </linearGradient>
+              </defs>
+              <rect width="64" height="64" rx="15" fill="#080512"/>
+              <g transform="scale(0.125)">
+                <g transform="translate(256,256) scale(0.85) translate(-256,-256)">
+                  <path d="M194,106 H318 V194 H406 V318 H318 V406 H194 V318 H106 V194 H194 Z"
+                        fill="url(#bjMag)" stroke="#04020b" stroke-width="26" stroke-linejoin="round"
+                        transform="rotate(-5 256 256)"/>
+                  <path d="M338,64 L188,296 L246,296 L206,448 L366,232 L296,232 Z"
+                        fill="url(#bjLime)" stroke="#04020b" stroke-width="22" stroke-linejoin="round"
+                        transform="rotate(3 256 256)"/>
+                </g>
+              </g>
             </svg>
             <span class="tag">
-              Training · Betten&shy;zuweisung
+              Spiel · Endlos-Modus
             </span>
             <h3>Habt ihr noch ein Bett?</h3>
             <p>Endlos-Quiz zur Bettenzuweisung – Iso-Regeln, Kohorten, Geschlechtertrennung. Schicht starten, unter Zeitdruck richtig entscheiden, Highscore knacken.</p>
