@@ -9,11 +9,21 @@
   <link rel="canonical" href="https://florianloyns.com/">
   <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <meta name="robots" content="index,follow">
-  <meta name="theme-color" content="#127878">
+  <meta name="theme-color" content="#127878" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <script>
+    /* Farbschema vor dem ersten Zeichnen setzen – sonst blitzt bei gespeichertem Dunkelmodus kurz die helle Seite auf */
+    (function () {
+      try {
+        var t = localStorage.getItem('fl-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Inline SVG favicon, 'fl' monogram in teal -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23127878%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%2C-apple-system%2CSegoe%20UI%2CRoboto%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23127878%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -23,7 +33,7 @@
   <meta property="og:image" content="https://florianloyns.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Werkzeuge und Selbsttests für die Pflegepädagogik">
+  <meta property="og:image:alt" content="Werkzeuge aus dem Pflegeunterricht – für den Pflegeunterricht. Trainings, Selbsttests und Werkzeuge für Lehrende.">
   <meta property="og:locale" content="de_DE">
 
   <!-- Twitter -->
@@ -164,7 +174,7 @@
     .hero h1 {
       margin: 0 0 20px;
       color: var(--ink);
-      font-size: clamp(36px, 5vw, 60px);
+      font-size: clamp(36px, 5vw, 56px);
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -0.02em;
@@ -194,6 +204,9 @@
     }
     .btn-primary { background: var(--teal); color: #fff; }
     .btn-primary:hover { background: var(--teal-dark); gap: 12px; }
+    /* Im Dunkelmodus ist das Türkis hell – dunkle Schrift statt weißer (Kontrast > 4,5 : 1) */
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn-primary { color: #0f172a; } }
+    [data-theme="dark"] .btn-primary { color: #0f172a; }
     .btn-secondary {
       background: transparent;
       color: var(--marine);
@@ -397,46 +410,55 @@
     .card .cta { display: flex; }
     .card .tag .plugin-version { text-transform: none; }
 
-    /* "Habt ihr noch ein Bett?" ist bewusst kein Trainer wie die anderen — eigener
-       Spiel-Look statt Teal-Uniform, damit die Karte im Grid als Spiel auffällt. */
-    .card.game-special {
-      background:
-        radial-gradient(circle at 12% 15%, rgba(54,30,87,.55) 0%, transparent 45%),
-        radial-gradient(circle at 88% 85%, rgba(79,0,49,.45) 0%, transparent 50%),
-        #080512;
-      border: 2px solid #2a2140;
-      overflow: visible;
+
+    /* Trennband zwischen den beiden Zielgruppen */
+    .audience { padding: 44px 0 6px; margin-top: 32px; border-top: 1px solid var(--border); }
+    .audience-for {
+      margin: 0 0 6px; font-size: 14px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
     }
-    .card.game-special::before {
-      background: linear-gradient(90deg, #d4f501, #ee343b);
-      height: 5px;
-      border-radius: 12px 12px 0 0;
+    .audience.teal .audience-for { color: var(--teal); }
+    .audience.marine .audience-for { color: var(--marine); }
+    .audience-lead { margin: 0; max-width: 720px; font-size: 18px; color: var(--body); }
+    #azubis + section.block, #lehrende + section.block { padding-top: 32px; }
+
+    /* ========== Screenshots in den Karten ========== */
+    .card .shot {
+      display: block;
+      margin: -28px -28px 22px;
+      height: 190px;
+      overflow: hidden;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
     }
-    .card.game-special:hover {
-      border-color: #d4f501;
-      box-shadow: 0 16px 36px -18px rgba(212, 245, 1, .35);
+    .card .shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .card::before { z-index: 1; }
+    .card.has-shot .card-logo { top: 210px; }
+    .shot-dark { display: none !important; }
+    @media (prefers-color-scheme: dark) {
+      .shot-dark { display: block !important; }
+      .shot-light { display: none !important; }
     }
-    .card.game-special .tag { color: #d4f501; }
-    .card.game-special h3 { color: #ffffff; }
-    .card.game-special p { color: #c9c3d6; }
-    .card.game-special .features { color: #a79fbd; }
-    .card.game-special .features li::before { color: #d4f501; }
-    .card.game-special .cta { color: #d4f501; }
-    .card.game-special .star-badge { color: #d4f501; }
-    .card.game-special .card-logo {
-      top: -14px;
-      right: -14px;
-      width: 84px;
-      height: 84px;
-      border-radius: 20px;
-      transform: rotate(7deg);
-      box-shadow: 4px 4px 0 #04020b, 0 10px 24px -10px rgba(0, 0, 0, .6);
-      transition: transform .18s ease;
+    [data-theme="dark"] .shot-dark { display: block !important; }
+    [data-theme="dark"] .shot-light { display: none !important; }
+    [data-theme="light"] .shot-dark { display: none !important; }
+    [data-theme="light"] .shot-light { display: block !important; }
+
+    /* ========== Installationsanleitung zum Aufklappen ========== */
+    details.install > summary { list-style: none; cursor: pointer; }
+    details.install > summary::-webkit-details-marker { display: none; }
+    details.install > summary h2 { display: inline; }
+    details.install .install-toggle {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 12px; font-size: 15px; font-weight: 600; color: var(--teal-dark);
     }
-    .card.game-special:hover .card-logo { transform: rotate(3deg) scale(1.05); }
-    .card.game-special.has-logo .tag,
-    .card.game-special.has-logo h3,
-    .card.game-special.has-logo > p { padding-right: 86px; }
+    details.install .install-toggle::after { content: "▾"; transition: transform .2s ease; }
+    details.install[open] .install-toggle::after { transform: rotate(180deg); }
+    details.install .install-toggle .when-open { display: none; }
+    details.install[open] .install-toggle .when-open { display: inline; }
+    details.install[open] .install-toggle .when-closed { display: none; }
+    details.install > summary:hover .install-toggle { text-decoration: underline; }
+    details.install .install-body { margin-top: 28px; }
+    details.install .section-lead { margin-top: 10px; margin-bottom: 0; }
 
     /* ========== Footer ========== */
     footer {
@@ -529,14 +551,11 @@
         scroll-snap-align: start;
       }
     }
-    /* ========== Theme Toggle ========== */
-    .topbar { border-bottom: 1px solid var(--border); }
-    .topbar .row { display: flex; align-items: center; height: 56px; }
-    .brand { font-weight: 800; font-size: 1.05rem; letter-spacing: -.01em;
-      color: var(--ink); text-decoration: none; }
-    .brand span { color: var(--teal); }
-    .brand:hover { opacity: .85; }
+    /* ========== Farbschema-Schalter (im Kopf, rechts an der Inhaltskante) ========== */
     #btn-theme {
+      position: absolute;
+      top: max(20px, calc(env(safe-area-inset-top) + 12px));
+      right: max(24px, calc((100vw - 1120px) / 2 + 24px), env(safe-area-inset-right));
       width: 36px; height: 36px;
       border-radius: 8px;
       background: transparent;
@@ -545,13 +564,13 @@
       color: var(--muted);
       cursor: pointer;
       transition: background .15s;
-      margin-left: auto;
     }
     #btn-theme:hover { background: var(--border); }
 
-
     /* ========== Mobile-Optimierungen ========== */
     @media (max-width: 600px) {
+      .card .shot { margin: -22px -20px 18px; height: 170px; }
+      .card.has-shot .card-logo { top: 188px; }
       .container {
         padding-left: max(18px, env(safe-area-inset-left));
         padding-right: max(18px, env(safe-area-inset-right));
@@ -570,45 +589,43 @@
 </head>
 <body>
 
-  <a href="#trainings" class="skip-link">Zum Hauptinhalt springen</a>
+  <a href="#azubis" class="skip-link">Zum Hauptinhalt springen</a>
 
 
-  <div class="topbar">
-    <div class="container">
-      <div class="row">
-        <a href="/" class="brand">Florian <span>Loyns</span></a>
-        <button id="btn-theme" aria-label="Farbschema umschalten">
+  <header class="hero">
+    <button id="btn-theme" aria-label="Farbschema umschalten">
           <svg id="theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
           <svg id="theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-      </div>
-    </div>
-  </div>
-
-  <header class="hero">
     <div class="container">
-      <p class="eyebrow">Werkzeuge für die Pflegepädagogik</p>
-      <h1>Lernen in der Pflege –<br>klar, strukturiert, offen.</h1>
+      <p class="eyebrow">Für die generalistische Pflegeausbildung</p>
+      <h1>Werkzeuge aus dem Pflegeunterricht –<br>für den Pflegeunterricht.</h1>
       <p class="lead">
         Eine wachsende Sammlung von Trainings, Selbsttests, Rechnern und Werkzeugen für die Pflegeausbildung.
-        Kostenfrei nutzbar, läuft vollständig im Browser – auch offline.
+        Kostenfrei nutzbar, läuft vollständig im Browser – auch offline. Alle Trainings lassen sich wie eine App aufs Handy installieren.
       </p>
       <div class="actions">
-        <a href="#trainings" class="btn btn-primary">Zu den Trainings →</a>
-        <a href="#werkzeuge" class="btn btn-secondary">Werkzeuge für Lehrende</a>
+        <a href="#azubis" class="btn btn-primary">Für Auszubildende →</a>
+        <a href="#lehrende" class="btn btn-secondary">Für Lehrende</a>
       </div>
     </div>
   </header>
 
+  <main>
+
   <section class="about">
     <div class="container">
-      <p><strong>Warum gibt es das hier?</strong> Ich unterrichte als <strong>Lehrer für Pflegeberufe</strong> in der generalistischen Pflegeausbildung und baue die Werkzeuge, die mir im Unterricht selbst gefehlt haben. Jedes entsteht aus einer konkreten Situation im Klassenzimmer. Alle bleiben kostenfrei und offen – weil gute Didaktik möglichst viele Lernende erreichen sollte.</p>
-      <p>Jede Anwendung verbindet eine didaktische Idee mit ihrer technischen Umsetzung. Alles läuft direkt im Browser – ohne Anmeldung, ohne Tracking, ohne externe Server, auch offline auf jedem Schulrechner und Smartphone.</p>
-      <p>Die Tests sind Reflexionsimpulse, keine Diagnostik. Die Werkzeuge ersetzen keine Pädagogik, sie beschleunigen sie. Feedback, Fehlerhinweise und Vorschläge sind willkommen – gern per <a href="mailto:c-8347@posteo.de">E-Mail</a> oder als Issue auf <a href="https://github.com/FlorianLoyns" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+      <p><strong>Warum gibt es das hier?</strong> Ich unterrichte als <strong>Lehrer für Pflegeberufe</strong> und baue die Werkzeuge, die mir im Unterricht gefehlt haben – jedes aus einer konkreten Situation im Klassenzimmer. Alle bleiben kostenfrei, ohne Anmeldung und ohne Tracking. Die Selbsttests sind Reflexionsimpulse, keine Diagnostik; Feedback und Fehlerhinweise gern per <a href="mailto:c-8347@posteo.de">E-Mail</a> oder als Issue auf <a href="https://github.com/FlorianLoyns" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
     </div>
   </section>
 
-  <main>
+
+    <div class="audience teal" id="azubis">
+      <div class="container">
+        <p class="audience-for">Für Auszubildende</p>
+        <p class="audience-lead">Üben, nachschlagen, rechnen – im eigenen Tempo, am Schulrechner oder auf dem Handy.</p>
+      </div>
+    </div>
 
     <section class="block teal" id="trainings" aria-labelledby="trainings-heading">
       <div class="container">
@@ -617,7 +634,11 @@
 
         <div class="grid">
 
-          <div class="card teal has-logo" data-repo="clinical-reasoning-trainer">
+          <div class="card teal has-logo has-shot" data-repo="clinical-reasoning-trainer">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/clinical-reasoning-trainer-light.webp" alt="Screenshot: Klinisches Urteilen trainieren" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/clinical-reasoning-trainer-dark.webp" alt="Screenshot: Klinisches Urteilen trainieren" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <g transform="translate(8 5) scale(0.75)" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
@@ -630,12 +651,7 @@
               Training · Klinisches Reasoning
             </span>
             <h3>Klinisches Urteilen trainieren</h3>
-            <p>Fallbasiertes Üben vom Situationsverständnis bis zur Pflegeplanung – strukturiert statt auswendig pauken. Als App auf dem Handy installierbar.</p>
-            <ul class="features">
-              <li>Fallbasiert statt Lehrbuch</li>
-              <li>Von Einschätzung bis zur Pflegeplanung</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
+            <p>Fallbasiertes Üben vom Situationsverständnis bis zur Pflegeplanung – strukturiert statt auswendig pauken.</p>
             <div class="card-actions">
               <a href="https://florianloyns.com/clinical-reasoning-trainer/">Jetzt ausprobieren →</a>
             </div>
@@ -645,7 +661,11 @@
             </a>
           </div>
 
-          <a class="card teal has-logo" data-repo="isbar-trainer" href="https://florianloyns.com/isbar-trainer/">
+          <a class="card teal has-logo has-shot" data-repo="isbar-trainer" href="https://florianloyns.com/isbar-trainer/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/isbar-trainer-light.webp" alt="Screenshot: Die Übergabe strukturiert üben" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/isbar-trainer-dark.webp" alt="Screenshot: Die Übergabe strukturiert üben" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <g fill="#ffffff">
@@ -669,15 +689,14 @@
             </span>
             <h3>Die Übergabe strukturiert üben</h3>
             <p>SBAR, ISBAR oder ISOBAR – wähle dein Schema und übe an drei Alltagsszenarien. Mit Musterübergabe am Ende.</p>
-            <ul class="features">
-              <li>SBAR, ISBAR oder ISOBAR zur Wahl</li>
-              <li>Drei praxisnahe Szenarien</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="validation-training" href="https://florianloyns.com/validation-training/">
+          <a class="card teal has-logo has-shot" data-repo="validation-training" href="https://florianloyns.com/validation-training/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/validation-training-light.webp" alt="Screenshot: Validation im Alltag trainieren" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/validation-training-dark.webp" alt="Screenshot: Validation im Alltag trainieren" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <rect x="11" y="14" width="42" height="30" rx="5" fill="#ffffff"/>
@@ -692,15 +711,14 @@
             </span>
             <h3>Validation im Alltag trainieren</h3>
             <p>12 Szenarien aus dem Umgang mit Menschen mit Demenz – sagbare Sätze plus passende Handlung.</p>
-            <ul class="features">
-              <li>12 praxisnahe Szenarien</li>
-              <li>Sprache und Handlung parallel</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card game-special has-logo" data-repo="noch-ein-bett" href="https://florianloyns.com/noch-ein-bett/">
+          <a class="card teal has-logo has-shot" data-repo="noch-ein-bett" href="https://florianloyns.com/noch-ein-bett/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/noch-ein-bett-light.webp" alt="Screenshot: Habt ihr noch ein Bett?" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/noch-ein-bett-dark.webp" alt="Screenshot: Habt ihr noch ein Bett?" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="bjLime" x1="0" y1="0" x2="1" y2="1">
@@ -729,15 +747,14 @@
             </span>
             <h3>Habt ihr noch ein Bett?</h3>
             <p>Endlos-Quiz zur Bettenzuweisung – Iso-Regeln, Kohorten, Geschlechtertrennung. Schicht starten, unter Zeitdruck richtig entscheiden, Highscore knacken.</p>
-            <ul class="features">
-              <li>Endlos-Modus mit XP-Stufen</li>
-              <li>Iso, 3MRGN/4MRGN, psychosozial</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt spielen →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="schmerz-trainer" href="https://florianloyns.com/schmerz-trainer/">
+          <a class="card teal has-logo has-shot" data-repo="schmerz-trainer" href="https://florianloyns.com/schmerz-trainer/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/schmerz-trainer-light.webp" alt="Screenshot: Schmerz-Trainer" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/schmerz-trainer-dark.webp" alt="Screenshot: Schmerz-Trainer" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <circle cx="32" cy="32" r="21" fill="#ffffff"/>
@@ -752,15 +769,14 @@
             </span>
             <h3>Schmerz-Trainer</h3>
             <p>Drei Module in einer App: Schmerzskalen (NRS, VAS, BESD, KUSS …), OPQRST-Anamnese und WHO-Stufenschema. Mit Lern-, Test- und Probieren-Modus — die Skalen am Patientenbett direkt anwenden.</p>
-            <ul class="features">
-              <li>6 Skalen, 6 Buchstaben, 4 Stufen</li>
-              <li>34 Fallbeispiele aus der Pflegepraxis</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt lernen →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="blutdruck-trainer" href="https://florianloyns.com/blutdruck-trainer/">
+          <a class="card teal has-logo has-shot" data-repo="blutdruck-trainer" href="https://florianloyns.com/blutdruck-trainer/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/blutdruck-trainer-light.webp" alt="Screenshot: Blutdruck messen üben" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/blutdruck-trainer-dark.webp" alt="Screenshot: Blutdruck messen üben" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <!-- Gehäuse -->
@@ -787,11 +803,6 @@
             </span>
             <h3>Blutdruck messen üben</h3>
             <p>Animiertes Manometer mit Korotkoff-Tönen – Nadel von der Skala ablesen statt digital anzeigen. Sofortige Auswertung mit Toleranzbereich ±8 mmHg.</p>
-            <ul class="features">
-              <li>Korotkoff-Methode realitätsnah simuliert</li>
-              <li>26 rotierende Blutdruckwerte</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt üben →</span>
           </a>
 
@@ -806,7 +817,11 @@
 
         <div class="grid">
 
-          <a class="card teal has-logo" data-repo="pflegelatein" href="https://florianloyns.com/pflegelatein/">
+          <a class="card teal has-logo has-shot" data-repo="pflegelatein" href="https://florianloyns.com/pflegelatein/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/pflegelatein-light.webp" alt="Screenshot: Pflegelatein" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/pflegelatein-dark.webp" alt="Screenshot: Pflegelatein" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 512 512" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="pflegelatein-bg" x1="0" y1="0" x2="0" y2="1">
@@ -836,15 +851,14 @@
             </span>
             <h3>Pflegelatein</h3>
             <p>Karteibox mit über 600 Begriffen aus Anatomie, Pathologie und Pflegepraxis. Was du weißt, kommt seltener wieder; was wackelt, ist morgen wieder dran.</p>
-            <ul class="features">
-              <li>Leitner-System mit 5 Lernfächern</li>
-              <li>Latein → Deutsch und umgekehrt</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt lernen →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="sozialversicherungs-trainer" href="https://florianloyns.com/sozialversicherungs-trainer/">
+          <a class="card teal has-logo has-shot" data-repo="sozialversicherungs-trainer" href="https://florianloyns.com/sozialversicherungs-trainer/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/sozialversicherungs-trainer-light.webp" alt="Screenshot: Sozialversicherungs-Trainer" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/sozialversicherungs-trainer-dark.webp" alt="Screenshot: Sozialversicherungs-Trainer" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <path d="M 12 19 L 32 13 L 52 19 Z" fill="#ffffff"/>
@@ -864,15 +878,14 @@
             </span>
             <h3>Sozialversicherungs-Trainer</h3>
             <p>Die fünf Säulen der Sozialversicherung als interaktive Tempel-Architektur erkunden — plus Übungs-Modus mit 15 Stolperfallen-Szenarien für die Examensvorbereitung.</p>
-            <ul class="features">
-              <li>Lern- und Übungs-Modus mit drei Schwierigkeitsstufen</li>
-              <li>15 prüfungsrelevante Praxis-Szenarien</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt lernen →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="vier-ohren-selbsttest" href="https://florianloyns.com/vier-ohren-selbsttest/">
+          <a class="card teal has-logo has-shot" data-repo="vier-ohren-selbsttest" href="https://florianloyns.com/vier-ohren-selbsttest/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/vier-ohren-selbsttest-light.webp" alt="Screenshot: Das eigene Hören reflektieren" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/vier-ohren-selbsttest-dark.webp" alt="Screenshot: Das eigene Hören reflektieren" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <rect x="10" y="10" width="44" height="44" rx="4" fill="#ffffff"/>
@@ -896,15 +909,14 @@
             </span>
             <h3>Das eigene Hören reflektieren</h3>
             <p>Das 4-Ohren-Modell nach Schulz von Thun in 12 Alltagssituationen – zeigt dein lautestes und dein leisestes Ohr.</p>
-            <ul class="features">
-              <li>12 Szenen aus Schule und Praxis</li>
-              <li>Dominantes und leisestes Ohr</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="lerntypentest" href="https://florianloyns.com/lerntypentest/">
+          <a class="card teal has-logo has-shot" data-repo="lerntypentest" href="https://florianloyns.com/lerntypentest/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/lerntypentest-light.webp" alt="Screenshot: Den eigenen Lerntyp finden" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/lerntypentest-dark.webp" alt="Screenshot: Den eigenen Lerntyp finden" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <circle cx="32" cy="32" r="19" fill="none" stroke="#ffffff" stroke-width="2"/>
@@ -920,15 +932,10 @@
               </g>
             </svg>
             <span class="tag">
-              Reflexion · Lernstil
+              Reflexion · Lernmythen
             </span>
-            <h3>Den eigenen Lerntyp finden</h3>
-            <p>12 Fragen zu auditiv, visuell, kommunikativ und kinästhetisch – mit wissenschaftlicher Auflösung am Ende.</p>
-            <ul class="features">
-              <li>12 Fragen in ca. 2 Minuten</li>
-              <li>Vier Lernkanäle im Überblick</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
+            <h3>Der Lerntyp-Mythos im Selbsttest</h3>
+            <p>12 Fragen zu auditiv, visuell, kommunikativ und kinästhetisch – und am Ende die Auflösung, warum Lernen nach dem eigenen Lerntyp nachweislich keinen Vorteil bringt.</p>
             <span class="cta">Jetzt ausprobieren →</span>
           </a>
 
@@ -943,7 +950,11 @@
 
         <div class="grid">
 
-          <a class="card teal has-logo" data-repo="pflegegrad-rechner" href="https://florianloyns.com/pflegegrad-rechner/">
+          <a class="card teal has-logo has-shot" data-repo="pflegegrad-rechner" href="https://florianloyns.com/pflegegrad-rechner/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/pflegegrad-rechner-light.webp" alt="Screenshot: Pflegegrad-Rechner" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/pflegegrad-rechner-dark.webp" alt="Screenshot: Pflegegrad-Rechner" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <g fill="#ffffff">
@@ -959,15 +970,14 @@
             </span>
             <h3>Pflegegrad-Rechner</h3>
             <p>Sechs NBA-Module bewerten, Pflegegrad und Pflegegeld live mitsehen. Mit offiziellem SGB-XI-Wortlaut und den Sondergewichtungen in Modul 4.</p>
-            <ul class="features">
-              <li>Sechs Module nach Anlage 1 zu § 15 SGB XI</li>
-              <li>Live-Pflegegrad mit Pflegegeld-Betrag</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt rechnen →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="infusionsrechner" href="https://florianloyns.com/infusionsrechner/">
+          <a class="card teal has-logo has-shot" data-repo="infusionsrechner" href="https://florianloyns.com/infusionsrechner/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/infusionsrechner-light.webp" alt="Screenshot: Infusionsrechner" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/infusionsrechner-dark.webp" alt="Screenshot: Infusionsrechner" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <rect width="64" height="64" rx="12" fill="#0d7377"/>
               <path d="M 32 14 C 32 14, 45 32, 45 41 A 13 13 0 1 1 19 41 C 19 32, 32 14, 32 14 Z" fill="#ffffff"/>
@@ -977,15 +987,14 @@
             </span>
             <h3>Infusionsrechner</h3>
             <p>Tropfenrate, Laufzeit oder Volumen einer Schwerkraft-Infusion. Werte einstellen, Ergebnis und Rechenweg live mitsehen.</p>
-            <ul class="features">
-              <li>Drei Modi nach derselben Formel</li>
-              <li>Makro- und Mikrotropfsystem mit Live-Visualisierung</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt rechnen →</span>
           </a>
 
-          <a class="card teal has-logo" data-repo="bmi-tagesbedarf" href="https://florianloyns.com/bmi-tagesbedarf/">
+          <a class="card teal has-logo has-shot" data-repo="bmi-tagesbedarf" href="https://florianloyns.com/bmi-tagesbedarf/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/bmi-tagesbedarf-light.webp" alt="Screenshot: BMI & Tagesbedarf" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/bmi-tagesbedarf-dark.webp" alt="Screenshot: BMI & Tagesbedarf" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <svg class="card-logo" viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <clipPath id="bmi-card-strip-clip">
@@ -1007,11 +1016,6 @@
             </span>
             <h3>BMI &amp; Tagesbedarf</h3>
             <p>Body-Mass-Index, Grundumsatz und Tagesbedarf nach Mifflin-St Jeor und DGE-PAL. Werte einstellen, Rechenweg live.</p>
-            <ul class="features">
-              <li>WHO-BMI-Skala mit beweglichem Marker</li>
-              <li>Grundumsatz nach Mifflin-St Jeor (1990)</li>
-              <li>Als App installierbar (PWA)</li>
-            </ul>
             <span class="cta">Jetzt rechnen →</span>
           </a>
 
@@ -1021,8 +1025,13 @@
 
     <section class="block teal" id="installieren" aria-labelledby="installieren-heading">
       <div class="container">
-        <h2 id="installieren-heading">So installierst du die Apps auf dem Handy</h2>
-        <p class="section-lead">Alle Trainings, Selbsttests und Rechner lassen sich auf jedem Smartphone wie eine App installieren — direkt aus dem Browser, ohne App Store, ohne Anmeldung. Einmal eingerichtet, läuft die App auch offline.</p>
+        <details class="install">
+          <summary>
+            <h2 id="installieren-heading">So installierst du die Apps auf dem Handy</h2>
+            <p class="section-lead">Alle Trainings, Selbsttests und Rechner lassen sich auf jedem Smartphone wie eine App installieren — direkt aus dem Browser, ohne App Store, ohne Anmeldung. Einmal eingerichtet, läuft die App auch offline.</p>
+            <span class="install-toggle"><span class="when-closed">Anleitung für iPhone und Android anzeigen</span><span class="when-open">Anleitung ausblenden</span></span>
+          </summary>
+          <div class="install-body">
 
         <div class="grid">
 
@@ -1077,8 +1086,17 @@
           </div>
         </div>
 
+          </div>
+        </details>
       </div>
     </section>
+
+    <div class="audience marine" id="lehrende">
+      <div class="container">
+        <p class="audience-for">Für Lehrende</p>
+        <p class="audience-lead">Werkzeuge für Unterrichtsplanung und Prüfungen – und Plugins, mit denen Folien am Smartboard interaktiv werden.</p>
+      </div>
+    </div>
 
     <section class="block marine" id="werkzeuge" aria-labelledby="werkzeuge-heading">
       <div class="container">
@@ -1087,39 +1105,36 @@
 
         <div class="grid">
 
-          <a class="card marine" data-repo="gruppeneinteilung" href="https://florianloyns.com/gruppeneinteilung/">
+          <a class="card marine has-shot" data-repo="gruppeneinteilung" href="https://florianloyns.com/gruppeneinteilung/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/gruppeneinteilung-light.webp" alt="Screenshot: Lerngruppen klug einteilen" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/gruppeneinteilung-dark.webp" alt="Screenshot: Lerngruppen klug einteilen" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <span class="tag">Werkzeug · Unterricht</span>
             <h3>Lerngruppen klug einteilen</h3>
             <p>Vier Einteilungsmethoden mit Drag-and-Drop-Nachbearbeitung – inklusive Word- und PDF-Export.</p>
-            <ul class="features">
-              <li>Vier Einteilungsmethoden</li>
-              <li>Drag-and-Drop-Nachbearbeitung</li>
-              <li>Word- und PDF-Export</li>
-            </ul>
             <span class="cta">Jetzt nutzen →</span>
           </a>
 
-          <a class="card marine" data-repo="klare-auftraege" href="https://florianloyns.com/klare-auftraege/">
+          <a class="card marine has-shot" data-repo="klare-auftraege" href="https://florianloyns.com/klare-auftraege/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/klare-auftraege-light.webp" alt="Screenshot: Arbeitsaufträge strukturieren" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/klare-auftraege-dark.webp" alt="Screenshot: Arbeitsaufträge strukturieren" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <span class="tag">Werkzeug · Didaktik</span>
             <h3>Arbeitsaufträge strukturieren</h3>
             <p>Evidenzbasierte Vorlagen nach Hattie und Bloom – mit Operatoren-Bibliothek und Word-Export.</p>
-            <ul class="features">
-              <li>Struktur nach Hattie und Bloom</li>
-              <li>Operatoren-Bibliothek</li>
-              <li>Word-Export, offline nutzbar</li>
-            </ul>
             <span class="cta">Jetzt nutzen →</span>
           </a>
 
-          <a class="card marine" data-repo="osce-planer" href="https://florianloyns.com/osce-planer/">
+          <a class="card marine has-shot" data-repo="osce-planer" href="https://florianloyns.com/osce-planer/">
+            <span class="shot">
+              <img class="shot-light" src="img/shots/osce-planer-light.webp" alt="Screenshot: OSCE-Prüfungen planen" width="960" height="600" loading="lazy" decoding="async">
+              <img class="shot-dark" src="img/shots/osce-planer-dark.webp" alt="Screenshot: OSCE-Prüfungen planen" width="960" height="600" loading="lazy" decoding="async">
+            </span>
             <span class="tag">Werkzeug · Prüfungsplanung</span>
             <h3>OSCE-Prüfungen planen</h3>
             <p>Rotationspläne mit automatischer Logik, editierbaren Pausenzeiten und drei fertigen Word-Exporten.</p>
-            <ul class="features">
-              <li>Automatische Rotationslogik</li>
-              <li>Editierbare Pausenzeiten</li>
-              <li>Drei Word-Exporte</li>
-            </ul>
             <span class="cta">Jetzt nutzen →</span>
           </a>
 
@@ -1130,7 +1145,7 @@
     <section class="block marine" id="plugins" aria-labelledby="plugins-heading">
       <div class="container">
         <h2 id="plugins-heading">Reveal-Plugins</h2>
-        <p class="section-lead"><a href="https://revealjs.com" target="_blank" rel="noopener noreferrer" style="color:var(--marine-dark);text-decoration:underline">reveal.js</a> ist ein freies, browserbasiertes Präsentations-Framework – Folien laufen auf jedem Rechner, Beamer oder Smartboard, ohne Installation und offline. Meine Plugins erweitern es gezielt für den Unterricht: mit dem Finger am Touch-Display bedienbar und auf interaktives Lehren ausgelegt. Ein eigenes Deck f&uuml;hrt alle Kerntechniken einmal live vor &ndash; jeweils mit dem Markup darunter: <a href="https://florianloyns.com/reveal-showcase/" style="color:var(--marine-dark);text-decoration:underline">zum Showcase &rarr;</a></p>
+        <p class="section-lead"><a href="https://revealjs.com" target="_blank" rel="noopener noreferrer" style="color:var(--marine-dark);text-decoration:underline">reveal.js</a> ist ein freies, browserbasiertes Präsentations-Framework – Folien laufen auf jedem Rechner, Beamer oder Smartboard, ohne Installation und offline. Meine Plugins erweitern es gezielt für den Unterricht: mit dem Finger am Touch-Display bedienbar und auf interaktives Lehren ausgelegt. Alle sind frei und quelloffen (MIT-Lizenz). Ein eigenes Deck f&uuml;hrt alle Kerntechniken einmal live vor &ndash; jeweils mit dem Markup darunter: <a href="https://florianloyns.com/reveal-showcase/" style="color:var(--marine-dark);text-decoration:underline">zum Showcase &rarr;</a></p>
 
         <div class="grid">
 
@@ -1141,7 +1156,6 @@
             <ul class="features">
               <li>Stift, Lupe, Pause, Übersicht, Vollbild</li>
               <li>Für Touch-Display und Smartboard gebaut</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-touchcontrols" target="_blank" rel="noopener noreferrer">reveal.js-touchcontrols ↗</a>
@@ -1156,7 +1170,6 @@
             <ul class="features">
               <li>Erklärung direkt am Begriff</li>
               <li>Hover am Laptop, Tipp am Board</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-glossary" target="_blank" rel="noopener noreferrer">reveal.js-glossary ↗</a>
@@ -1164,14 +1177,28 @@
             </div>
           </div>
 
+          <div class="card marine" data-repo="reveal.js-hotspot">
+            <span class="tag">Plugin · reveal.js</span>
+            <h3>Abbildungen direkt im Bild beschriften</h3>
+            <p>Kleine Marker sitzen auf der Abbildung – ein Tipp öffnet Name und Erklärung direkt neben der Stelle, über die gerade gesprochen wird. Statt einer Begriffsliste neben dem Bild zeigt die Klasse auf die Struktur selbst. Im Vollbild arbeiten die Marker weiter, und beim Drucken wird daraus ein nummeriertes Bild mit Legende.</p>
+            <ul class="features">
+              <li>Marker in Prozent – unabhängig von Beamer und Auflösung</li>
+              <li>Mit visuellem Editor zum Setzen der Marker</li>
+            </ul>
+            <div class="card-actions">
+              <a href="https://github.com/florianloyns/reveal.js-hotspot" target="_blank" rel="noopener noreferrer">reveal.js-hotspot ↗</a>
+              <a href="https://florianloyns.com/reveal.js-hotspot/demo.html" target="_blank" rel="noopener noreferrer">Demo →</a>
+              <a href="https://florianloyns.com/reveal.js-hotspot/editor/" target="_blank" rel="noopener noreferrer">Editor →</a>
+            </div>
+          </div>
+
           <div class="card marine" data-repo="reveal.js-quiz">
             <span class="tag">Plugin · reveal.js</span>
             <h3>Interaktive Aufgaben auf Folien</h3>
-            <p>Vier Aufgabentypen für reveal.js: Single-Choice, Mehrfachauswahl, Wahr/Falsch und Reihenfolge. Rückmeldung über Farbe, mit dem Finger lösbar – Lernende können die Aufgaben auch zuhause wiederholen.</p>
+            <p>Fünf Aufgabentypen für reveal.js: Single-Choice, Mehrfachauswahl, Wahr/Falsch, Reihenfolge und Zuordnung. Rückmeldung über Farbe, mit dem Finger lösbar – Lernende können die Aufgaben auch zuhause wiederholen. Im PDF steht die Lösung gleich mit dabei.</p>
             <ul class="features">
-              <li>Single-Choice, Mehrfachauswahl, Wahr/Falsch, Reihenfolge</li>
+              <li>Single-Choice, Mehrfachauswahl, Wahr/Falsch, Reihenfolge, Zuordnung</li>
               <li>Am Touch-Display und Smartboard bedienbar</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-quiz" target="_blank" rel="noopener noreferrer">reveal.js-quiz ↗</a>
@@ -1186,7 +1213,6 @@
             <ul class="features">
               <li>Kategorien × Punkte, Feld antippen für die Frage</li>
               <li>Am Touch-Display und Smartboard bedienbar</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-quizgrid" target="_blank" rel="noopener noreferrer">reveal.js-quizgrid ↗</a>
@@ -1201,7 +1227,6 @@
             <ul class="features">
               <li>Dichte Wortwolke, in deinem Stil einfärbbar</li>
               <li>Mit dem Finger am Smartboard bedienbar</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-termcluster" target="_blank" rel="noopener noreferrer">reveal.js-termcluster ↗</a>
@@ -1216,7 +1241,6 @@
             <ul class="features">
               <li>Aufbauen – oder nur den aktuellen Satz hervorheben</li>
               <li>Kennt z. B., d. h., Dr. und Ordnungszahlen</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-stepped" target="_blank" rel="noopener noreferrer">reveal.js-stepped ↗</a>
@@ -1231,7 +1255,6 @@
             <ul class="features">
               <li>Mit Zeitangaben wird aus der Leiste ein maßstabsgetreuer Zeitstrahl</li>
               <li>Speist direkt eine Reihenfolge-Aufgabe: einmal schreiben, lehren und prüfen</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-sequence" target="_blank" rel="noopener noreferrer">reveal.js-sequence ↗</a>
@@ -1246,7 +1269,6 @@
             <ul class="features">
               <li>Der ganze Kreislauf bleibt sichtbar</li>
               <li>Mit dem Finger am Smartboard bedienbar</li>
-              <li>Frei und quelloffen (MIT)</li>
             </ul>
             <div class="card-actions">
               <a href="https://github.com/florianloyns/reveal.js-cycle" target="_blank" rel="noopener noreferrer">reveal.js-cycle ↗</a>
@@ -1283,6 +1305,7 @@
     isDark = dark;
     html.setAttribute('data-theme', dark ? 'dark' : 'light');
     localStorage.setItem('fl-theme', dark ? 'dark' : 'light');
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', dark ? '#0f172a' : '#127878'); });
     var sun  = document.getElementById('theme-icon-sun');
     var moon = document.getElementById('theme-icon-moon');
     if (sun)  sun.style.display  = dark ? 'block' : 'none';
