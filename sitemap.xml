@@ -77,6 +77,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://florianloyns.com/unterrichtstimer/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://florianloyns.com/reveal.js-touchcontrols/demo.html</loc>
     <priority>0.8</priority>
   </url>
