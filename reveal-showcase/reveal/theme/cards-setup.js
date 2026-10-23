@@ -89,6 +89,8 @@
     var p = [];
     if (global.RevealNotes)  p.push(global.RevealNotes);
     if (global.RevealZoom)   p.push(global.RevealZoom);     // Alt+Klick-Zoom (Laptop)
+    if (global.RevealHighlight) p.push(global.RevealHighlight); // Code mit Farben und Zeilen-Hervorhebung
+    if (global.RevealSearch) p.push(global.RevealSearch);   // Suche: Strg+Umschalt+F
     if (global.Smallcontrol) p.push(global.Smallcontrol);   // kleine Navigationspfeile
     if (global.RevealTouchControls) p.push(global.RevealTouchControls);    // Stift/Lupe/Pause/Übersicht/Vollbild
     if (global.RevealGlossary) p.push(global.RevealGlossary);             // Fachbegriff-Tooltips

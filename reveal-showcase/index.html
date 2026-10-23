@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>reveal.js – Techniken im Überblick · Florian Loyns</title>
-<meta name="description" content="Ein Showcase und eine Nachschlaghilfe: die Kerntechniken von reveal.js, jede einmal live mit dem Markup darunter.">
+<meta name="description" content="Ein Showcase und eine Nachschlaghilfe: die Techniken von reveal.js, jede einmal live mit dem Markup darunter – von Fragments über Lightbox und Scroll-Ansicht bis zur Sprecheransicht.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%232C4A6E%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2246%22%20font-family%3D%22system-ui%22%20font-size%3D%2236%22%20font-weight%3D%22900%22%20fill%3D%22white%22%20text-anchor%3D%22middle%22%3Efl%3C%2Ftext%3E%3C%2Fsvg%3E">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="reveal/dist/reset.css">
 <link rel="stylesheet" href="reveal/dist/reveal.css">
 <link rel="stylesheet" href="reveal/theme/cards.css">
+<link rel="stylesheet" href="reveal/dist/plugin/highlight/monokai.css">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="reveal.js-Überblick">
@@ -22,21 +23,66 @@
     .howto{margin-top:22px;background:#F3F6FA;border:1px solid #D7E0EC;border-radius:12px;padding:14px 18px;text-align:left}
     .howto .hl{display:block;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#2C4A6E;margin-bottom:8px}
     .howto code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;color:#1E3452;white-space:pre-wrap;line-height:1.6;display:block}
-    .demohint{margin-top:14px;font-size:15px;color:#6B7B7B}
+    .demohint{margin-top:14px;font-size:15px;color:#5A6A75}
+    .demohint code,.s-note code{font-family:ui-monospace,monospace;background:#EEF2F7;border-radius:5px;padding:1px 6px;font-size:.9em;color:#1E3452}
     .demohint kbd,.ltable kbd{font-family:ui-monospace,monospace;background:#EEF2F7;border:1px solid #C7D2E0;border-radius:5px;padding:1px 8px;font-size:14px;color:#1E3452}
     .tech-list{list-style:none;margin:0;padding:0;columns:2;column-gap:44px}
     .tech-list li{padding:8px 0 8px 24px;position:relative;font-size:19px;break-inside:avoid;color:#374151}
     .tech-list li::before{content:"\203A";position:absolute;left:0;color:#2C4A6E;font-weight:800}
     .tech-list li b{color:#1E3452}
+    .toc{list-style:none;margin:0;padding:0;columns:2;column-gap:44px}
+    .toc li{break-inside:avoid;padding:5px 0;font-size:19px;color:#5A6A75}
+    .toc a{color:#1E3452;font-weight:700;text-decoration:none;border-bottom:2px solid #C7D2E0}
+    .toc a:hover{border-color:#2C4A6E}
+    .toc .n{display:inline-block;width:30px;color:#9AA6B2;font-weight:700;font-size:15px}
     .frags{list-style:none;margin:0;padding:0;font-size:22px;line-height:2}
     .frags code{font-family:ui-monospace,monospace;background:#EEF2F7;border-radius:5px;padding:1px 8px;font-size:18px;color:#1E3452}
-    .downhint{margin-top:26px;font-size:15px;color:#6B7B7B}
+    .frag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .frag-grid > div{background:#F3F6FA;border:1px solid #D7E0EC;border-radius:12px;padding:16px 18px;text-align:center;font-size:20px;color:#1E3452}
+    .frag-grid code{display:block;margin-top:6px;font-family:ui-monospace,monospace;font-size:14px;color:#5A6A75}
+    .case{font-size:21px;line-height:1.45;color:#22312F;background:#F3F6FA;border-left:4px solid #2C4A6E;padding:12px 18px;border-radius:0}
+    .fopts{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:1fr;gap:10px}
+    .fopts li{font-size:20px;border:1px solid #D7E0EC;border-radius:10px;padding:9px 16px;background:#fff}
+    .reveal .fragment.highlight-green.visible{color:#3B6D11;font-weight:700}
+    .reveal .fragment.highlight-red.visible{color:#D14A4A;font-weight:700}
+    .reveal .fopts .fragment.strike.visible{color:#9AA6B2}
+    .why{margin-top:14px;font-size:19px;color:#3B6D11;font-weight:600}
+    .downhint{margin-top:26px;font-size:15px;color:#5A6A75}
     .aa-box{background:#EEF2F7;border:1px solid #C7D2E0;border-radius:16px;color:#1E3452;font-weight:800;display:inline-block}
+    .aa-list{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px;max-width:560px}
+    .aa-list li{font-size:21px;font-weight:700;color:#1E3452;background:#EEF2F7;border:1px solid #C7D2E0;border-radius:12px;padding:10px 18px}
+    .aa-list li span{display:inline-block;width:30px;color:#9AA6B2}
+    .bars{display:flex;align-items:flex-end;gap:46px;height:250px;padding:0 10px;border-bottom:2px solid #C7D2E0;margin-top:8px}
+    .bars .bar{width:120px;border-radius:12px 12px 0 0;display:flex;align-items:flex-start;justify-content:center;color:#fff;font-weight:800;font-size:24px;padding-top:10px;box-sizing:border-box}
+    .bars-lbl{display:flex;gap:46px;padding:8px 10px 0;font-size:16px;color:#5A6A75}
+    .bars-lbl span{width:120px;text-align:center}
     .reveal .fragment.highlight-current-blue.current-fragment{color:#2B6CB0}
     .reveal section > .bgdemo{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px;padding:0 7%;text-align:left}
     .bgdemo .k{font-size:14px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9)}
     .bgdemo .t{margin:0;font-size:clamp(30px,4.4vw,52px);font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1.12;text-shadow:0 3px 18px rgba(0,0,0,.45)}
     .bgdemo .c{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:16px;color:#fff;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.28);padding:7px 13px;border-radius:9px}
+    .lb-row{display:flex;gap:26px;justify-content:center;align-items:stretch}
+    .lb-item{width:250px;text-align:center;font-size:16px;color:#5A6A75}
+    .lb-item .trig{display:flex;align-items:center;justify-content:center;width:250px;height:150px;border-radius:14px;border:1px solid #D7E0EC;background:#F3F6FA;cursor:zoom-in;overflow:hidden;margin-bottom:10px;color:#1E3452;font-weight:700;font-size:18px;text-decoration:none}
+    .lb-item img.trig{object-fit:cover;padding:0}
+    .lb-item code{font-family:ui-monospace,monospace;font-size:13px;color:#1E3452}
+    .fitbox{background:#1E3452;border-radius:16px;color:#fff;padding:18px 34px;margin-top:6px}
+    .fitbox .r-fit-text{color:#fff;font-weight:900;letter-spacing:-.02em;margin:0}
+    .reveal .r-stack img{max-height:300px;width:auto}
+    .stretch-img{border-radius:14px;object-fit:cover;width:100%}
+    .formula{font-size:44px;color:#1E3452;margin:6px 0 4px}
+    .formula math{font-size:1em}
+    .calc{font-size:22px;color:#22312F;line-height:1.6}
+    .calc math{font-size:1.1em}
+    .reveal pre{position:relative;width:100%;margin:6px 0 0;box-shadow:none;font-size:19px}
+    .reveal pre code{border-radius:12px;max-height:none;padding:16px 20px;line-height:1.5;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .scrollcta{display:inline-block;margin-top:6px;background:#2C4A6E;color:#fff!important;text-decoration:none;border-radius:12px;padding:13px 24px;font-size:19px;font-weight:700}
+    .phone{width:150px;height:270px;border:3px solid #1E3452;border-radius:26px;padding:16px 10px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;background:#fff}
+    .phone div{border-radius:6px;background:#EEF2F7;height:58px}
+    .phone div:nth-child(1){background:#2C4A6E}
+    .side{display:flex;gap:40px;align-items:center}
+    .autolist{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:24px}
+    .autolist li{background:#F3F6FA;border:1px solid #D7E0EC;border-radius:12px;padding:12px 20px;color:#1E3452;font-weight:700}
     .reveal.on-dark .slide-number{color:#EAF1FB!important}
     .reveal.on-dark .controls{color:#EAF1FB!important}
     .reveal.on-dark .touchcontrols button{border-color:#fff!important;color:#fff!important}
@@ -55,28 +101,38 @@
     <p class="t-author">Florian Loyns</p>
     <p class="s-note" style="margin-top:16px"><a href="https://revealjs.com/" target="_blank" rel="noopener noreferrer" style="color:#2C4A6E;text-decoration:underline">reveal.js</a> ist ein freies Open-Source-Framework (MIT) von Hakim El Hattab und der Community.</p>
   </div>
+  <aside class="notes">Willkommen. Diese Präsentation zeigt, was reveal.js kann – jede Technik einmal live, darunter das Markup zum Nachbauen. Tipp: Drücke S für die Sprecheransicht. Genau diese Notizen erscheinen dann dort.</aside>
 </section>
 
-<section>
+<section id="ueberblick">
   <div class="cardslide">
     <div class="s-top"><span class="s-label">&Uuml;berblick</span></div>
-    <h2>Sieben Kerntechniken &ndash; jede auf einer Folie.</h2>
+    <h2>Dreizehn Techniken &ndash; ein Klick springt direkt hin.</h2>
     <div class="s-body">
-      <ul class="tech-list">
-        <li class="fragment"><b>Vertikale Folien</b> &ndash; Themen nach unten vertiefen</li>
-        <li class="fragment"><b>Fragments</b> &ndash; Schritt f&uuml;r Schritt einblenden</li>
-        <li class="fragment"><b>&Uuml;berg&auml;nge</b> &ndash; Folienwechsel animieren</li>
-        <li class="fragment"><b>Hintergr&uuml;nde</b> &ndash; Farbe, Verlauf, Bild, Video</li>
-        <li class="fragment"><b>Medien</b> &ndash; Video, Audio und Webseiten einbetten</li>
-        <li class="fragment"><b>Auto-Animate</b> &ndash; Elemente weich bewegen</li>
-        <li class="fragment"><b>Modi &amp; Tasten</b> &ndash; &Uuml;bersicht, Sprecheransicht, PDF</li>
-      </ul>
+      <ol class="toc">
+        <li><span class="n">01</span><a href="#/struktur">Struktur</a> &ndash; waagerecht und in die Tiefe</li>
+        <li><span class="n">02</span><a href="#/fragments">Fragments</a> &ndash; Schritt f&uuml;r Schritt</li>
+        <li><span class="n">03</span><a href="#/uebergaenge">&Uuml;berg&auml;nge</a> &ndash; Folienwechsel</li>
+        <li><span class="n">04</span><a href="#/hintergrund">Hintergr&uuml;nde</a> &ndash; Farbe, Bild, Video</li>
+        <li><span class="n">05</span><a href="#/medien">Medien</a> &ndash; Video, Audio, Webseite</li>
+        <li><span class="n">06</span><a href="#/lightbox">Lightbox</a> &ndash; Bild und Film gro&szlig;</li>
+        <li><span class="n">07</span><a href="#/layout">Layout-Helfer</a> &ndash; stapeln, f&uuml;llen</li>
+        <li><span class="n">08</span><a href="#/autoanimate">Auto-Animate</a> &ndash; weiche Bewegung</li>
+        <li><span class="n">09</span><a href="#/formeln">Formeln</a> &ndash; sauber gesetzt</li>
+        <li><span class="n">10</span><a href="#/code">Code</a> &ndash; Zeile f&uuml;r Zeile</li>
+        <li><span class="n">11</span><a href="#/sprecher">Sprecheransicht</a> &ndash; Notizen und Uhr</li>
+        <li><span class="n">12</span><a href="#/scroll">Scroll-Ansicht</a> &ndash; lesen wie einen Artikel</li>
+        <li><span class="n">13</span><a href="#/autoslide">Automatischer Ablauf</a> &ndash; Folien bl&auml;ttern selbst</li>
+      </ol>
+      <div class="howto"><span class="hl">So schreibst du's &middot; Sprunglinks</span><code>&lt;section id="fragments"&gt;&hellip;&lt;/section&gt;
+&lt;a href="#/fragments"&gt;Fragments&lt;/a&gt;</code></div>
     </div>
-    <p class="s-note">Alles im Folgenden sind eingebaute reveal.js-Funktionen &ndash; ganz ohne Plugin.</p>
+    <p class="s-note">Ganz unten: <a href="#/tasten" style="color:#2C4A6E">alle Tasten auf einen Blick</a>.</p>
   </div>
+  <aside class="notes">Die Übersicht ist zugleich die erste Demo: Jeder Eintrag ist ein Sprunglink auf eine Folie mit eigener id. So baut man Inhaltsverzeichnisse, Querverweise oder einen Zurück-Knopf.</aside>
 </section>
 
-<section>
+<section id="struktur">
   <section>
     <div class="cardslide">
       <div class="s-top"><span class="s-label">Struktur &middot; horizontal</span></div>
@@ -90,6 +146,7 @@
         <p class="downhint">&darr; Dr&uuml;cke die Pfeiltaste nach unten &ndash; diese Folie hat eine Unterfolie.</p>
       </div>
     </div>
+    <aside class="notes">Waagerecht ist die Hauptlinie des Vortrags. Wer nur den Überblick will, bleibt auf ihr; Vertiefungen hängen darunter.</aside>
   </section>
   <section>
     <div class="cardslide">
@@ -99,28 +156,66 @@
         <p style="font-size:20px">Du bist gerade nach unten gesprungen. Mit der Pfeiltaste nach oben geht es zur&uuml;ck, nach rechts weiter zum n&auml;chsten Hauptthema.</p>
       </div>
     </div>
+    <aside class="notes">Unterfolien eignen sich für Beispiele, Herleitungen oder Material für Rückfragen.</aside>
   </section>
 </section>
 
-<section>
-  <div class="cardslide">
-    <div class="s-top"><span class="s-label">Aufbau &middot; Fragments</span></div>
-    <h2>Inhalte Schritt f&uuml;r Schritt einblenden.</h2>
-    <div class="s-body">
-      <ul class="frags">
-        <li class="fragment"><code>fragment</code> &ndash; erscheint (Standard)</li>
-        <li class="fragment fade-up"><code>fade-up</code> &ndash; steigt herein</li>
-        <li class="fragment highlight-current-blue"><code>highlight-current-blue</code> &ndash; hebt in Blau hervor</li>
-        <li class="fragment strike"><code>strike</code> &ndash; streicht durch</li>
-        <li class="fragment fade-in-then-semi-out">erst da, dann gedimmt</li>
-      </ul>
-      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;li class="fragment fade-up"&gt;&hellip;&lt;/li&gt;</code></div>
-      <p class="demohint">Probier's: <kbd>Leertaste</kbd> oder <kbd>&rarr;</kbd> blendet die Punkte nacheinander ein.</p>
+<section id="fragments">
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Aufbau &middot; Fragments</span></div>
+      <h2>Inhalte Schritt f&uuml;r Schritt einblenden.</h2>
+      <div class="s-body">
+        <ul class="frags">
+          <li class="fragment"><code>fragment</code> &ndash; erscheint (Standard)</li>
+          <li class="fragment fade-up"><code>fade-up</code> &ndash; steigt herein</li>
+          <li class="fragment highlight-current-blue"><code>highlight-current-blue</code> &ndash; hebt in Blau hervor</li>
+          <li class="fragment strike"><code>strike</code> &ndash; streicht durch</li>
+          <li class="fragment fade-in-then-semi-out">erst da, dann gedimmt</li>
+        </ul>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;li class="fragment fade-up"&gt;&hellip;&lt;/li&gt;</code></div>
+        <p class="downhint">Probier's: <kbd>Leertaste</kbd> oder <kbd>&rarr;</kbd> &middot; &darr; darunter: mehr Arten und freie Reihenfolge.</p>
+      </div>
     </div>
-  </div>
+    <aside class="notes">Fragments sind das wichtigste Werkzeug gegen die Textwand: Ein Gedanke nach dem anderen.</aside>
+  </section>
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Fragments &middot; mehr Arten</span></div>
+      <h2>Wachsen, schrumpfen, kurz aufleuchten, farbig markieren.</h2>
+      <div class="s-body">
+        <div class="frag-grid">
+          <div class="fragment grow">w&auml;chst<code>grow</code></div>
+          <div class="fragment shrink">schrumpft<code>shrink</code></div>
+          <div class="fragment fade-in-then-out">kommt und geht<code>fade-in-then-out</code></div>
+          <div class="fragment highlight-red">wird rot<code>highlight-red</code></div>
+          <div class="fragment highlight-green">wird gr&uuml;n<code>highlight-green</code></div>
+          <div class="fragment current-visible">nur jetzt sichtbar<code>current-visible</code></div>
+        </div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;div class="fragment grow"&gt;&hellip;&lt;/div&gt;</code></div>
+      </div>
+    </div>
+    <aside class="notes">Weniger ist mehr: Im Unterricht reichen meist das normale Einblenden und ein Hervorheben. Die übrigen Arten sind gut für einzelne Akzente.</aside>
+  </section>
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Fragments &middot; Reihenfolge</span></div>
+      <h2>Mit <code style="font-size:.8em">data-fragment-index</code> bestimmst du, was wann kommt.</h2>
+      <div class="s-body">
+        <p class="case">Vor der Morgengabe misst Frau H. einen Puls von 48/min. Der Betablocker steht im Plan. Was tun Sie?</p>
+        <ul class="fopts">
+          <li class="fragment" data-fragment-index="1"><span class="fragment strike" data-fragment-index="3">Wie verordnet geben, dann nachmessen</span></li>
+          <li class="fragment" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">Nicht geben, &auml;rztlich R&uuml;cksprache halten</span></li>
+          <li class="fragment" data-fragment-index="1"><span class="fragment strike" data-fragment-index="3">Die halbe Dosis geben</span></li>
+        </ul>
+        <p class="why fragment" data-fragment-index="4">Gleicher Index = erscheint gleichzeitig. Hier: erst die Optionen, dann die L&ouml;sung, dann fallen die Ablenker weg.</p>
+      </div>
+    </div>
+    <aside class="notes">Ein Beispiel aus dem Unterricht: Erst stehen alle Optionen da, dann wird die richtige markiert, zuletzt werden die Ablenker gestrichen. Der gefährlich plausible Ablenker ist „wie verordnet geben, dann nachmessen“.</aside>
+  </section>
 </section>
 
-<section data-transition="zoom">
+<section id="uebergaenge" data-transition="zoom">
   <div class="cardslide">
     <div class="s-top"><span class="s-label">&Uuml;berg&auml;nge</span></div>
     <h2>Diese Folie ist gerade hereingezoomt.</h2>
@@ -130,14 +225,16 @@
       <p class="demohint">Sparsam einsetzen &ndash; ein ruhiges <code>fade</code> wirkt in der Lehre meist am besten.</p>
     </div>
   </div>
+  <aside class="notes">Übergänge sind Geschmackssache. Ein einheitlicher, ruhiger Übergang lenkt am wenigsten ab.</aside>
 </section>
 
-<section data-force-dark data-background-color="#1E3452">
+<section id="hintergrund" data-force-dark data-background-color="#1E3452">
   <div class="bgdemo">
     <span class="k">Hintergrund &middot; Farbe</span>
     <p class="t">Eine Vollfl&auml;chen-Farbe hinter der Folie.</p>
     <span class="c">data-background-color</span>
   </div>
+  <aside class="notes">Hintergründe gehören zur Folie, nicht zum Inhalt – sie reichen bis an den Bildschirmrand.</aside>
 </section>
 
 <section data-force-dark data-background-gradient="linear-gradient(135deg,#1E3452,#0E7C7B)">
@@ -146,6 +243,7 @@
     <p class="t">Ein Verlauf statt Vollton.</p>
     <span class="c">data-background-gradient</span>
   </div>
+  <aside class="notes">Jeder CSS-Verlauf funktioniert.</aside>
 </section>
 
 <section data-force-dark data-background-image="media/hintergrund.jpg" data-background-size="cover">
@@ -154,6 +252,7 @@
     <p class="t">Ein Bild formatf&uuml;llend hinter der Folie.</p>
     <span class="c">data-background-image</span>
   </div>
+  <aside class="notes">Mit data-background-opacity lässt sich ein Bild auch abschwächen, damit Text darauf lesbar bleibt.</aside>
 </section>
 
 <section data-force-dark data-background-color="#1E3452" data-background-video="media/beispiel.mp4" data-background-video-loop data-background-video-muted>
@@ -162,9 +261,11 @@
     <p class="t">Ein Film l&auml;uft hinter der Folie.</p>
     <span class="c">data-background-video</span>
   </div>
+  <aside class="notes">Stumm und in Schleife eignet sich ein Hintergrundvideo für Stimmungen – nicht für Inhalte, die man hören muss.</aside>
 </section>
 
-<section>
+
+<section id="medien">
   <div class="cardslide">
     <div class="s-top"><span class="s-label">Medien &middot; Video</span></div>
     <h2>Ein Video l&auml;uft direkt in der Folie.</h2>
@@ -178,6 +279,7 @@
       <p class="demohint">reveal pausiert das Video automatisch beim Folienwechsel &ndash; und l&auml;dt es dank <code>data-src</code> erst bei Bedarf.</p>
     </div>
   </div>
+  <aside class="notes">data-src statt src: Das Video wird erst geladen, wenn die Folie in die Nähe kommt. Das hält den Start schnell.</aside>
 </section>
 
 <section>
@@ -194,6 +296,7 @@
       <p class="demohint">Wie beim Video: reveal pausiert den Ton beim Folienwechsel und l&auml;dt ihn per <code>data-src</code> erst bei Bedarf. <code>data-autoplay</code> w&uuml;rde ihn automatisch starten.</p>
     </div>
   </div>
+  <aside class="notes">Gut für Herztöne, Atemgeräusche oder ein kurzes Interview.</aside>
 </section>
 
 <section>
@@ -209,10 +312,69 @@
       <p class="demohint">Datenschutzfreundlich: erst auf Klick geladen (Klick = Einwilligung). L&auml;uft nur online.</p>
     </div>
   </div>
+  <aside class="notes">Fremde Webseiten nur mit Einwilligung laden: Schon das Einbetten überträgt die IP-Adresse an den Anbieter.</aside>
 </section>
 
-<section>
-  <section data-auto-animate>
+<section id="lightbox">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Medien &middot; Lightbox</span></div>
+    <h2>Antippen &ndash; und Bild oder Film f&uuml;llen den Bildschirm.</h2>
+    <div class="s-body">
+      <div class="lb-row">
+        <div class="lb-item"><img class="trig" src="media/hintergrund.jpg" alt="Beispielbild" data-preview-image>Bild gro&szlig;<br><code>data-preview-image</code></div>
+        <div class="lb-item"><button class="trig" type="button" data-preview-video="media/beispiel.mp4" data-preview-fit="contain">&#9654;&nbsp; Film abspielen</button>Film gro&szlig;<br><code>data-preview-video</code></div>
+        <div class="lb-item"><a class="trig" href="https://florianloyns.com/" data-preview-link>florianloyns.com</a>Webseite als Vorschau<br><code>data-preview-link</code></div>
+      </div>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;img src="bild.jpg" data-preview-image&gt;</code></div>
+      <p class="demohint">Eingebaut seit reveal.js 5.2 &ndash; ohne Plugin. <kbd>Esc</kbd> schlie&szlig;t die Vorschau.</p>
+    </div>
+  </div>
+  <aside class="notes">Kleine Abbildungen auf der Folie, groß auf Antippen: Details lesbar machen, ohne die Folie zu überladen.</aside>
+</section>
+
+<section id="layout">
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Layout &middot; r-fit-text</span></div>
+      <h2>Eine Kernaussage f&uuml;llt die ganze Breite.</h2>
+      <div class="s-body">
+        <div class="fitbox"><p class="r-fit-text">Erst messen, dann geben.</p></div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;p class="r-fit-text"&gt;Erst messen, dann geben.&lt;/p&gt;</code></div>
+        <p class="downhint">&darr; darunter: Bilder stapeln und Platz f&uuml;llen.</p>
+      </div>
+    </div>
+    <aside class="notes">r-fit-text rechnet die Schriftgröße so aus, dass der Text genau die verfügbare Breite füllt – ideal für eine einzige Merksatz-Folie.</aside>
+  </section>
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Layout &middot; r-stack</span></div>
+      <h2>Bilder liegen &uuml;bereinander und bauen sich Schicht f&uuml;r Schicht auf.</h2>
+      <div class="s-body">
+        <div class="r-stack">
+          <img src="media/haut-1-subkutis.svg" alt="Unterhaut (Subkutis)" width="900" height="360">
+          <img class="fragment" src="media/haut-2-dermis.svg" alt="Lederhaut (Dermis)" width="900" height="360">
+          <img class="fragment" src="media/haut-3-epidermis.svg" alt="Oberhaut (Epidermis)" width="900" height="360">
+        </div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;div class="r-stack"&gt;
+  &lt;img src="schicht-1.svg"&gt; &lt;img class="fragment" src="schicht-2.svg"&gt; &hellip;
+&lt;/div&gt;</code></div>
+      </div>
+    </div>
+    <aside class="notes">Von innen nach außen: Subkutis, Dermis, Epidermis. Jede Schicht ist ein eigenes, transparentes Bild; r-stack legt sie exakt übereinander.</aside>
+  </section>
+  <section>
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Layout &middot; r-stretch</span></div>
+      <h2>Ein Bild nimmt sich den restlichen Platz der Folie.</h2>
+      <img class="r-stretch stretch-img" src="media/hintergrund.jpg" alt="Beispielbild, das den Restplatz füllt" style="margin-top:18px">
+      <p class="demohint" style="margin-bottom:0">Kein Ausrechnen von H&ouml;hen: <code>&lt;img class="r-stretch"&gt;</code> &ndash; genau ein Element pro Folie.</p>
+    </div>
+    <aside class="notes">r-stretch ist praktisch für Abbildungen unter einer Überschrift: Das Bild wird so groß, wie Platz ist.</aside>
+  </section>
+</section>
+
+<section id="autoanimate">
+  <section data-auto-animate data-auto-animate-id="kasten">
     <div class="cardslide">
       <div class="s-top"><span class="s-label">Auto-Animate</span></div>
       <h2>Gleiche Elemente wandern weich von Folie zu Folie.</h2>
@@ -221,8 +383,9 @@
         <p class="downhint">&darr; Weiter nach unten &ndash; beobachte den Kasten.</p>
       </div>
     </div>
+    <aside class="notes">Auto-Animate vergleicht zwei aufeinanderfolgende Folien und bewegt alles, was auf beiden vorkommt.</aside>
   </section>
-  <section data-auto-animate>
+  <section data-auto-animate data-auto-animate-id="kasten">
     <div class="cardslide">
       <div class="s-top"><span class="s-label">Auto-Animate</span></div>
       <h2>reveal.js interpoliert Gr&ouml;&szlig;e, Position und Farbe von selbst.</h2>
@@ -230,28 +393,185 @@
         <div class="aa-box" data-id="box" style="font-size:40px;padding:34px 54px;margin-top:20px;background:#DCE6F1">derselbe Kasten &ndash; nur gr&ouml;&szlig;er</div>
         <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-auto-animate&gt; &hellip; data-id="box" &hellip; &lt;/section&gt;
 &lt;section data-auto-animate&gt; &hellip; data-id="box" &hellip; &lt;/section&gt;</code></div>
+        <p class="downhint">&darr; Weiter: eine Liste sortiert sich selbst.</p>
       </div>
     </div>
+    <aside class="notes">data-id verbindet die beiden Elemente; alles andere erledigt reveal.js.</aside>
+  </section>
+  <section data-auto-animate data-auto-animate-id="liste">
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Auto-Animate &middot; Liste</span></div>
+      <h2>Der Pflegeprozess &ndash; noch durcheinander.</h2>
+      <div class="s-body">
+        <ol class="aa-list">
+          <li data-id="p4"><span>?</span>Pflegema&szlig;nahmen durchf&uuml;hren</li>
+          <li data-id="p1"><span>?</span>Informationen sammeln</li>
+          <li data-id="p6"><span>?</span>Evaluieren</li>
+          <li data-id="p3"><span>?</span>Pflegeziele festlegen</li>
+          <li data-id="p2"><span>?</span>Probleme und Ressourcen erkennen</li>
+          <li data-id="p5"><span>?</span>Ma&szlig;nahmen planen</li>
+        </ol>
+        <p class="downhint">&darr; Weiter &ndash; die Liste sortiert sich.</p>
+      </div>
+    </div>
+    <aside class="notes">Gut als Einstieg: Die Klasse sortiert erst mündlich, dann zeigt die nächste Folie die Lösung – und jede Karte wandert an ihren Platz.</aside>
+  </section>
+  <section data-auto-animate data-auto-animate-id="liste">
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Auto-Animate &middot; Liste</span></div>
+      <h2>Jede Karte wandert an ihren Platz.</h2>
+      <div class="s-body">
+        <ol class="aa-list">
+          <li data-id="p1"><span>1</span>Informationen sammeln</li>
+          <li data-id="p2"><span>2</span>Probleme und Ressourcen erkennen</li>
+          <li data-id="p3"><span>3</span>Pflegeziele festlegen</li>
+          <li data-id="p5"><span>4</span>Ma&szlig;nahmen planen</li>
+          <li data-id="p4"><span>5</span>Pflegema&szlig;nahmen durchf&uuml;hren</li>
+          <li data-id="p6"><span>6</span>Evaluieren</li>
+        </ol>
+        <p class="downhint">&darr; Weiter: Werte, die sich ver&auml;ndern.</p>
+      </div>
+    </div>
+    <aside class="notes">Gleiche data-id in beiden Listen – die Reihenfolge im Markup ist einfach eine andere.</aside>
+  </section>
+  <section data-auto-animate data-auto-animate-id="werte">
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Auto-Animate &middot; Werte</span></div>
+      <h2>Herr K. bei Aufnahme: Blutdruck 178/104 mmHg.</h2>
+      <div class="s-body">
+        <div class="bars">
+          <div class="bar" data-id="sys" style="height:228px;background:#D14A4A">178</div>
+          <div class="bar" data-id="dia" style="height:133px;background:#E07A5F">104</div>
+        </div>
+        <div class="bars-lbl"><span>systolisch</span><span>diastolisch</span></div>
+        <p class="downhint">&darr; Weiter: nach vier Wochen Therapie.</p>
+      </div>
+    </div>
+    <aside class="notes">Die Balken sind einfache Kästen mit einer Höhe. Auto-Animate interpoliert Höhe und Farbe.</aside>
+  </section>
+  <section data-auto-animate data-auto-animate-id="werte">
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">Auto-Animate &middot; Werte</span></div>
+      <h2>Nach vier Wochen: 132/84 mmHg.</h2>
+      <div class="s-body">
+        <div class="bars">
+          <div class="bar" data-id="sys" style="height:169px;background:#639922">132</div>
+          <div class="bar" data-id="dia" style="height:108px;background:#8DB65A">84</div>
+        </div>
+        <div class="bars-lbl"><span>systolisch</span><span>diastolisch</span></div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;div data-id="sys" style="height:228px"&gt; &rarr; &lt;div data-id="sys" style="height:169px"&gt;</code></div>
+      </div>
+    </div>
+    <aside class="notes">Ein Diagramm, das sich bewegt, macht Veränderung sichtbar – ganz ohne Diagramm-Bibliothek.</aside>
   </section>
 </section>
 
-<section>
+<section id="formeln">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Formeln</span></div>
+    <h2>Formeln stehen sauber gesetzt &ndash; direkt im Browser.</h2>
+    <div class="s-body">
+      <div class="formula">
+        <math display="block"><mrow><mtext>Tropfen/min</mtext><mo>=</mo><mfrac><mrow><mtext>Volumen (ml)</mtext><mo>&#xD7;</mo><mn>20</mn></mrow><mrow><mtext>Zeit (min)</mtext></mrow></mfrac></mrow></math>
+      </div>
+      <p class="calc fragment">500&nbsp;ml in 4&nbsp;Stunden: <math><mfrac><mrow><mn>500</mn><mo>&#xD7;</mo><mn>20</mn></mrow><mn>240</mn></mfrac><mo>&#x2248;</mo><mn>42</mn></math> Tropfen pro Minute</p>
+      <div class="howto"><span class="hl">So schreibst du's &middot; MathML</span><code>&lt;math&gt;&lt;mfrac&gt;&lt;mn&gt;500&lt;/mn&gt;&lt;mn&gt;240&lt;/mn&gt;&lt;/mfrac&gt;&lt;/math&gt;</code></div>
+      <p class="demohint">MathML kann jeder aktuelle Browser &ndash; ohne Zusatzbibliothek und ohne fremden Server. F&uuml;r LaTeX-Schreibweise gibt es das Math-Plugin.</p>
+    </div>
+  </div>
+  <aside class="notes">Die Tropfformel mit dem Makrotropfsystem: 20 Tropfen entsprechen einem Milliliter. Das Ergebnis wird auf ganze Tropfen gerundet.</aside>
+</section>
+
+<section id="code">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Code</span></div>
+    <h2>Quelltext mit Farben &ndash; und Zeile f&uuml;r Zeile erkl&auml;rt.</h2>
+    <div class="s-body">
+<pre><code class="language-html" data-trim data-noescape data-line-numbers="1|2|3|4|1-5">
+&lt;section data-auto-animate&gt;
+  &lt;h2&gt;Eine Aussage als &Uuml;berschrift&lt;/h2&gt;
+  &lt;p class="fragment"&gt;Der Beleg erscheint danach.&lt;/p&gt;
+  &lt;aside class="notes"&gt;Nur in der Sprecheransicht.&lt;/aside&gt;
+&lt;/section&gt;
+</code></pre>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;pre&gt;&lt;code data-line-numbers="1|2|3-4"&gt;&hellip;&lt;/code&gt;&lt;/pre&gt;</code></div>
+      <p class="demohint"><kbd>&rarr;</kbd> springt von Hervorhebung zu Hervorhebung &middot; mitgeliefertes Highlight-Plugin.</p>
+    </div>
+  </div>
+  <aside class="notes">Die Zeilen nach data-line-numbers werden nacheinander hervorgehoben – wie Fragments, nur für Code.</aside>
+</section>
+
+<section id="sprecher">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Sprecheransicht</span></div>
+    <h2>Taste S dr&uuml;cken &ndash; dort stehen Notizen, Uhr und die n&auml;chste Folie.</h2>
+    <div class="s-body">
+      <p style="font-size:20px">Jede Folie in dieser Pr&auml;sentation hat Notizen. Das Publikum sieht nur die Folie, du siehst in einem zweiten Fenster zus&auml;tzlich, was du sagen willst &ndash; und wie viel Zeit vergangen ist.</p>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section&gt;
+  &hellip;
+  &lt;aside class="notes"&gt;Das sehe nur ich.&lt;/aside&gt;
+&lt;/section&gt;</code></div>
+      <p class="demohint">Am besten mit zwei Bildschirmen: Folie auf den Beamer, Sprecheransicht auf den Laptop. Beide bleiben synchron.</p>
+    </div>
+  </div>
+  <aside class="notes">Hallo aus der Sprecheransicht! Genau dieser Text steht im Markup in einem aside-Element mit der Klasse notes.</aside>
+</section>
+
+<section id="scroll">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Scroll-Ansicht</span></div>
+    <h2>Dieselben Folien lassen sich wie ein Artikel durchscrollen.</h2>
+    <div class="s-body">
+      <div class="side">
+        <div class="phone" aria-hidden="true"><div></div><div></div><div></div><div></div></div>
+        <div>
+          <p style="font-size:20px;margin-top:0">Ideal zum Nacharbeiten auf dem Handy. Fragments erscheinen beim Scrollen. Auf schmalen Bildschirmen schaltet reveal.js sogar <b>von selbst</b> um.</p>
+          <a class="scrollcta" href="?view=scroll" target="_self">Diese Pr&auml;sentation zum Durchscrollen &ouml;ffnen</a>
+          <div class="howto"><span class="hl">So schreibst du's</span><code>Link mit ?view=scroll &middot; oder Reveal.initialize({ view: 'scroll' })</code></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Die Scroll-Ansicht gibt es seit reveal.js 5. Man teilt einfach den Link mit ?view=scroll – zum Beispiel per QR-Code am Ende der Stunde.</aside>
+</section>
+
+<section id="autoslide" data-autoslide="1600">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Automatischer Ablauf</span></div>
+    <h2>Diese Folie bl&auml;ttert sich selbst &ndash; schau einfach zu.</h2>
+    <div class="s-body">
+      <ul class="autolist">
+        <li class="fragment">Pausenschleife auf dem Bildschirm</li>
+        <li class="fragment">Infotafel im Foyer</li>
+        <li class="fragment" data-autoslide="0">Bilderserie, die von allein l&auml;uft &ndash; und hier stoppt</li>
+      </ul>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-autoslide="1600"&gt; &hellip; &lt;/section&gt;
+Endlosschleife: Reveal.initialize({ autoSlide: 5000, loop: true })</code></div>
+    </div>
+  </div>
+  <aside class="notes">data-autoslide gibt die Millisekunden bis zum nächsten Schritt an. Am letzten Punkt steht data-autoslide="0" – deshalb hält die Folie dort an, statt weiterzuspringen.</aside>
+</section>
+
+<section id="tasten">
   <div class="cardslide">
     <div class="s-top"><span class="s-label">Nachschlag &middot; Modi &amp; Tasten</span></div>
     <h2>Was reveal.js beim Vortragen kann.</h2>
     <div class="s-body">
       <div class="tablewrap"><table class="ltable prose compact"><thead><tr><th>Taste</th><th>Funktion</th><th>Wof&uuml;r</th></tr></thead><tbody>
         <tr><td><kbd>Esc</kbd> / <kbd>O</kbd></td><td>&Uuml;bersichtsmodus</td><td>Alle Folien als Raster &ndash; schnell springen</td></tr>
-        <tr><td><kbd>S</kbd></td><td>Sprecheransicht</td><td>Notizen, Timer und n&auml;chste Folie im zweiten Fenster</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Sprecheransicht</td><td>Notizen, Uhr und n&auml;chste Folie im zweiten Fenster</td></tr>
         <tr><td><kbd>F</kbd></td><td>Vollbild</td><td>Ablenkungsfreie Pr&auml;sentation</td></tr>
         <tr><td><kbd>Alt</kbd>+Klick</td><td>Zoom</td><td>In ein Detail hineinvergr&ouml;&szlig;ern</td></tr>
-        <tr><td><kbd>G</kbd></td><td>Jump-to-Slide</td><td>Direkt zu einer Foliennummer springen</td></tr>
+        <tr><td><kbd>G</kbd></td><td>Gehe zu Folie</td><td>Nummer eintippen, Enter &ndash; schon da</td></tr>
+        <tr><td><kbd>Strg</kbd>+<kbd>&#8679;</kbd>+<kbd>F</kbd></td><td>Suche</td><td>Ein Wort in allen Folien finden</td></tr>
         <tr><td><kbd>B</kbd> / <kbd>.</kbd></td><td>Pause (Schwarzbild)</td><td>Aufmerksamkeit zur&uuml;ck in den Raum holen</td></tr>
-        <tr><td>Druck &rarr; PDF</td><td>PDF-Export</td><td>Handout aus denselben Folien</td></tr>
+        <tr><td><kbd>?</kbd></td><td>Hilfe</td><td>Alle Tastenk&uuml;rzel als &Uuml;bersicht</td></tr>
+        <tr><td>Druck &rarr; PDF</td><td>PDF-Export</td><td>Handout aus denselben Folien (<code>?print-pdf</code>)</td></tr>
       </tbody></table></div>
     </div>
-    <p class="s-note">Alles eingebaute reveal.js-Funktionen &ndash; ohne jedes Plugin verf&uuml;gbar.</p>
+    <p class="s-note">Zoom, Sprecheransicht, Code und Suche sind mitgelieferte Plugins von reveal.js.</p>
   </div>
+  <aside class="notes">Die wichtigste Taste im Unterricht ist B: Das Bild wird schwarz, und die Aufmerksamkeit kommt zurück in den Raum.</aside>
 </section>
 
 <section class="title">
@@ -262,6 +582,21 @@
     <div class="t-rule"></div>
     <p class="t-author">revealjs.com</p>
   </div>
+  <aside class="notes">Danke an Hakim El Hattab und alle, die reveal.js weiterentwickeln.</aside>
+</section>
+
+<section data-visibility="uncounted">
+  <div class="cardslide">
+    <div class="s-top"><span class="s-label">Backup &middot; f&uuml;r R&uuml;ckfragen</span></div>
+    <h2>Diese Folie z&auml;hlt nicht mit &ndash; schau auf die Foliennummer.</h2>
+    <div class="s-body">
+      <p style="font-size:20px">Material f&uuml;r R&uuml;ckfragen kommt ans Ende und wird nicht mitgez&auml;hlt. So zeigt die Nummer unten rechts weiter das echte Ende des Vortrags.</p>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-visibility="uncounted"&gt;&hellip;&lt;/section&gt;
+&lt;section data-visibility="hidden"&gt;&hellip;&lt;/section&gt;  &larr; ganz ausgeblendet</code></div>
+      <p class="demohint"><a href="#/ueberblick" style="color:#2C4A6E">Zur&uuml;ck zur &Uuml;bersicht</a></p>
+    </div>
+  </div>
+  <aside class="notes">Backup-Folien sind für Fragen, die vielleicht kommen. Mit hidden verschwindet eine Folie ganz, ohne dass man sie löschen muss.</aside>
 </section>
 </div>
 </div>
@@ -269,10 +604,17 @@
 <script src="reveal/dist/reveal.js"></script>
 <script src="reveal/dist/plugin/notes.js"></script>
 <script src="reveal/dist/plugin/zoom.js"></script>
+<script src="reveal/dist/plugin/highlight.js"></script>
+<script src="reveal/dist/plugin/search.js"></script>
 <script src="reveal/plugin/smallcontrol/smallcontrol.js"></script>
 <script src="reveal/plugin/touchcontrols/plugin.js"></script>
 <script src="reveal/theme/cards-setup.js"></script>
-<script>CardsDeck.init();</script>
+<script>
+/* postMessage: false – die Präsentation lässt sich nicht von fremden Seiten fernsteuern,
+   die sie einbetten (Absicherung, solange die Fernsteuerung nicht gebraucht wird).
+   previewLinks: false – nur Links mit data-preview-link öffnen als Vorschau. */
+CardsDeck.init({ postMessage: false, previewLinks: false, highlight: { highlightOnLoad: true } });
+</script>
 <script>
 (function(){
   /* Bedienelemente auf dunklen Verlauf/Bild/Video-Folien auf Weiß */
