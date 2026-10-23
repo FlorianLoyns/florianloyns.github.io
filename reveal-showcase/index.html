@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="reveal/dist/reset.css">
 <link rel="stylesheet" href="reveal/dist/reveal.css">
 <link rel="stylesheet" href="reveal/theme/cards.css">
-<link rel="stylesheet" href="reveal/dist/plugin/highlight/monokai.css">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="reveal.js-Überblick">
@@ -34,9 +33,11 @@
     .toc li{break-inside:avoid;padding:5px 0;font-size:19px;color:#5A6A75}
     .toc a{color:#1E3452;font-weight:700;text-decoration:none;border-bottom:2px solid #C7D2E0}
     .toc a:hover{border-color:#2C4A6E}
-    .toc .n{display:inline-block;width:30px;color:#9AA6B2;font-weight:700;font-size:15px}
+    .toc .n{display:inline-block;width:34px;color:#9AA6B2;font-weight:700;font-size:15px}
     .frags{list-style:none;margin:0;padding:0;font-size:22px;line-height:2}
     .frags code{font-family:ui-monospace,monospace;background:#EEF2F7;border-radius:5px;padding:1px 8px;font-size:18px;color:#1E3452}
+    .reveal .frag-grid .fragment.grow.visible{transform:scale(1.07)}
+    .reveal .frag-grid .fragment.shrink.visible{transform:scale(.88)}
     .frag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .frag-grid > div{background:#F3F6FA;border:1px solid #D7E0EC;border-radius:12px;padding:16px 18px;text-align:center;font-size:20px;color:#1E3452}
     .frag-grid code{display:block;margin-top:6px;font-family:ui-monospace,monospace;font-size:14px;color:#5A6A75}
@@ -46,16 +47,16 @@
     .reveal .fragment.highlight-green.visible{color:#3B6D11;font-weight:700}
     .reveal .fragment.highlight-red.visible{color:#D14A4A;font-weight:700}
     .reveal .fopts .fragment.strike.visible{color:#9AA6B2}
-    .why{margin-top:14px;font-size:19px;color:#3B6D11;font-weight:600}
+    .why{margin-top:16px;font-size:17px;color:#5A6A75}
     .downhint{margin-top:26px;font-size:15px;color:#5A6A75}
-    .aa-box{background:#EEF2F7;border:1px solid #C7D2E0;border-radius:16px;color:#1E3452;font-weight:800;display:inline-block}
+    .aa-box{align-self:center;background:#EEF2F7;border:1px solid #C7D2E0;border-radius:16px;color:#1E3452;font-weight:800;display:inline-block}
     .aa-list{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px;max-width:560px}
     .aa-list li{font-size:21px;font-weight:700;color:#1E3452;background:#EEF2F7;border:1px solid #C7D2E0;border-radius:12px;padding:10px 18px}
     .aa-list li span{display:inline-block;width:30px;color:#9AA6B2}
-    .bars{display:flex;align-items:flex-end;gap:46px;height:250px;padding:0 10px;border-bottom:2px solid #C7D2E0;margin-top:8px}
-    .bars .bar{width:120px;border-radius:12px 12px 0 0;display:flex;align-items:flex-start;justify-content:center;color:#fff;font-weight:800;font-size:24px;padding-top:10px;box-sizing:border-box}
-    .bars-lbl{display:flex;gap:46px;padding:8px 10px 0;font-size:16px;color:#5A6A75}
-    .bars-lbl span{width:120px;text-align:center}
+    .bars{display:flex;align-items:flex-end;justify-content:center;gap:60px;height:250px;width:84%;padding:0 10px;border-bottom:2px solid #C7D2E0;margin-top:8px}
+    .bars .bar{width:150px;border-radius:12px 12px 0 0;display:flex;align-items:flex-start;justify-content:center;color:#fff;font-weight:800;font-size:24px;padding-top:10px;box-sizing:border-box}
+    .bars-lbl{display:flex;gap:60px;padding:8px 10px 0;font-size:16px;color:#5A6A75}
+    .bars-lbl span{width:150px;text-align:center}
     .reveal .fragment.highlight-current-blue.current-fragment{color:#2B6CB0}
     .reveal section > .bgdemo{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px;padding:0 7%;text-align:left}
     .bgdemo .k{font-size:14px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9)}
@@ -66,16 +67,14 @@
     .lb-item .trig{display:flex;align-items:center;justify-content:center;width:250px;height:150px;border-radius:14px;border:1px solid #D7E0EC;background:#F3F6FA;cursor:zoom-in;overflow:hidden;margin-bottom:10px;color:#1E3452;font-weight:700;font-size:18px;text-decoration:none}
     .lb-item img.trig{object-fit:cover;padding:0}
     .lb-item code{font-family:ui-monospace,monospace;font-size:13px;color:#1E3452}
-    .fitbox{background:#1E3452;border-radius:16px;color:#fff;padding:18px 34px;margin-top:6px}
+    .fitbox{background:#1E3452;border-radius:16px;color:#fff;padding:22px 40px;margin-top:6px}
+    .fitin{width:100%}
     .fitbox .r-fit-text{color:#fff;font-weight:900;letter-spacing:-.02em;margin:0}
-    .reveal .r-stack img{max-height:300px;width:auto}
-    .stretch-img{border-radius:14px;object-fit:cover;width:100%}
+    .reveal .r-stack img{max-height:250px;width:auto}
     .formula{font-size:44px;color:#1E3452;margin:6px 0 4px}
     .formula math{font-size:1em}
     .calc{font-size:22px;color:#22312F;line-height:1.6}
     .calc math{font-size:1.1em}
-    .reveal pre{position:relative;width:100%;margin:6px 0 0;box-shadow:none;font-size:19px}
-    .reveal pre code{border-radius:12px;max-height:none;padding:16px 20px;line-height:1.5;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
     .scrollcta{display:inline-block;margin-top:6px;background:#2C4A6E;color:#fff!important;text-decoration:none;border-radius:12px;padding:13px 24px;font-size:19px;font-weight:700}
     .phone{width:150px;height:270px;border:3px solid #1E3452;border-radius:26px;padding:16px 10px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;background:#fff}
     .phone div{border-radius:6px;background:#EEF2F7;height:58px}
@@ -83,6 +82,52 @@
     .side{display:flex;gap:40px;align-items:center}
     .autolist{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:24px}
     .autolist li{background:#F3F6FA;border:1px solid #D7E0EC;border-radius:12px;padding:12px 20px;color:#1E3452;font-weight:700}
+    .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .tiles a{display:block;background:#F3F6FA;border:1px solid #D7E0EC;border-radius:14px;padding:12px 16px;text-decoration:none;transition:border-color .15s,background .15s}
+    .tiles a:hover{border-color:#2C4A6E;background:#EAF0F7}
+    .tiles .n{display:block;font-size:13px;font-weight:800;color:#9AA6B2;letter-spacing:.06em}
+    .tiles .t{display:block;font-size:19px;font-weight:800;color:#1E3452;margin-top:2px}
+    .tiles .d{display:block;font-size:14px;color:#5A6A75;margin-top:2px}
+    .two{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;align-items:center}
+    .map{display:flex;gap:10px;align-items:flex-start;justify-content:center}
+    .map .col{display:flex;flex-direction:column;gap:10px}
+    .map .sl{width:62px;height:40px;border-radius:8px;background:#EEF2F7;border:1px solid #D7E0EC;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#9AA6B2}
+    .map .sl.on{background:#2C4A6E;border-color:#2C4A6E;color:#fff;box-shadow:0 0 0 4px rgba(44,74,110,.18)}
+    .map .sl.sub{background:#fff;border-style:dashed}
+    .map .sl.sub.on{background:#2C4A6E;border-style:solid;color:#fff}
+    .map-cap{text-align:center;font-size:14px;color:#5A6A75;margin-top:12px}
+    .trans{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+    .trans button{font-family:inherit;font-size:20px;font-weight:700;color:#1E3452;background:#F3F6FA;border:1px solid #D7E0EC;border-radius:12px;padding:16px 10px;cursor:pointer}
+    .trans button:hover{border-color:#2C4A6E;background:#EAF0F7}
+    .trans button small{display:block;font-size:13px;font-weight:500;color:#5A6A75;margin-top:3px}
+    .tr-name{font-size:64px;font-weight:900;color:#1E3452;letter-spacing:-.02em;margin:4px 0 6px}
+    .backbtn{font-family:inherit;font-size:18px;font-weight:700;color:#fff;background:#2C4A6E;border:none;border-radius:10px;padding:11px 20px;cursor:pointer}
+    .reveal section > .bgdemo.top{justify-content:flex-start;padding-top:9%}
+    .bgdemo.top .t{max-width:58%}
+    .heart{width:150px;height:150px;flex:none}
+    .heart path{fill:#D14A4A;transform-origin:50% 55%}
+    .heart.beat path{animation:hb .8s infinite}
+    @keyframes hb{0%,100%{transform:scale(1)}12%{transform:scale(1.13)}24%{transform:scale(.98)}36%{transform:scale(1.07)}50%{transform:scale(1)}}
+    .vitals{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+    .vital{background:#F3F6FA;border:1px solid #D7E0EC;border-radius:18px;padding:22px 34px;text-align:center;color:#1E3452;min-width:220px}
+    .vital .l{display:block;font-size:15px;font-weight:700;letter-spacing:.08em;color:#5A6A75}
+    .vital .v{display:block;font-size:46px;font-weight:900}
+    .vital.alarm{background:#D14A4A;border-color:#D14A4A;color:#fff;padding:26px 60px}
+    .vital.alarm .l{color:rgba(255,255,255,.85);font-size:18px}
+    .vital.alarm .v{font-size:76px;line-height:1.05}
+    .vital.alarm .x{display:block;font-size:20px;font-weight:700;margin-top:4px}
+    .vital.dim{opacity:.45;transform:scale(.85)}
+    .barwrap{position:relative;display:flex;justify-content:center}
+    .target{position:absolute;left:8%;right:8%;bottom:179px;border-top:2px dashed #2C4A6E;opacity:.55}
+    .target span{position:absolute;right:0;top:-24px;font-size:14px;font-weight:700;color:#2C4A6E}
+    .spk{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:auto auto;gap:10px;background:#1E293B;border-radius:14px;padding:12px;color:#CBD5E1;font-size:12px}
+    .spk .cur{grid-row:1/3;background:#fff;border-radius:8px;padding:12px;color:#0B1818}
+    .spk .cur b{display:block;font-size:13px;color:#2C4A6E;letter-spacing:.12em;margin-bottom:6px}
+    .spk .cur i{display:block;height:8px;border-radius:4px;background:#E7EBEF;margin:7px 0}
+    .spk .nxt{background:#334155;border-radius:8px;padding:10px;min-height:70px}
+    .spk .tm{font-size:26px;font-weight:800;color:#fff;letter-spacing:.02em}
+    .spk .nt{grid-column:1/3;background:#0F172A;border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.45;color:#E2E8F0}
+    .spk .cap{font-size:11px;letter-spacing:.14em;color:#94A3B8;display:block;margin-bottom:4px}
     .reveal.on-dark .slide-number{color:#EAF1FB!important}
     .reveal.on-dark .controls{color:#EAF1FB!important}
     .reveal.on-dark .touchcontrols button{border-color:#fff!important;color:#fff!important}
@@ -107,29 +152,27 @@
 <section id="ueberblick">
   <div class="cardslide">
     <div class="s-top"><span class="s-label">&Uuml;berblick</span></div>
-    <h2>Dreizehn Techniken &ndash; ein Klick springt direkt hin.</h2>
+    <h2>Zw&ouml;lf Techniken &ndash; ein Klick springt direkt hin.</h2>
     <div class="s-body">
-      <ol class="toc">
-        <li><span class="n">01</span><a href="#/struktur">Struktur</a> &ndash; waagerecht und in die Tiefe</li>
-        <li><span class="n">02</span><a href="#/fragments">Fragments</a> &ndash; Schritt f&uuml;r Schritt</li>
-        <li><span class="n">03</span><a href="#/uebergaenge">&Uuml;berg&auml;nge</a> &ndash; Folienwechsel</li>
-        <li><span class="n">04</span><a href="#/hintergrund">Hintergr&uuml;nde</a> &ndash; Farbe, Bild, Video</li>
-        <li><span class="n">05</span><a href="#/medien">Medien</a> &ndash; Video, Audio, Webseite</li>
-        <li><span class="n">06</span><a href="#/lightbox">Lightbox</a> &ndash; Bild und Film gro&szlig;</li>
-        <li><span class="n">07</span><a href="#/layout">Layout-Helfer</a> &ndash; stapeln, f&uuml;llen</li>
-        <li><span class="n">08</span><a href="#/autoanimate">Auto-Animate</a> &ndash; weiche Bewegung</li>
-        <li><span class="n">09</span><a href="#/formeln">Formeln</a> &ndash; sauber gesetzt</li>
-        <li><span class="n">10</span><a href="#/code">Code</a> &ndash; Zeile f&uuml;r Zeile</li>
-        <li><span class="n">11</span><a href="#/sprecher">Sprecheransicht</a> &ndash; Notizen und Uhr</li>
-        <li><span class="n">12</span><a href="#/scroll">Scroll-Ansicht</a> &ndash; lesen wie einen Artikel</li>
-        <li><span class="n">13</span><a href="#/autoslide">Automatischer Ablauf</a> &ndash; Folien bl&auml;ttern selbst</li>
-      </ol>
-      <div class="howto"><span class="hl">So schreibst du's &middot; Sprunglinks</span><code>&lt;section id="fragments"&gt;&hellip;&lt;/section&gt;
-&lt;a href="#/fragments"&gt;Fragments&lt;/a&gt;</code></div>
+      <nav class="tiles">
+        <a href="#/struktur"><span class="n">3</span><span class="t">Struktur</span><span class="d">waagerecht und in die Tiefe</span></a>
+        <a href="#/fragments"><span class="n">4</span><span class="t">Fragments</span><span class="d">Schritt f&uuml;r Schritt</span></a>
+        <a href="#/uebergaenge"><span class="n">5</span><span class="t">&Uuml;berg&auml;nge</span><span class="d">zum Ausprobieren</span></a>
+        <a href="#/hintergrund"><span class="n">6</span><span class="t">Hintergr&uuml;nde</span><span class="d">Farbe, Bild, Video</span></a>
+        <a href="#/medien"><span class="n">7</span><span class="t">Medien</span><span class="d">Video, Ton, Webseite</span></a>
+        <a href="#/lightbox"><span class="n">8</span><span class="t">Lightbox</span><span class="d">Bild und Film gro&szlig;</span></a>
+        <a href="#/layout"><span class="n">9</span><span class="t">Layout-Helfer</span><span class="d">Merksatz, Schichten</span></a>
+        <a href="#/autoanimate"><span class="n">10</span><span class="t">Auto-Animate</span><span class="d">weiche Bewegung</span></a>
+        <a href="#/formeln"><span class="n">11</span><span class="t">Formeln</span><span class="d">sauber gesetzt</span></a>
+        <a href="#/sprecher"><span class="n">12</span><span class="t">Sprecheransicht</span><span class="d">Notizen und Uhr</span></a>
+        <a href="#/scroll"><span class="n">13</span><span class="t">Scroll-Ansicht</span><span class="d">lesen wie ein Artikel</span></a>
+        <a href="#/autoslide"><span class="n">14</span><span class="t">Automatik</span><span class="d">Folien bl&auml;ttern selbst</span></a>
+      </nav>
+      <div class="howto"><span class="hl">So schreibst du's &middot; Sprunglinks</span><code>&lt;section id="fragments"&gt;&hellip;&lt;/section&gt;   &lt;a href="#/fragments"&gt;Fragments&lt;/a&gt;</code></div>
     </div>
-    <p class="s-note">Ganz unten: <a href="#/tasten" style="color:#2C4A6E">alle Tasten auf einen Blick</a>.</p>
+    <p class="s-note">Die Zahl ist die Foliennummer oben rechts &ndash; auch <kbd>G</kbd>, Zahl, <kbd>Enter</kbd> springt hin. Am Ende: <a href="#/tasten" style="color:#2C4A6E">alle Tasten</a>.</p>
   </div>
-  <aside class="notes">Die Übersicht ist zugleich die erste Demo: Jeder Eintrag ist ein Sprunglink auf eine Folie mit eigener id. So baut man Inhaltsverzeichnisse, Querverweise oder einen Zurück-Knopf.</aside>
+  <aside class="notes">Die Übersicht ist zugleich die erste Demo: Jede Kachel ist ein Sprunglink auf eine Folie mit eigener id. So baut man Inhaltsverzeichnisse, Querverweise oder einen Zurück-Knopf.</aside>
 </section>
 
 <section id="struktur">
@@ -138,12 +181,26 @@
       <div class="s-top"><span class="s-label">Struktur &middot; horizontal</span></div>
       <h2>Folien laufen von links nach rechts &ndash; und k&ouml;nnen nach unten verzweigen.</h2>
       <div class="s-body">
-        <p style="font-size:20px">Die Hauptlinie ist waagerecht. Wo ein Thema Tiefe hat, h&auml;ngst du <b>vertikale Unterfolien</b> darunter &ndash; ideal, um Details optional bereitzuhalten.</p>
-        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section&gt;
+        <div class="two">
+          <div>
+            <p style="font-size:20px;margin-top:0">Die Hauptlinie ist waagerecht. Wo ein Thema Tiefe hat, h&auml;ngen <b>Unterfolien</b> darunter &ndash; f&uuml;r Beispiele, Herleitungen, R&uuml;ckfragen.</p>
+            <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section&gt;
   &lt;section&gt;Oberfolie&lt;/section&gt;
   &lt;section&gt;Unterfolie&lt;/section&gt;
 &lt;/section&gt;</code></div>
-        <p class="downhint">&darr; Dr&uuml;cke die Pfeiltaste nach unten &ndash; diese Folie hat eine Unterfolie.</p>
+          </div>
+          <div>
+          <div class="map">
+            <div class="col"><div class="sl">1</div></div>
+            <div class="col"><div class="sl">2</div></div>
+            <div class="col"><div class="sl on">3.1</div><div class="sl sub">3.2</div></div>
+            <div class="col"><div class="sl">4</div></div>
+            <div class="col"><div class="sl">5</div></div>
+          </div>
+          <p class="map-cap">Du bist hier: oben im Kapitel 3</p>
+        </div>
+        </div>
+        <p class="downhint">&darr; Dr&uuml;cke die Pfeiltaste nach unten.</p>
       </div>
     </div>
     <aside class="notes">Waagerecht ist die Hauptlinie des Vortrags. Wer nur den Überblick will, bleibt auf ihr; Vertiefungen hängen darunter.</aside>
@@ -151,12 +208,27 @@
   <section>
     <div class="cardslide">
       <div class="s-top"><span class="s-label">Struktur &middot; vertikal</span></div>
-      <h2>Das hier ist die Unterfolie.</h2>
+      <h2>Das hier ist die Unterfolie &ndash; die Nummer oben rechts zeigt 3.2.</h2>
       <div class="s-body">
-        <p style="font-size:20px">Du bist gerade nach unten gesprungen. Mit der Pfeiltaste nach oben geht es zur&uuml;ck, nach rechts weiter zum n&auml;chsten Hauptthema.</p>
+        <div class="two">
+          <div>
+            <p style="font-size:20px;margin-top:0">Nach oben geht es zur&uuml;ck, nach rechts weiter zum n&auml;chsten Kapitel. Die Punkte am rechten Rand zeigen, wie viele Unterfolien es gibt.</p>
+            <div class="howto"><span class="hl">So stellst du's ein</span><code>Reveal.initialize({ slideNumber: 'h.v' })</code></div>
+          </div>
+          <div>
+          <div class="map">
+            <div class="col"><div class="sl">1</div></div>
+            <div class="col"><div class="sl">2</div></div>
+            <div class="col"><div class="sl">3.1</div><div class="sl sub on">3.2</div></div>
+            <div class="col"><div class="sl">4</div></div>
+            <div class="col"><div class="sl">5</div></div>
+          </div>
+          <p class="map-cap">Du bist hier: Kapitel 3, Unterfolie 2</p>
+        </div>
+        </div>
       </div>
     </div>
-    <aside class="notes">Unterfolien eignen sich für Beispiele, Herleitungen oder Material für Rückfragen.</aside>
+    <aside class="notes">Mit slideNumber 'h.v' zeigt die Nummer Kapitel und Unterfolie – so passt sie zur Übersicht.</aside>
   </section>
 </section>
 
@@ -182,12 +254,12 @@
   <section>
     <div class="cardslide">
       <div class="s-top"><span class="s-label">Fragments &middot; mehr Arten</span></div>
-      <h2>Wachsen, schrumpfen, kurz aufleuchten, farbig markieren.</h2>
+      <h2>Wachsen, schrumpfen, verblassen, farbig markieren.</h2>
       <div class="s-body">
         <div class="frag-grid">
           <div class="fragment grow">w&auml;chst<code>grow</code></div>
           <div class="fragment shrink">schrumpft<code>shrink</code></div>
-          <div class="fragment fade-in-then-out">kommt und geht<code>fade-in-then-out</code></div>
+          <div class="fragment semi-fade-out">tritt zur&uuml;ck<code>semi-fade-out</code></div>
           <div class="fragment highlight-red">wird rot<code>highlight-red</code></div>
           <div class="fragment highlight-green">wird gr&uuml;n<code>highlight-green</code></div>
           <div class="fragment current-visible">nur jetzt sichtbar<code>current-visible</code></div>
@@ -215,24 +287,46 @@
   </section>
 </section>
 
-<section id="uebergaenge" data-transition="zoom">
-  <div class="cardslide">
-    <div class="s-top"><span class="s-label">&Uuml;berg&auml;nge</span></div>
-    <h2>Diese Folie ist gerade hereingezoomt.</h2>
-    <div class="s-body">
-      <p style="font-size:20px">Jeder Folienwechsel kann eine eigene Animation haben. Verf&uuml;gbar sind: <b>none, fade, slide, convex, concave, zoom</b>.</p>
-      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-transition="zoom"&gt;&hellip;&lt;/section&gt;</code></div>
-      <p class="demohint">Sparsam einsetzen &ndash; ein ruhiges <code>fade</code> wirkt in der Lehre meist am besten.</p>
+<section id="uebergaenge">
+  <section data-transition="zoom">
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">&Uuml;berg&auml;nge</span></div>
+      <h2>Diese Folie ist hereingezoomt &ndash; probier die anderen aus.</h2>
+      <div class="s-body">
+        <div class="trans">
+          <button type="button" data-tr="fade">fade<small>blendet weich &uuml;ber</small></button>
+          <button type="button" data-tr="slide">slide<small>schiebt herein</small></button>
+          <button type="button" data-tr="convex">convex<small>dreht nach au&szlig;en</small></button>
+          <button type="button" data-tr="concave">concave<small>dreht nach innen</small></button>
+          <button type="button" data-tr="zoom">zoom<small>w&auml;chst heraus</small></button>
+          <button type="button" data-tr="none">none<small>schneidet hart</small></button>
+        </div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-transition="fade"&gt;&hellip;&lt;/section&gt;</code></div>
+        <p class="demohint">Sparsam einsetzen &ndash; ein ruhiges <code>fade</code> wirkt in der Lehre meist am besten.</p>
+      </div>
     </div>
-  </div>
-  <aside class="notes">Übergänge sind Geschmackssache. Ein einheitlicher, ruhiger Übergang lenkt am wenigsten ab.</aside>
+    <aside class="notes">Jeder Knopf setzt den Übergang der Unterfolie und springt hin. Am besten nebeneinander vergleichen.</aside>
+  </section>
+  <section id="tr-ziel" data-transition="fade">
+    <div class="cardslide">
+      <div class="s-top"><span class="s-label">&Uuml;berg&auml;nge &middot; Vorschau</span></div>
+      <h2>So sieht dieser &Uuml;bergang aus:</h2>
+      <div class="s-body" style="align-items:flex-start">
+        <p class="tr-name" id="tr-name">fade</p>
+        <button class="backbtn" type="button" id="tr-back">&uarr; Zur&uuml;ck und n&auml;chsten ausprobieren</button>
+      </div>
+    </div>
+    <aside class="notes">Diese Folie bekommt ihren Übergang per Knopfdruck von der Folie darüber.</aside>
+  </section>
 </section>
 
-<section id="hintergrund" data-force-dark data-background-color="#1E3452">
+<section id="hintergrund">
+<section data-force-dark data-background-color="#1E3452">
   <div class="bgdemo">
     <span class="k">Hintergrund &middot; Farbe</span>
     <p class="t">Eine Vollfl&auml;chen-Farbe hinter der Folie.</p>
     <span class="c">data-background-color</span>
+    <span class="k" style="margin-top:18px;letter-spacing:.08em;text-transform:none;font-weight:600">&darr; darunter: Verlauf, Bild und Video</span>
   </div>
   <aside class="notes">Hintergründe gehören zur Folie, nicht zum Inhalt – sie reichen bis an den Bildschirmrand.</aside>
 </section>
@@ -246,37 +340,39 @@
   <aside class="notes">Jeder CSS-Verlauf funktioniert.</aside>
 </section>
 
-<section data-force-dark data-background-image="media/hintergrund.jpg" data-background-size="cover">
-  <div class="bgdemo">
+<section data-force-dark data-background-image="media/ekg-monitor.jpg" data-background-size="cover">
+  <div class="bgdemo top">
     <span class="k">Hintergrund &middot; Bild</span>
     <p class="t">Ein Bild formatf&uuml;llend hinter der Folie.</p>
     <span class="c">data-background-image</span>
   </div>
-  <aside class="notes">Mit data-background-opacity lässt sich ein Bild auch abschwächen, damit Text darauf lesbar bleibt.</aside>
+  <aside class="notes">Ein Monitorbild als Kulisse. Mit data-background-opacity lässt sich ein Bild abschwächen, damit Text darauf lesbar bleibt.</aside>
 </section>
 
-<section data-force-dark data-background-color="#1E3452" data-background-video="media/beispiel.mp4" data-background-video-loop data-background-video-muted>
-  <div class="bgdemo">
+<section data-force-dark data-background-video="media/ekg.mp4" data-background-video-loop data-background-video-muted>
+  <div class="bgdemo top">
     <span class="k">Hintergrund &middot; Video</span>
     <p class="t">Ein Film l&auml;uft hinter der Folie.</p>
     <span class="c">data-background-video</span>
   </div>
   <aside class="notes">Stumm und in Schleife eignet sich ein Hintergrundvideo für Stimmungen – nicht für Inhalte, die man hören muss.</aside>
 </section>
+</section>
 
 
 <section id="medien">
+<section>
   <div class="cardslide">
     <div class="s-top"><span class="s-label">Medien &middot; Video</span></div>
     <h2>Ein Video l&auml;uft direkt in der Folie.</h2>
     <div class="s-body" style="text-align:center">
-      <video data-autoplay muted loop playsinline poster="media/hintergrund.jpg" style="max-height:300px;border-radius:14px;box-shadow:0 12px 32px rgba(15,23,42,.22);display:block;margin:0 auto">
-        <source data-src="media/beispiel.mp4" type="video/mp4">
+      <video data-autoplay muted loop playsinline poster="media/ekg-poster.jpg" style="max-height:290px;border-radius:14px;box-shadow:0 12px 32px rgba(15,23,42,.22);display:block;margin:0 auto">
+        <source data-src="media/ekg.mp4" type="video/mp4">
       </video>
       <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;video data-autoplay muted loop&gt;
   &lt;source data-src="film.mp4" type="video/mp4"&gt;
 &lt;/video&gt;</code></div>
-      <p class="demohint">reveal pausiert das Video automatisch beim Folienwechsel &ndash; und l&auml;dt es dank <code>data-src</code> erst bei Bedarf.</p>
+      <p class="demohint">Pausiert beim Folienwechsel von selbst und l&auml;dt dank <code>data-src</code> erst bei Bedarf. &darr; darunter: Ton und Webseite.</p>
     </div>
   </div>
   <aside class="notes">data-src statt src: Das Video wird erst geladen, wenn die Folie in die Nähe kommt. Das hält den Start schnell.</aside>
@@ -285,18 +381,22 @@
 <section>
   <div class="cardslide">
     <div class="s-top"><span class="s-label">Medien &middot; Audio</span></div>
-    <h2>Auch Ton spielt direkt in der Folie.</h2>
-    <div class="s-body" style="text-align:center">
-      <audio controls preload="none" style="width:100%;max-width:460px;margin:14px auto 0;display:block">
-        <source data-src="media/beispiel.mp3" type="audio/mpeg">
-      </audio>
-      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;audio controls&gt;
-  &lt;source data-src="ton.mp3" type="audio/mpeg"&gt;
-&lt;/audio&gt;</code></div>
-      <p class="demohint">Wie beim Video: reveal pausiert den Ton beim Folienwechsel und l&auml;dt ihn per <code>data-src</code> erst bei Bedarf. <code>data-autoplay</code> w&uuml;rde ihn automatisch starten.</p>
+    <h2>Auch Ton spielt direkt in der Folie &ndash; hier ein Herzschlag.</h2>
+    <div class="s-body">
+      <div style="display:flex;align-items:center;gap:40px;justify-content:center">
+        <svg class="heart" id="heart" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 88 C20 66 6 50 6 32 C6 18 17 8 30 8 C39 8 46 13 50 20 C54 13 61 8 70 8 C83 8 94 18 94 32 C94 50 80 66 50 88Z"/></svg>
+        <div>
+          <p style="font-size:20px;margin:0 0 12px;color:#22312F"><b>75 Schl&auml;ge pro Minute</b> &middot; erster und zweiter Herzton<br><span style="font-size:15px;color:#5A6A75">synthetisch erzeugt, keine Aufnahme</span></p>
+          <audio id="hs" controls loop preload="none" style="width:420px;display:block">
+            <source data-src="media/herzschlag.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;audio controls&gt; &lt;source data-src="ton.mp3" type="audio/mpeg"&gt; &lt;/audio&gt;</code></div>
+      <p class="demohint">reveal pausiert den Ton beim Folienwechsel. Das Herz schl&auml;gt nur, solange der Ton l&auml;uft.</p>
     </div>
   </div>
-  <aside class="notes">Gut für Herztöne, Atemgeräusche oder ein kurzes Interview.</aside>
+  <aside class="notes">Gut für Herztöne, Atemgeräusche oder ein kurzes Interview. Das pochende Herz ist ein kleines Skript, das auf Abspielen und Pause reagiert.</aside>
 </section>
 
 <section>
@@ -314,6 +414,7 @@
   </div>
   <aside class="notes">Fremde Webseiten nur mit Einwilligung laden: Schon das Einbetten überträgt die IP-Adresse an den Anbieter.</aside>
 </section>
+</section>
 
 <section id="lightbox">
   <div class="cardslide">
@@ -321,8 +422,8 @@
     <h2>Antippen &ndash; und Bild oder Film f&uuml;llen den Bildschirm.</h2>
     <div class="s-body">
       <div class="lb-row">
-        <div class="lb-item"><img class="trig" src="media/hintergrund.jpg" alt="Beispielbild" data-preview-image>Bild gro&szlig;<br><code>data-preview-image</code></div>
-        <div class="lb-item"><button class="trig" type="button" data-preview-video="media/beispiel.mp4" data-preview-fit="contain">&#9654;&nbsp; Film abspielen</button>Film gro&szlig;<br><code>data-preview-video</code></div>
+        <div class="lb-item"><img class="trig" src="media/ekg-monitor.jpg" alt="Monitorbild mit EKG" data-preview-image>Bild gro&szlig;<br><code>data-preview-image</code></div>
+        <div class="lb-item"><button class="trig" type="button" data-preview-video="media/ekg.mp4" data-preview-fit="contain" style="background:#0E1B2E url(media/ekg-poster.jpg) center/cover;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)">&#9654;&nbsp; Film abspielen</button>Film gro&szlig;<br><code>data-preview-video</code></div>
         <div class="lb-item"><a class="trig" href="https://florianloyns.com/" data-preview-link>florianloyns.com</a>Webseite als Vorschau<br><code>data-preview-link</code></div>
       </div>
       <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;img src="bild.jpg" data-preview-image&gt;</code></div>
@@ -338,9 +439,9 @@
       <div class="s-top"><span class="s-label">Layout &middot; r-fit-text</span></div>
       <h2>Eine Kernaussage f&uuml;llt die ganze Breite.</h2>
       <div class="s-body">
-        <div class="fitbox"><p class="r-fit-text">Erst messen, dann geben.</p></div>
+        <div class="fitbox"><div class="fitin"><p class="r-fit-text">Erst messen, dann geben.</p></div></div>
         <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;p class="r-fit-text"&gt;Erst messen, dann geben.&lt;/p&gt;</code></div>
-        <p class="downhint">&darr; darunter: Bilder stapeln und Platz f&uuml;llen.</p>
+        <p class="downhint">&darr; darunter: Bilder Schicht f&uuml;r Schicht stapeln.</p>
       </div>
     </div>
     <aside class="notes">r-fit-text rechnet die Schriftgröße so aus, dass der Text genau die verfügbare Breite füllt – ideal für eine einzige Merksatz-Folie.</aside>
@@ -362,41 +463,40 @@
     </div>
     <aside class="notes">Von innen nach außen: Subkutis, Dermis, Epidermis. Jede Schicht ist ein eigenes, transparentes Bild; r-stack legt sie exakt übereinander.</aside>
   </section>
-  <section>
-    <div class="cardslide">
-      <div class="s-top"><span class="s-label">Layout &middot; r-stretch</span></div>
-      <h2>Ein Bild nimmt sich den restlichen Platz der Folie.</h2>
-      <img class="r-stretch stretch-img" src="media/hintergrund.jpg" alt="Beispielbild, das den Restplatz füllt" style="margin-top:18px">
-      <p class="demohint" style="margin-bottom:0">Kein Ausrechnen von H&ouml;hen: <code>&lt;img class="r-stretch"&gt;</code> &ndash; genau ein Element pro Folie.</p>
-    </div>
-    <aside class="notes">r-stretch ist praktisch für Abbildungen unter einer Überschrift: Das Bild wird so groß, wie Platz ist.</aside>
-  </section>
 </section>
 
 <section id="autoanimate">
-  <section data-auto-animate data-auto-animate-id="kasten">
+    <section data-auto-animate data-auto-animate-id="vital">
     <div class="cardslide">
       <div class="s-top"><span class="s-label">Auto-Animate</span></div>
-      <h2>Gleiche Elemente wandern weich von Folie zu Folie.</h2>
-      <div class="s-body" style="text-align:center">
-        <div class="aa-box" data-id="box" style="font-size:22px;padding:14px 22px;margin-top:30px">ein Kasten</div>
-        <p class="downhint">&darr; Weiter nach unten &ndash; beobachte den Kasten.</p>
+      <h2>Drei Werte bei Frau H. &ndash; einer f&auml;llt gleich auf.</h2>
+      <div class="s-body">
+        <div class="vitals">
+          <div class="vital" data-id="rr"><span class="l">BLUTDRUCK</span><span class="v">118/76</span></div>
+          <div class="vital" data-id="puls"><span class="l">PULS</span><span class="v">48/min</span></div>
+          <div class="vital" data-id="spo2"><span class="l">SpO&#8322;</span><span class="v">96 %</span></div>
+        </div>
+        <p class="downhint" style="text-align:center">&darr; Weiter nach unten &ndash; beobachte den Puls.</p>
       </div>
     </div>
     <aside class="notes">Auto-Animate vergleicht zwei aufeinanderfolgende Folien und bewegt alles, was auf beiden vorkommt.</aside>
   </section>
-  <section data-auto-animate data-auto-animate-id="kasten">
+    <section data-auto-animate data-auto-animate-id="vital">
     <div class="cardslide">
       <div class="s-top"><span class="s-label">Auto-Animate</span></div>
-      <h2>reveal.js interpoliert Gr&ouml;&szlig;e, Position und Farbe von selbst.</h2>
-      <div class="s-body" style="text-align:center">
-        <div class="aa-box" data-id="box" style="font-size:40px;padding:34px 54px;margin-top:20px;background:#DCE6F1">derselbe Kasten &ndash; nur gr&ouml;&szlig;er</div>
-        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-auto-animate&gt; &hellip; data-id="box" &hellip; &lt;/section&gt;
-&lt;section data-auto-animate&gt; &hellip; data-id="box" &hellip; &lt;/section&gt;</code></div>
-        <p class="downhint">&darr; Weiter: eine Liste sortiert sich selbst.</p>
+      <h2>Der Puls r&uuml;ckt nach vorn &ndash; Gr&ouml;&szlig;e, Lage und Farbe wechseln weich.</h2>
+      <div class="s-body">
+        <div class="vitals" style="flex-direction:column;align-items:center;gap:14px">
+          <div class="vital alarm" data-id="puls"><span class="l">PULS</span><span class="v">48/min</span><span class="x">Bradykardie</span></div>
+          <div style="display:flex;gap:18px">
+            <div class="vital dim" data-id="rr"><span class="l">BLUTDRUCK</span><span class="v">118/76</span></div>
+            <div class="vital dim" data-id="spo2"><span class="l">SpO&#8322;</span><span class="v">96 %</span></div>
+          </div>
+        </div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section data-auto-animate&gt; &hellip; &lt;div data-id="puls"&gt; &hellip; &lt;/section&gt;   (auf beiden Folien)</code></div>
       </div>
     </div>
-    <aside class="notes">data-id verbindet die beiden Elemente; alles andere erledigt reveal.js.</aside>
+    <aside class="notes">data-id verbindet die Elemente beider Folien; reveal.js rechnet Größe, Lage und Farbe dazwischen aus.</aside>
   </section>
   <section data-auto-animate data-auto-animate-id="liste">
     <div class="cardslide">
@@ -439,11 +539,12 @@
       <div class="s-top"><span class="s-label">Auto-Animate &middot; Werte</span></div>
       <h2>Herr K. bei Aufnahme: Blutdruck 178/104 mmHg.</h2>
       <div class="s-body">
-        <div class="bars">
+        <div class="barwrap"><div class="target" data-id="ziel"><span>Ziel &lt; 140 mmHg</span></div><div class="bars">
           <div class="bar" data-id="sys" style="height:228px;background:#D14A4A">178</div>
           <div class="bar" data-id="dia" style="height:133px;background:#E07A5F">104</div>
-        </div>
-        <div class="bars-lbl"><span>systolisch</span><span>diastolisch</span></div>
+        </div></div>
+        <div class="bars-lbl" style="justify-content:center"><span>systolisch</span><span>diastolisch</span></div>
+        <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;div data-id="sys" style="height:228px"&gt; &rarr; &lt;div data-id="sys" style="height:169px"&gt;</code></div>
         <p class="downhint">&darr; Weiter: nach vier Wochen Therapie.</p>
       </div>
     </div>
@@ -454,12 +555,13 @@
       <div class="s-top"><span class="s-label">Auto-Animate &middot; Werte</span></div>
       <h2>Nach vier Wochen: 132/84 mmHg.</h2>
       <div class="s-body">
-        <div class="bars">
+        <div class="barwrap"><div class="target" data-id="ziel"><span>Ziel &lt; 140 mmHg</span></div><div class="bars">
           <div class="bar" data-id="sys" style="height:169px;background:#639922">132</div>
           <div class="bar" data-id="dia" style="height:108px;background:#8DB65A">84</div>
-        </div>
-        <div class="bars-lbl"><span>systolisch</span><span>diastolisch</span></div>
+        </div></div>
+        <div class="bars-lbl" style="justify-content:center"><span>systolisch</span><span>diastolisch</span></div>
         <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;div data-id="sys" style="height:228px"&gt; &rarr; &lt;div data-id="sys" style="height:169px"&gt;</code></div>
+        <p class="downhint">Gleiche <code>data-id</code>, andere H&ouml;he und Farbe &ndash; reveal.js rechnet den Weg dazwischen.</p>
       </div>
     </div>
     <aside class="notes">Ein Diagramm, das sich bewegt, macht Veränderung sichtbar – ganz ohne Diagramm-Bibliothek.</aside>
@@ -482,36 +584,27 @@
   <aside class="notes">Die Tropfformel mit dem Makrotropfsystem: 20 Tropfen entsprechen einem Milliliter. Das Ergebnis wird auf ganze Tropfen gerundet.</aside>
 </section>
 
-<section id="code">
-  <div class="cardslide">
-    <div class="s-top"><span class="s-label">Code</span></div>
-    <h2>Quelltext mit Farben &ndash; und Zeile f&uuml;r Zeile erkl&auml;rt.</h2>
-    <div class="s-body">
-<pre><code class="language-html" data-trim data-noescape data-line-numbers="1|2|3|4|1-5">
-&lt;section data-auto-animate&gt;
-  &lt;h2&gt;Eine Aussage als &Uuml;berschrift&lt;/h2&gt;
-  &lt;p class="fragment"&gt;Der Beleg erscheint danach.&lt;/p&gt;
-  &lt;aside class="notes"&gt;Nur in der Sprecheransicht.&lt;/aside&gt;
-&lt;/section&gt;
-</code></pre>
-      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;pre&gt;&lt;code data-line-numbers="1|2|3-4"&gt;&hellip;&lt;/code&gt;&lt;/pre&gt;</code></div>
-      <p class="demohint"><kbd>&rarr;</kbd> springt von Hervorhebung zu Hervorhebung &middot; mitgeliefertes Highlight-Plugin.</p>
-    </div>
-  </div>
-  <aside class="notes">Die Zeilen nach data-line-numbers werden nacheinander hervorgehoben – wie Fragments, nur für Code.</aside>
-</section>
-
 <section id="sprecher">
   <div class="cardslide">
     <div class="s-top"><span class="s-label">Sprecheransicht</span></div>
-    <h2>Taste S dr&uuml;cken &ndash; dort stehen Notizen, Uhr und die n&auml;chste Folie.</h2>
+    <h2>Taste S &ndash; du siehst Notizen, Uhr und die n&auml;chste Folie.</h2>
     <div class="s-body">
-      <p style="font-size:20px">Jede Folie in dieser Pr&auml;sentation hat Notizen. Das Publikum sieht nur die Folie, du siehst in einem zweiten Fenster zus&auml;tzlich, was du sagen willst &ndash; und wie viel Zeit vergangen ist.</p>
-      <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section&gt;
+      <div class="two">
+        <div>
+          <p style="font-size:20px;margin-top:0">Das Publikum sieht nur die Folie. Jede Folie dieser Pr&auml;sentation hat Notizen &ndash; probier es aus.</p>
+          <div class="howto"><span class="hl">So schreibst du's</span><code>&lt;section&gt;
   &hellip;
   &lt;aside class="notes"&gt;Das sehe nur ich.&lt;/aside&gt;
 &lt;/section&gt;</code></div>
-      <p class="demohint">Am besten mit zwei Bildschirmen: Folie auf den Beamer, Sprecheransicht auf den Laptop. Beide bleiben synchron.</p>
+          <p class="demohint">Folie auf den Beamer, Sprecheransicht auf den Laptop &ndash; beide bleiben synchron.</p>
+        </div>
+        <div class="spk" aria-hidden="true">
+          <div class="cur"><span class="cap" style="color:#9AA6B2">AKTUELLE FOLIE</span><b>SPRECHERANSICHT</b><i style="width:90%"></i><i style="width:70%"></i><i style="width:80%"></i></div>
+          <div class="nxt"><span class="cap">N&Auml;CHSTE</span><i style="display:block;height:6px;border-radius:3px;background:#475569;margin:6px 0;width:80%"></i><i style="display:block;height:6px;border-radius:3px;background:#475569;width:60%"></i></div>
+          <div class="nxt"><span class="cap">ZEIT</span><span class="tm">12:34</span></div>
+          <div class="nt"><span class="cap">NOTIZEN</span>Hallo aus der Sprecheransicht! Dieser Text steht im Markup in &lt;aside class="notes"&gt;.</div>
+        </div>
+      </div>
     </div>
   </div>
   <aside class="notes">Hallo aus der Sprecheransicht! Genau dieser Text steht im Markup in einem aside-Element mit der Klasse notes.</aside>
@@ -569,7 +662,7 @@ Endlosschleife: Reveal.initialize({ autoSlide: 5000, loop: true })</code></div>
         <tr><td>Druck &rarr; PDF</td><td>PDF-Export</td><td>Handout aus denselben Folien (<code>?print-pdf</code>)</td></tr>
       </tbody></table></div>
     </div>
-    <p class="s-note">Zoom, Sprecheransicht, Code und Suche sind mitgelieferte Plugins von reveal.js.</p>
+    <p class="s-note">Zoom, Sprecheransicht und Suche sind mitgelieferte Plugins von reveal.js.</p>
   </div>
   <aside class="notes">Die wichtigste Taste im Unterricht ist B: Das Bild wird schwarz, und die Aufmerksamkeit kommt zurück in den Raum.</aside>
 </section>
@@ -604,7 +697,6 @@ Endlosschleife: Reveal.initialize({ autoSlide: 5000, loop: true })</code></div>
 <script src="reveal/dist/reveal.js"></script>
 <script src="reveal/dist/plugin/notes.js"></script>
 <script src="reveal/dist/plugin/zoom.js"></script>
-<script src="reveal/dist/plugin/highlight.js"></script>
 <script src="reveal/dist/plugin/search.js"></script>
 <script src="reveal/plugin/smallcontrol/smallcontrol.js"></script>
 <script src="reveal/plugin/touchcontrols/plugin.js"></script>
@@ -613,7 +705,7 @@ Endlosschleife: Reveal.initialize({ autoSlide: 5000, loop: true })</code></div>
 /* postMessage: false – die Präsentation lässt sich nicht von fremden Seiten fernsteuern,
    die sie einbetten (Absicherung, solange die Fernsteuerung nicht gebraucht wird).
    previewLinks: false – nur Links mit data-preview-link öffnen als Vorschau. */
-CardsDeck.init({ postMessage: false, previewLinks: false, highlight: { highlightOnLoad: true } });
+CardsDeck.init({ postMessage: false, previewLinks: false, slideNumber: 'h.v' });
 </script>
 <script>
 (function(){
@@ -624,6 +716,17 @@ CardsDeck.init({ postMessage: false, previewLinks: false, highlight: { highlight
     if(r) r.classList.toggle('on-dark', !!(s&&s.hasAttribute('data-force-dark')));
   }
   if(window.Reveal&&Reveal.on){ Reveal.on('ready',upd); Reveal.on('slidechanged',upd); }
+  /* Übergänge zum Ausprobieren: Knopf setzt den Übergang der Unterfolie und springt hin */
+  var ziel=document.getElementById('tr-ziel'), nm=document.getElementById('tr-name');
+  document.querySelectorAll('.trans button').forEach(function(b){
+    b.addEventListener('click',function(e){ e.stopPropagation();
+      var tr=b.getAttribute('data-tr'); ziel.setAttribute('data-transition',tr); nm.textContent=tr; Reveal.down(); });
+  });
+  var bk=document.getElementById('tr-back'); if(bk) bk.addEventListener('click',function(e){ e.stopPropagation(); Reveal.up(); });
+  /* Herz schlägt, solange der Herzschlag läuft */
+  var hs=document.getElementById('hs'), hz=document.getElementById('heart');
+  if(hs&&hz){ ['play','playing'].forEach(function(ev){hs.addEventListener(ev,function(){hz.classList.add('beat');});});
+    ['pause','ended','emptied'].forEach(function(ev){hs.addEventListener(ev,function(){hz.classList.remove('beat');});}); }
   /* OSM-Karte erst auf Klick laden (DSGVO: Klick = Einwilligung) */
   var ob=document.getElementById('osm-load');
   if(ob){ ob.addEventListener('click',function(){
