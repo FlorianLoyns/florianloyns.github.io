@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T09:03:32.170Z",
+  "updated": "2026-11-01T09:53:15.218Z",
   "user": "FlorianLoyns",
   "total": 1,
   "repos": {
@@ -46,7 +46,7 @@
     "reveal.js-seasons": "1.1.0",
     "reveal.js-sequence": "1.1.2",
     "reveal.js-stepped": "1.0.3",
-    "reveal.js-termcluster": "1.1.1",
-    "reveal.js-touchcontrols": "1.6.1"
+    "reveal.js-termcluster": "1.4.0",
+    "reveal.js-touchcontrols": "1.7.9"
   }
 }
