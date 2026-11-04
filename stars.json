@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-03T10:17:22.341Z",
+  "updated": "2026-11-04T10:08:56.688Z",
   "user": "FlorianLoyns",
-  "total": 1,
+  "total": 2,
   "repos": {
     "blutdruck-trainer": 0,
     "bmi-tagesbedarf": 0,
@@ -22,7 +22,7 @@
     "pflegelatein": 0,
     "reveal.js-cycle": 0,
     "reveal.js-glossary": 0,
-    "reveal.js-hotspot": 0,
+    "reveal.js-hotspot": 1,
     "reveal.js-quiz": 0,
     "reveal.js-quizgrid": 0,
     "reveal.js-seasons": 0,
